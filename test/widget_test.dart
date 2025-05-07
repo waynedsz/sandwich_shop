@@ -1,25 +1,31 @@
-// This is a basic Flutter widget test.
+// Flutter widget tests for the Sandwich Shop application.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// These tests confirm that the landing page renders the
+// primary buttons and that tapping a button shows the
+// placeholder SnackBar.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 =======
 import 'package:flutter/material.dart';
+=======
+>>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
 import 'package:flutter_test/flutter_test.dart';
 
 >>>>>>> 816cadc (first commit)
 import 'package:sandwich_shop/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  /// Groups all landing‑page smoke tests.
+  group('LandingPage smoke tests', () {
+    /// Verifies that the two primary action buttons appear.
+    testWidgets('Primary buttons are visible', (WidgetTester tester) async {
+      const SandwichShopApp application = SandwichShopApp();
+      await tester.pumpWidget(application);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Verify that our counter starts at 0 by checking the OrderItemDisplay text.
     expect(find.textContaining('0 Footlong'), findsOneWidget);
@@ -66,14 +72,39 @@ void main() {
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
+=======
+      final Finder selectMenuButton = find.text('Select from the menu');
+      final Finder buildOwnButton = find.text('Build your own sandwich');
+>>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      expect(selectMenuButton, findsOneWidget);
+      expect(buildOwnButton, findsOneWidget);
+    });
 
+<<<<<<< HEAD
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
 >>>>>>> 816cadc (first commit)
+=======
+    /// Confirms that tapping a primary button shows the
+    /// Feature coming soon SnackBar.
+    testWidgets('Tapping primary button shows SnackBar', (
+      WidgetTester tester,
+    ) async {
+      const SandwichShopApp application = SandwichShopApp();
+      await tester.pumpWidget(application);
+
+      final Finder selectMenuButton = find.text('Select from the menu');
+
+      await tester.tap(selectMenuButton);
+      await tester.pump(); // start SnackBar animation
+      await tester.pump(const Duration(seconds: 1));
+
+      final Finder snackBar = find.text('Feature coming soon…');
+
+      expect(snackBar, findsOneWidget);
+    });
+>>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
   });
 }
