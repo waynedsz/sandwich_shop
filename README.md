@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Sandwich Shop App
 
 A Flutter application for ordering sandwiches with customizable options.
@@ -297,3 +298,21 @@ to ask your questions and get help from the community.
 Please provide as much context as possible, including the error messages you are seeing and
 screenshots (you can open Discord in your web browser).
 >>>>>>> e901868 (Add a README for stage 1)
+=======
+# sandwich_shop
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+>>>>>>> 816cadc (first commit)
