@@ -7,7 +7,11 @@ version:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   revision: "09de023485e95e6d1225c2baa44b8feb85e0d45f"
+=======
+  revision: "ea121f8859e4b13e47a8f845e4586164519588bc"
+>>>>>>> 816cadc (first commit)
 =======
   revision: "ea121f8859e4b13e47a8f845e4586164519588bc"
 >>>>>>> 816cadc (first commit)
@@ -28,6 +32,7 @@ migration:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
     - platform: android
@@ -49,6 +54,8 @@ migration:
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -75,6 +82,9 @@ migration:
       base_revision: ea121f8859e4b13e47a8f845e4586164519588bc
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 816cadc (first commit)
+=======
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)

@@ -45,9 +45,12 @@ app.*.map.json
 /android/app/release
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # Kiro
 .kiro/
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======

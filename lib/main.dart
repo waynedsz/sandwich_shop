@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -741,11 +742,28 @@ class App extends StatelessWidget {
 <<<<<<< HEAD
     final ThemeData theme = ThemeData(
 >>>>>>> 816cadc (first commit)
+=======
+
+void main() {
+  runApp(const SandwichShopApp());
+}
+
+/// Entry‑point widget for the sandwich‑shop application.
+class SandwichShopApp extends StatelessWidget {
+  const SandwichShopApp({super.key});
+
+  /// Builds the root MaterialApp with a simple green theme and
+  /// routes to the LandingPage.
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData(
+>>>>>>> 816cadc (first commit)
       useMaterial3: true,
       colorSchemeSeed: Colors.green,
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     MaterialApp application = MaterialApp(
@@ -755,11 +773,16 @@ class App extends StatelessWidget {
 =======
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
     final MaterialApp application = MaterialApp(
       title: 'Sandwich Shop',
       theme: theme,
       home: const LandingPage(),
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 816cadc (first commit)
+=======
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
@@ -773,6 +796,7 @@ class App extends StatelessWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /// First screen that offers the main user actions.
 ///
 /// A [StatefulWidget] is used so callback methods can access
@@ -780,10 +804,13 @@ class App extends StatelessWidget {
 =======
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
 /// First screen that offers the main choices.
 ///
 /// A stateful widget is used so the handlers can access context
 /// directly, avoiding anonymous (lambda) functions.
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
@@ -800,6 +827,8 @@ class App extends StatelessWidget {
 /// A [StatefulWidget] is used so callback methods can access
 /// [BuildContext] directly.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+>>>>>>> 816cadc (first commit)
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -808,6 +837,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -854,6 +884,16 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Handles presses on *Select from the menu*.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+  /// Shows a standard feature‑not‑implemented SnackBar.
+  void _showNotImplemented() {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final SnackBar bar = SnackBar(content: Text('Feature coming soon…'));
+    messenger.showSnackBar(bar);
+  }
+
+  /// Called when "Select from the menu" is pressed.
+>>>>>>> 816cadc (first commit)
   void _handleSelectMenuPressed() {
     _showNotImplemented();
   }
@@ -862,6 +902,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles presses on *Build your own sandwich*.
 =======
   /// Called when "Build your own sandwich" is pressed.
@@ -875,6 +916,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Handles presses on *Build your own sandwich*.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+  /// Called when "Build your own sandwich" is pressed.
+>>>>>>> 816cadc (first commit)
   void _handleBuildOwnPressed() {
     _showNotImplemented();
   }
@@ -883,6 +927,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Account* menu item.
 =======
   /// Responds to the "Account" menu item.
@@ -896,6 +941,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Handles the *Account* menu item.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+  /// Responds to the "Account" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleAccountAction() {
     _showNotImplemented();
   }
@@ -904,6 +952,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Orders* menu item.
 =======
   /// Responds to the "Orders" menu item.
@@ -917,6 +966,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Handles the *Orders* menu item.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+  /// Responds to the "Orders" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleOrdersAction() {
     _showNotImplemented();
   }
@@ -925,6 +977,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Log out* menu item.
 =======
   /// Responds to the "Log out" menu item.
@@ -938,10 +991,14 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Handles the *Log out* menu item.
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+  /// Responds to the "Log out" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleLogoutAction() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1015,6 +1072,8 @@ class _LandingPageState extends State<LandingPage> {
 =======
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
   /// Builds the landing‑page user interface.
   @override
   Widget build(BuildContext context) {
@@ -1043,6 +1102,7 @@ class _LandingPageState extends State<LandingPage> {
 
     // Drop‑down menu items for the account avatar.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /// Builds the list of account popup-menu entries.
   List<PopupMenuEntry<String>> _buildAccountMenu(BuildContext context) {
@@ -1053,6 +1113,8 @@ class _LandingPageState extends State<LandingPage> {
   /// Builds the list of account popup-menu entries.
   List<PopupMenuEntry<String>> _buildAccountMenu(BuildContext context) {
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+>>>>>>> 816cadc (first commit)
     final PopupMenuItem<String> accountItem = PopupMenuItem<String>(
       value: 'account',
       onTap: _handleAccountAction,
@@ -1071,6 +1133,7 @@ class _LandingPageState extends State<LandingPage> {
       child: const Text('Log out'),
     );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -1138,10 +1201,23 @@ class _LandingPageState extends State<LandingPage> {
 =======
             itemBuilder: _buildAccountMenu,
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+    // Assemble the scaffold.
+    final Scaffold page = Scaffold(
+      appBar: AppBar(
+        title: screenTitle,
+        actions: [
+          PopupMenuButton<String>(
+            tooltip: 'Account menu',
+            icon: avatarIcon,
+            itemBuilder:
+                (BuildContext ctx) => [accountItem, ordersItem, logoutItem],
+>>>>>>> 816cadc (first commit)
           ),
         ],
       ),
       body: Padding(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         padding: EdgeInsets.all(24),
@@ -2099,10 +2175,17 @@ class OrderItemDisplay extends StatelessWidget {
 =======
           children: <Widget>[
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
+=======
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+>>>>>>> 816cadc (first commit)
             selectMenuButton,
             const SizedBox(height: 16),
             buildOwnButton,
           ],
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -2119,11 +2202,14 @@ class OrderItemDisplay extends StatelessWidget {
 =======
           children: <Widget>[selectMenuButton, buildOwnButton],
 >>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
+=======
+>>>>>>> 816cadc (first commit)
         ),
       ),
     );
 
     return page;
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
@@ -2494,3 +2580,7 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> ef463b3 (Remove OrderItemDisplay)
 =======
 >>>>>>> 6ba2694 (Move order screen to its own view)
+=======
+  }
+}
+>>>>>>> 816cadc (first commit)

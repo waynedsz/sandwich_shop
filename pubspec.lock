@@ -59,6 +59,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "5368f224a74523e8d2e7399ea1638b37aecfca824a3cc4dfdf77bf1fa905ac44"
       url: "https://pub.dev"
     source: hosted
@@ -69,10 +70,13 @@ packages:
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
       sha256: "6a95e56b2449df2273fd8c45a662d6947ce1ebb7aafe80e550a3f68297f3cacc"
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
@@ -116,6 +120,8 @@ packages:
     source: hosted
     version: "7.0.1"
 >>>>>>> 359ef96 (added shared_preferences)
+=======
+>>>>>>> 816cadc (first commit)
   flutter:
     dependency: "direct main"
     description: flutter
@@ -131,11 +137,14 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -146,6 +155,7 @@ packages:
     version: "5.0.0"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
       sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
@@ -169,16 +179,21 @@ packages:
     source: hosted
     version: "2.0.3"
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+>>>>>>> 816cadc (first commit)
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   flutter_web_plugins:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
+=======
+>>>>>>> 816cadc (first commit)
   leak_tracker:
     dependency: transitive
     description:
@@ -189,11 +204,14 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "33e2e26bdd85a0112ec15400c8cbffea70d0f9c3407491f672a2fad47915e2de"
       url: "https://pub.dev"
     source: hosted
     version: "11.0.2"
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -204,6 +222,7 @@ packages:
     version: "10.0.8"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
       sha256: "33e2e26bdd85a0112ec15400c8cbffea70d0f9c3407491f672a2fad47915e2de"
@@ -227,6 +246,8 @@ packages:
     source: hosted
     version: "11.0.2"
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+>>>>>>> 816cadc (first commit)
   leak_tracker_flutter_testing:
     dependency: transitive
     description:
@@ -237,11 +258,14 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "1dbc140bb5a23c75ea9c4811222756104fbcd1a27173f0c34ca01e16bea473c1"
       url: "https://pub.dev"
     source: hosted
     version: "3.0.10"
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -252,6 +276,7 @@ packages:
     version: "3.0.9"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
       sha256: "1dbc140bb5a23c75ea9c4811222756104fbcd1a27173f0c34ca01e16bea473c1"
@@ -275,6 +300,8 @@ packages:
     source: hosted
     version: "3.0.10"
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+>>>>>>> 816cadc (first commit)
   leak_tracker_testing:
     dependency: transitive
     description:
@@ -285,6 +312,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "8d5a2d49f4a66b49744b23b018848400d23e54caf9463f4eb20df3eb8acb2eb1"
       url: "https://pub.dev"
     source: hosted
@@ -294,10 +322,13 @@ packages:
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
       sha256: "6ba465d5d76e67ddf503e1161d1f4a6bc42306f9d66ca1e8f079a47290fb06d3"
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
@@ -323,6 +354,8 @@ packages:
     source: hosted
     version: "3.0.2"
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+>>>>>>> 816cadc (first commit)
   lints:
     dependency: transitive
     description:
@@ -333,11 +366,14 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -348,6 +384,7 @@ packages:
     version: "5.1.1"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
       sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
@@ -371,6 +408,8 @@ packages:
     source: hosted
     version: "2.1.1"
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+>>>>>>> 816cadc (first commit)
   matcher:
     dependency: transitive
     description:
@@ -395,6 +434,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
+<<<<<<< HEAD
   nested:
     dependency: transitive
     description:
@@ -403,6 +443,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+=======
+>>>>>>> 816cadc (first commit)
   path:
     dependency: transitive
     description:
@@ -411,6 +453,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+<<<<<<< HEAD
   path_provider_linux:
     dependency: transitive
     description:
@@ -515,6 +558,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+=======
+>>>>>>> 816cadc (first commit)
   sky_engine:
     dependency: transitive
     description: flutter
@@ -570,11 +615,14 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "522f00f556e73044315fa4585ec3270f1808a4b186c936e612cab0b565ff1e00"
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
 =======
+=======
+>>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
 =======
@@ -585,6 +633,7 @@ packages:
     version: "0.7.4"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
 =======
       sha256: "522f00f556e73044315fa4585ec3270f1808a4b186c936e612cab0b565ff1e00"
@@ -608,6 +657,8 @@ packages:
     source: hosted
     version: "0.7.6"
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+>>>>>>> 816cadc (first commit)
   vector_math:
     dependency: transitive
     description:
@@ -618,6 +669,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: d530bd74fea330e6e364cda7a85019c434070188383e1cd8d9777ee586914c5b
       url: "https://pub.dev"
     source: hosted
@@ -627,10 +679,13 @@ packages:
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 816cadc (first commit)
       sha256: "80b3257d1492ce4d091729e3a67a60407d227c27241d6927be0130c98e741803"
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 816cadc (first commit)
@@ -656,6 +711,8 @@ packages:
     source: hosted
     version: "2.2.0"
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+>>>>>>> 816cadc (first commit)
   vm_service:
     dependency: transitive
     description:
@@ -664,6 +721,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.3.1"
+<<<<<<< HEAD
   web:
     dependency: transitive
     description:
@@ -724,3 +782,8 @@ sdks:
   dart: ">=3.9.0 <4.0.0"
   flutter: ">=3.35.0"
 >>>>>>> 359ef96 (added shared_preferences)
+=======
+sdks:
+  dart: ">=3.7.2 <4.0.0"
+  flutter: ">=3.18.0-18.0.pre.54"
+>>>>>>> 816cadc (first commit)
