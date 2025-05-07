@@ -744,16 +744,19 @@ class App extends StatelessWidget {
 >>>>>>> 816cadc (first commit)
 =======
 
+/// Main entry file for the Sandwich Shop Flutter application.
+///
+/// Runs [SandwichShopApp].
 void main() {
   runApp(const SandwichShopApp());
 }
 
-/// Entry‑point widget for the sandwich‑shop application.
+/// Root widget for the Sandwich Shop application.
 class SandwichShopApp extends StatelessWidget {
   const SandwichShopApp({super.key});
 
-  /// Builds the root MaterialApp with a simple green theme and
-  /// routes to the LandingPage.
+  /// Builds the root [MaterialApp] with a simple green theme whose
+  /// home page is [LandingPage].
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
@@ -797,6 +800,7 @@ class SandwichShopApp extends StatelessWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /// First screen that offers the main user actions.
 ///
 /// A [StatefulWidget] is used so callback methods can access
@@ -829,6 +833,12 @@ class SandwichShopApp extends StatelessWidget {
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+/// First screen that offers the main user actions.
+///
+/// A [StatefulWidget] is used so callback methods can access
+/// [BuildContext] directly.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -837,6 +847,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -886,14 +897,21 @@ class _LandingPageState extends State<LandingPage> {
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 =======
   /// Shows a standard feature‑not‑implemented SnackBar.
+=======
+  /// Shows a generic *feature coming soon* [SnackBar].
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _showNotImplemented() {
     final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    final SnackBar bar = SnackBar(content: Text('Feature coming soon…'));
+    final SnackBar bar = const SnackBar(content: Text('Feature coming soon…'));
     messenger.showSnackBar(bar);
   }
 
+<<<<<<< HEAD
   /// Called when "Select from the menu" is pressed.
 >>>>>>> 816cadc (first commit)
+=======
+  /// Handles presses on *Select from the menu*.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _handleSelectMenuPressed() {
     _showNotImplemented();
   }
@@ -903,6 +921,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles presses on *Build your own sandwich*.
 =======
   /// Called when "Build your own sandwich" is pressed.
@@ -919,6 +938,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Called when "Build your own sandwich" is pressed.
 >>>>>>> 816cadc (first commit)
+=======
+  /// Handles presses on *Build your own sandwich*.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _handleBuildOwnPressed() {
     _showNotImplemented();
   }
@@ -928,6 +950,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Account* menu item.
 =======
   /// Responds to the "Account" menu item.
@@ -944,6 +967,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Responds to the "Account" menu item.
 >>>>>>> 816cadc (first commit)
+=======
+  /// Handles the *Account* menu item.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _handleAccountAction() {
     _showNotImplemented();
   }
@@ -953,6 +979,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Orders* menu item.
 =======
   /// Responds to the "Orders" menu item.
@@ -969,6 +996,9 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Responds to the "Orders" menu item.
 >>>>>>> 816cadc (first commit)
+=======
+  /// Handles the *Orders* menu item.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _handleOrdersAction() {
     _showNotImplemented();
   }
@@ -978,6 +1008,7 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Handles the *Log out* menu item.
 =======
   /// Responds to the "Log out" menu item.
@@ -994,10 +1025,14 @@ class _LandingPageState extends State<LandingPage> {
 =======
   /// Responds to the "Log out" menu item.
 >>>>>>> 816cadc (first commit)
+=======
+  /// Handles the *Log out* menu item.
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
   void _handleLogoutAction() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1115,6 +1150,10 @@ class _LandingPageState extends State<LandingPage> {
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+  /// Builds the list of account popup-menu entries.
+  List<PopupMenuEntry<String>> _buildAccountMenu(BuildContext context) {
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
     final PopupMenuItem<String> accountItem = PopupMenuItem<String>(
       value: 'account',
       onTap: _handleAccountAction,
@@ -1136,6 +1175,9 @@ class _LandingPageState extends State<LandingPage> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 =======
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
     return <PopupMenuEntry<String>>[accountItem, ordersItem, logoutItem];
@@ -1169,6 +1211,7 @@ class _LandingPageState extends State<LandingPage> {
 
     // Page scaffold.
 <<<<<<< HEAD
+<<<<<<< HEAD
     final Scaffold page = Scaffold(
       appBar: AppBar(
         title: screenTitle,
@@ -1203,16 +1246,22 @@ class _LandingPageState extends State<LandingPage> {
 >>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
 =======
     // Assemble the scaffold.
+=======
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
     final Scaffold page = Scaffold(
       appBar: AppBar(
         title: screenTitle,
-        actions: [
+        actions: <Widget>[
           PopupMenuButton<String>(
             tooltip: 'Account menu',
             icon: avatarIcon,
+<<<<<<< HEAD
             itemBuilder:
                 (BuildContext ctx) => [accountItem, ordersItem, logoutItem],
 >>>>>>> 816cadc (first commit)
+=======
+            itemBuilder: _buildAccountMenu,
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
           ),
         ],
       ),
@@ -2179,8 +2228,12 @@ class OrderItemDisplay extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+<<<<<<< HEAD
           children: [
 >>>>>>> 816cadc (first commit)
+=======
+          children: <Widget>[
+>>>>>>> bfb9ecd (📝 Refactor comments and improve code clarity in main.dart)
             selectMenuButton,
             const SizedBox(height: 16),
             buildOwnButton,
