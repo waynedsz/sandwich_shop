@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -253,25 +254,55 @@ class App extends StatelessWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
     ThemeData theme = ThemeData(
+=======
+
+void main() {
+  runApp(const SandwichShopApp());
+}
+
+/// Entry‑point widget for the sandwich‑shop application.
+class SandwichShopApp extends StatelessWidget {
+  const SandwichShopApp({super.key});
+
+  /// Builds the root MaterialApp with a simple green theme and
+  /// routes to the LandingPage.
+  @override
+  Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData(
+>>>>>>> 816cadc (first commit)
       useMaterial3: true,
       colorSchemeSeed: Colors.green,
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
 
+<<<<<<< HEAD
     MaterialApp application = MaterialApp(
       title: 'Sandwich Shop',
       theme: theme,
       home: LandingPage(),
+=======
+    final MaterialApp application = MaterialApp(
+      title: 'Sandwich Shop',
+      theme: theme,
+      home: const LandingPage(),
+>>>>>>> 816cadc (first commit)
     );
 
     return application;
   }
 }
 
+<<<<<<< HEAD
 /// First screen that offers the main user actions.
 ///
 /// A [StatefulWidget] is used so callback methods can access
 /// [BuildContext] directly.
+=======
+/// First screen that offers the main choices.
+///
+/// A stateful widget is used so the handlers can access context
+/// directly, avoiding anonymous (lambda) functions.
+>>>>>>> 816cadc (first commit)
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -280,6 +311,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+<<<<<<< HEAD
   /// Shows a generic *feature coming soon* [SnackBar].
   void _showNotImplemented() {
     ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
@@ -288,30 +320,57 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   /// Handles presses on *Select from the menu*.
+=======
+  /// Shows a standard feature‑not‑implemented SnackBar.
+  void _showNotImplemented() {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final SnackBar bar = SnackBar(content: Text('Feature coming soon…'));
+    messenger.showSnackBar(bar);
+  }
+
+  /// Called when "Select from the menu" is pressed.
+>>>>>>> 816cadc (first commit)
   void _handleSelectMenuPressed() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
   /// Handles presses on *Build your own sandwich*.
+=======
+  /// Called when "Build your own sandwich" is pressed.
+>>>>>>> 816cadc (first commit)
   void _handleBuildOwnPressed() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
   /// Handles the *Account* menu item.
+=======
+  /// Responds to the "Account" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleAccountAction() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
   /// Handles the *Orders* menu item.
+=======
+  /// Responds to the "Orders" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleOrdersAction() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
   /// Handles the *Log out* menu item.
+=======
+  /// Responds to the "Log out" menu item.
+>>>>>>> 816cadc (first commit)
   void _handleLogoutAction() {
     _showNotImplemented();
   }
 
+<<<<<<< HEAD
   /// Builds the list of account popup-menu entries.
   List<PopupMenuEntry<String>> _buildAccountMenu(BuildContext context) {
     PopupMenuItem<String> basketItem = PopupMenuItem<String>(
@@ -378,10 +437,68 @@ class _LandingPageState extends State<LandingPage> {
             tooltip: 'Account menu',
             icon: avatarIcon,
             itemBuilder: _buildAccountMenu,
+=======
+  /// Builds the landing‑page user interface.
+  @override
+  Widget build(BuildContext context) {
+    // App‑bar title.
+    const Text screenTitle = Text(
+      'Welcome to the Sandwich Shop',
+      style: TextStyle(fontSize: 24),
+    );
+
+    // Avatar icon shown in the app‑bar.
+    final CircleAvatar avatarIcon = CircleAvatar(
+      backgroundColor: Colors.green,
+      child: const Icon(Icons.fastfood, size: 24),
+    );
+
+    // Primary action buttons.
+    final ElevatedButton selectMenuButton = ElevatedButton(
+      onPressed: _handleSelectMenuPressed,
+      child: const Text('Select from the menu'),
+    );
+
+    final ElevatedButton buildOwnButton = ElevatedButton(
+      onPressed: _handleBuildOwnPressed,
+      child: const Text('Build your own sandwich'),
+    );
+
+    // Drop‑down menu items for the account avatar.
+    final PopupMenuItem<String> accountItem = PopupMenuItem<String>(
+      value: 'account',
+      onTap: _handleAccountAction,
+      child: const Text('Account'),
+    );
+
+    final PopupMenuItem<String> ordersItem = PopupMenuItem<String>(
+      value: 'orders',
+      onTap: _handleOrdersAction,
+      child: const Text('Orders'),
+    );
+
+    final PopupMenuItem<String> logoutItem = PopupMenuItem<String>(
+      value: 'logout',
+      onTap: _handleLogoutAction,
+      child: const Text('Log out'),
+    );
+
+    // Assemble the scaffold.
+    final Scaffold page = Scaffold(
+      appBar: AppBar(
+        title: screenTitle,
+        actions: [
+          PopupMenuButton<String>(
+            tooltip: 'Account menu',
+            icon: avatarIcon,
+            itemBuilder:
+                (BuildContext ctx) => [accountItem, ordersItem, logoutItem],
+>>>>>>> 816cadc (first commit)
           ),
         ],
       ),
       body: Padding(
+<<<<<<< HEAD
         padding: EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -851,5 +968,20 @@ class OrderItemDisplay extends StatelessWidget {
         ),
       ],
     );
+=======
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            selectMenuButton,
+            const SizedBox(height: 16),
+            buildOwnButton,
+          ],
+        ),
+      ),
+    );
+
+    return page;
+>>>>>>> 816cadc (first commit)
   }
 }

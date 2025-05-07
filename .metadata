@@ -5,7 +5,11 @@
 
 version:
 <<<<<<< HEAD
+<<<<<<< HEAD
   revision: "09de023485e95e6d1225c2baa44b8feb85e0d45f"
+=======
+  revision: "ea121f8859e4b13e47a8f845e4586164519588bc"
+>>>>>>> 816cadc (first commit)
 =======
   revision: "ea121f8859e4b13e47a8f845e4586164519588bc"
 >>>>>>> 816cadc (first commit)
@@ -17,6 +21,7 @@ project_type: app
 migration:
   platforms:
     - platform: root
+<<<<<<< HEAD
 <<<<<<< HEAD
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
@@ -39,6 +44,8 @@ migration:
       create_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
       base_revision: 09de023485e95e6d1225c2baa44b8feb85e0d45f
 =======
+=======
+>>>>>>> 816cadc (first commit)
       create_revision: ea121f8859e4b13e47a8f845e4586164519588bc
       base_revision: ea121f8859e4b13e47a8f845e4586164519588bc
     - platform: android
@@ -59,6 +66,9 @@ migration:
     - platform: windows
       create_revision: ea121f8859e4b13e47a8f845e4586164519588bc
       base_revision: ea121f8859e4b13e47a8f845e4586164519588bc
+<<<<<<< HEAD
+>>>>>>> 816cadc (first commit)
+=======
 >>>>>>> 816cadc (first commit)
 
   # User provided section
