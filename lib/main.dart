@@ -869,6 +869,7 @@ class _LandingPageState extends State<LandingPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
 <<<<<<< HEAD
+<<<<<<< HEAD
           children: <Widget>[
             selectMenuButton,
             const SizedBox(height: 16),
@@ -1598,6 +1599,9 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+          children: <Widget>[selectMenuButton, buildOwnButton],
+>>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
         ),
       ),
     );
