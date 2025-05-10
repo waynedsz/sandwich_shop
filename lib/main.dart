@@ -214,21 +214,26 @@ class _OrderScreenState extends State<OrderScreen> {
             Spacer(),
 =======
 
-/// Main entry file for the Sandwich Shop Flutter application.
-///
-/// Runs [SandwichShopApp].
-void main() {
-  runApp(const SandwichShopApp());
-}
+class SandwichCounter extends StatelessWidget {
+  final String sandwichType;
+  final int count;
 
-/// Root widget for the Sandwich Shop application.
-class SandwichShopApp extends StatelessWidget {
-  const SandwichShopApp({super.key});
+  const SandwichCounter(this.count, this.sandwichType);
 
-  /// Builds the root [MaterialApp] with a simple green theme whose
-  /// home page is [LandingPage].
   @override
   Widget build(BuildContext context) {
+    return Text('$count $sandwichType sandwich(es): ${'🥪' * count}');
+  }
+}
+
+void main() {
+  runApp(SandwichShopApp());
+}
+
+class SandwichShopApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+<<<<<<< HEAD
     ThemeData theme = ThemeData(
       useMaterial3: true,
       colorSchemeSeed: Colors.green,
@@ -459,5 +464,13 @@ class OrderItemDisplay extends StatelessWidget {
 
     return page;
 >>>>>>> 816cadc (first commit)
+=======
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Sandwich Counter')),
+        body: Center(child: SandwichCounter(5, 'Footlong')),
+      ),
+    );
+>>>>>>> 8235667 (Create a Stateless only app for stage 1)
   }
 }
