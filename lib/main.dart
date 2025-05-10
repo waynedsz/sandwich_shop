@@ -1043,6 +1043,7 @@ class OrderItemDisplay extends StatelessWidget {
 =======
         padding: const EdgeInsets.all(24),
         child: Column(
+<<<<<<< HEAD
           mainAxisAlignment: MainAxisAlignment.center,
 <<<<<<< HEAD
           children: <Widget>[
@@ -1051,6 +1052,9 @@ class OrderItemDisplay extends StatelessWidget {
             buildOwnButton,
           ],
 =======
+=======
+          mainAxisAlignment: MainAxisAlignment.end,
+>>>>>>> d21bb71 (📝 Update main.dart to change mainAxisAlignment in LandingPage layout from center to end)
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[selectMenuButton, buildOwnButton],
 >>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
