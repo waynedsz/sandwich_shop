@@ -364,7 +364,7 @@ class _LandingPageState extends State<LandingPage> {
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
 <<<<<<< HEAD
           children: <Widget>[
