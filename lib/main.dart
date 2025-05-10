@@ -366,12 +366,16 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
+<<<<<<< HEAD
           children: <Widget>[
             selectMenuButton,
             const SizedBox(height: 16),
             buildOwnButton,
 >>>>>>> 816cadc (first commit)
           ],
+=======
+          children: <Widget>[selectMenuButton, buildOwnButton],
+>>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
         ),
       ),
     );
