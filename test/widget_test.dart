@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
@@ -15,9 +16,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 >>>>>>> 816cadc (first commit)
+=======
+import 'package:flutter_test/flutter_test.dart';
+>>>>>>> b59c018 (Update widget_test based on code in stage 2)
 import 'package:sandwich_shop/main.dart';
+import 'package:flutter/material.dart';
 
 void main() {
+<<<<<<< HEAD
   /// Groups all landing‑page smoke tests.
   group('LandingPage smoke tests', () {
     /// Verifies that the two primary action buttons appear.
@@ -104,6 +110,21 @@ void main() {
       final Finder snackBar = find.text('Feature coming soon…');
 
       expect(snackBar, findsOneWidget);
+=======
+  group('SandwichCounter smoke tests', () {
+    testWidgets('Counter text is visible', (WidgetTester tester) async {
+      await tester.pumpWidget(SandwichShopApp());
+      final Finder counterText = find.text(
+        '5 Footlong sandwich(es): 🥪🥪🥪🥪🥪',
+      );
+      expect(counterText, findsOneWidget);
+    });
+
+    testWidgets('App bar title is visible', (WidgetTester tester) async {
+      await tester.pumpWidget(SandwichShopApp());
+      final Finder titleText = find.text('Sandwich Counter');
+      expect(titleText, findsOneWidget);
+>>>>>>> b59c018 (Update widget_test based on code in stage 2)
     });
 >>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
   });
