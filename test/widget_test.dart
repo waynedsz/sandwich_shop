@@ -451,7 +451,6 @@ void main() {
 >>>>>>> b59c018 (Update widget_test based on code in stage 2)
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sandwich_shop/main.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   group('SandwichCounter smoke tests', () {
