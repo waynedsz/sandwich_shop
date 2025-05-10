@@ -1578,6 +1578,7 @@ class OrderItemDisplay extends StatelessWidget {
 =======
         padding: const EdgeInsets.all(24),
         child: Column(
+<<<<<<< HEAD
           mainAxisAlignment: MainAxisAlignment.center,
 <<<<<<< HEAD
           children: [
@@ -1591,6 +1592,9 @@ class OrderItemDisplay extends StatelessWidget {
           ],
 <<<<<<< HEAD
 =======
+=======
+          mainAxisAlignment: MainAxisAlignment.end,
+>>>>>>> d21bb71 (📝 Update main.dart to change mainAxisAlignment in LandingPage layout from center to end)
 =======
           mainAxisAlignment: MainAxisAlignment.end,
 >>>>>>> d21bb71 (📝 Update main.dart to change mainAxisAlignment in LandingPage layout from center to end)
