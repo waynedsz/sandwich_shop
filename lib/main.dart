@@ -1044,11 +1044,16 @@ class OrderItemDisplay extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+<<<<<<< HEAD
           children: <Widget>[
             selectMenuButton,
             const SizedBox(height: 16),
             buildOwnButton,
           ],
+=======
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[selectMenuButton, buildOwnButton],
+>>>>>>> 5494510 (📝 Remove SizeBox (space) between children widget list in LandingPage layout)
         ),
       ),
     );
