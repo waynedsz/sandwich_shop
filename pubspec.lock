@@ -89,6 +89,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
       url: "https://pub.dev"
     source: hosted
@@ -110,6 +111,12 @@ packages:
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
+>>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -206,6 +213,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
       url: "https://pub.dev"
     source: hosted
@@ -227,6 +235,12 @@ packages:
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+>>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
   matcher:
     dependency: transitive
     description:
@@ -373,6 +387,7 @@ sdks:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   dart: ">=3.8.0-0 <4.0.0"
 =======
   dart: ">=3.7.2 <4.0.0"
@@ -386,4 +401,7 @@ sdks:
 =======
   dart: ">=3.7.2 <4.0.0"
 >>>>>>> 816cadc (first commit)
+=======
+  dart: ">=3.7.0-0 <4.0.0"
+>>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
   flutter: ">=3.18.0-18.0.pre.54"
