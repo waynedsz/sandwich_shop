@@ -467,8 +467,8 @@ class OrderItemDisplay extends StatelessWidget {
 =======
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Sandwich Counter')),
-        body: Center(child: SandwichCounter(5, 'Footlong')),
+        appBar: AppBar(title: const Text('Sandwich Counter')),
+        body: const Center(child: SandwichCounter(5, 'Footlong')),
       ),
     );
 >>>>>>> 8235667 (Create a Stateless only app for stage 1)
