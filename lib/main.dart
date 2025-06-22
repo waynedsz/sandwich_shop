@@ -1073,6 +1073,7 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> 816cadc (first commit)
 =======
     return MaterialApp(
+      title: 'Sandwich Shop App',
       home: Scaffold(
         appBar: AppBar(title: const Text('Sandwich Counter')),
         body: const Center(
