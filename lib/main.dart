@@ -218,13 +218,14 @@ void main() {
   runApp(const SandwichShopApp());
 }
 
-// The root widget remains stateless. Its primary job is to set up the app's
-// theme and initial screen.
+// The root widget of the application. It sets up the MaterialApp and defines
+// the home screen.
 class SandwichShopApp extends StatelessWidget {
   const SandwichShopApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     ThemeData theme = ThemeData(
       useMaterial3: true,
@@ -458,18 +459,18 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> 816cadc (first commit)
 =======
     return MaterialApp(
+=======
+    return const MaterialApp(
+>>>>>>> e5a5f0e (📝 Refactor main.dart to improve code clarity and organization)
       title: 'Sandwich Shop App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        useMaterial3: true,
-      ),
-      home: const SandwichOrderScreen(),
+      // The home screen is the stateful widget that manages the counter.
+      home: SandwichOrderScreen(),
     );
   }
 }
 
-// The StatefulWidget that represents the main screen, managing the interactive
-// state of the sandwich counter.
+// The StatefulWidget that represents the screen. It is responsible for creating
+// its mutable State object.
 class SandwichOrderScreen extends StatefulWidget {
   const SandwichOrderScreen({super.key});
 
@@ -477,10 +478,13 @@ class SandwichOrderScreen extends StatefulWidget {
   State<SandwichOrderScreen> createState() => _SandwichOrderScreenState();
 }
 
+// The State class where the data that can change is held.
 class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
-  int _sandwiches = 0;
+  int _sandwiches = 0; // The state variable for the sandwich count.
 
   void _addSandwich() {
+    // setState notifies Flutter that the state has changed and the UI needs
+    // to be rebuilt.
     setState(() {
       _sandwiches++;
     });
@@ -499,17 +503,18 @@ class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sandwich Counter'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // The custom widget now displays the state variable.
             SandwichCounter(
               count: _sandwiches,
               sandwichType: 'Footlong',
             ),
             const SizedBox(height: 20),
+            // A Row holds the buttons that modify the state.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -532,8 +537,7 @@ class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
   }
 }
 
-// A separate, reusable StatelessWidget for displaying the count. It is
-// self-contained and only responsible for presentation.
+// The StatelessWidget for displaying the count, now with emojis.
 class SandwichCounter extends StatelessWidget {
   final String sandwichType;
   final int count;
@@ -546,9 +550,11 @@ class SandwichCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The text now includes the sandwich emoji repeated for the current count.
     return Text(
-      '$count $sandwichType sandwich(es)',
-      style: Theme.of(context).textTheme.headlineMedium,
+      '$count $sandwichType sandwich(es): ${'🥪' * count}',
+      style: const TextStyle(fontSize: 20),
+      textAlign: TextAlign.center,
     );
   }
 }
