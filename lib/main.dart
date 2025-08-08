@@ -744,22 +744,12 @@ class App extends StatelessWidget {
 >>>>>>> 816cadc (first commit)
 =======
 
-class SandwichCounter extends StatelessWidget {
-  final String sandwichType;
-  final int count;
-
-  const SandwichCounter(this.count, this.sandwichType, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('$count $sandwichType sandwich(es): ${'🥪' * count}');
-  }
-}
-
 void main() {
   runApp(const SandwichShopApp());
 }
 
+// The root widget remains stateless. Its primary job is to set up the app's
+// theme and initial screen.
 class SandwichShopApp extends StatelessWidget {
   const SandwichShopApp({super.key});
 
@@ -2322,10 +2312,72 @@ class OrderItemDisplay extends StatelessWidget {
 =======
     return MaterialApp(
       title: 'Sandwich Shop App',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Sandwich Counter')),
-        body: const Center(
-          child: SandwichCounter(5, 'Footlong'),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        useMaterial3: true,
+      ),
+      home: const SandwichOrderScreen(),
+    );
+  }
+}
+
+// The StatefulWidget that represents the main screen, managing the interactive
+// state of the sandwich counter.
+class SandwichOrderScreen extends StatefulWidget {
+  const SandwichOrderScreen({super.key});
+
+  @override
+  State<SandwichOrderScreen> createState() => _SandwichOrderScreenState();
+}
+
+class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
+  int _sandwiches = 0;
+
+  void _addSandwich() {
+    setState(() {
+      _sandwiches++;
+    });
+  }
+
+  void _removeSandwich() {
+    setState(() {
+      if (_sandwiches > 0) {
+        _sandwiches--;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sandwich Counter'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SandwichCounter(
+              count: _sandwiches,
+              sandwichType: 'Footlong',
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: _addSandwich,
+                  child: const Text('Add'),
+                ),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: _removeSandwich,
+                  child: const Text('Remove'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -2333,6 +2385,7 @@ class OrderItemDisplay extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
 
@@ -2534,6 +2587,10 @@ class StyledButton extends StatelessWidget {
 =======
 // The StatelessWidget for displaying the count, now with emojis.
 >>>>>>> e5a5f0e (📝 Refactor main.dart to improve code clarity and organization)
+=======
+// A separate, reusable StatelessWidget for displaying the count. It is
+// self-contained and only responsible for presentation.
+>>>>>>> e4280a5 (Draft of code for branch 3)
 class SandwichCounter extends StatelessWidget {
   final String sandwichType;
   final int count;
@@ -2542,11 +2599,15 @@ class SandwichCounter extends StatelessWidget {
     required this.count,
     required this.sandwichType,
     super.key,
+<<<<<<< HEAD
+>>>>>>> e4280a5 (Draft of code for branch 3)
+=======
 >>>>>>> e4280a5 (Draft of code for branch 3)
   });
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2663,3 +2724,11 @@ class OrderItemDisplay extends StatelessWidget {
   }
 }
 >>>>>>> 816cadc (first commit)
+=======
+    return Text(
+      '$count $sandwichType sandwich(es)',
+      style: Theme.of(context).textTheme.headlineMedium,
+    );
+  }
+}
+>>>>>>> e4280a5 (Draft of code for branch 3)
