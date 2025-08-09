@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
@@ -11,6 +12,9 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+import 'package:flutter/material.dart';
+>>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
 =======
 import 'package:flutter/material.dart';
 >>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
@@ -41,6 +45,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 >>>>>>> 1f0aba9 (update widget_tests and main.dart)
 
 void main() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -164,6 +169,50 @@ void main() {
 >>>>>>> ede0ffc (Restructure widget_test.dart at 4)
       await tester.pumpWidget(const App());
       expect(find.byType(OrderScreen), findsOneWidget);
+=======
+  group('OrderScreen interaction tests', () {
+    testWidgets('Initial state shows 0 sandwiches',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+      expect(find.text('Sandwich Counter'), findsOneWidget);
+    });
+
+    testWidgets('Tapping add button increases quantity',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+      await tester.pump();
+
+      expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
+    });
+
+    testWidgets('Tapping remove button decreases quantity',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+      await tester.pump();
+      expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
+      await tester.pump();
+
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+    });
+
+    testWidgets('Quantity does not go below zero', (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
+      await tester.pump();
+
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+>>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
     });
   });
 
