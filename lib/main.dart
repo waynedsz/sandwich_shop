@@ -445,13 +445,11 @@ class App extends StatelessWidget {
 =======
 
 void main() {
-  runApp(const SandwichShopApp());
+  runApp(const App());
 }
 
-// The root widget of the application. It sets up the MaterialApp and defines
-// the home screen.
-class SandwichShopApp extends StatelessWidget {
-  const SandwichShopApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1631,37 +1629,33 @@ class OrderItemDisplay extends StatelessWidget {
     return const MaterialApp(
 >>>>>>> e5a5f0e (📝 Refactor main.dart to improve code clarity and organization)
       title: 'Sandwich Shop App',
-      // The home screen is the stateful widget that manages the counter.
-      home: SandwichOrderScreen(),
+      home: OrderScreen(),
     );
   }
 }
 
-// The StatefulWidget that represents the screen. It is responsible for creating
-// its mutable State object.
-class SandwichOrderScreen extends StatefulWidget {
-  const SandwichOrderScreen({super.key});
+class OrderScreen extends StatefulWidget {
+  const OrderScreen({super.key});
 
   @override
-  State<SandwichOrderScreen> createState() => _SandwichOrderScreenState();
+  State<OrderScreen> createState() {
+    return _OrderScreenState();
+  }
 }
 
-// The State class where the data that can change is held.
-class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
-  int _sandwiches = 0; // The state variable for the sandwich count.
+class _OrderScreenState extends State<OrderScreen> {
+  int _quantity = 0;
 
-  void _addSandwich() {
-    // setState notifies Flutter that the state has changed and the UI needs
-    // to be rebuilt.
+  void _increaseQuantity() {
     setState(() {
-      _sandwiches++;
+      _quantity = _quantity + 1;
     });
   }
 
-  void _removeSandwich() {
+  void _decreaseQuantity() {
     setState(() {
-      if (_sandwiches > 0) {
-        _sandwiches--;
+      if (_quantity > 0) {
+        _quantity = _quantity - 1;
       }
     });
   }
@@ -1676,23 +1670,19 @@ class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // The custom widget now displays the state variable.
-            SandwichCounter(
-              count: _sandwiches,
-              sandwichType: 'Footlong',
+            OrderItemDisplay(
+              _quantity,
+              'Footlong',
             ),
-            const SizedBox(height: 20),
-            // A Row holds the buttons that modify the state.
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: _addSandwich,
+                  onPressed: _increaseQuantity,
                   child: const Text('Add'),
                 ),
-                const SizedBox(width: 20),
                 ElevatedButton(
-                  onPressed: _removeSandwich,
+                  onPressed: _decreaseQuantity,
                   child: const Text('Remove'),
                 ),
               ],
@@ -1705,6 +1695,7 @@ class _SandwichOrderScreenState extends State<SandwichOrderScreen> {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 class OrderScreen extends StatefulWidget {
@@ -1919,6 +1910,17 @@ class OrderItemDisplay extends StatelessWidget {
       style: const TextStyle(fontSize: 20),
       textAlign: TextAlign.center,
     );
+=======
+class OrderItemDisplay extends StatelessWidget {
+  final String itemType;
+  final int quantity;
+
+  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
+>>>>>>> 4cfe3e7 (Simplified code for worksheet 3)
   }
 }
 >>>>>>> e4280a5 (Draft of code for branch 3)
