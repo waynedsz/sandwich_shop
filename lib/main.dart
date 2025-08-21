@@ -1629,13 +1629,15 @@ class OrderItemDisplay extends StatelessWidget {
     return const MaterialApp(
 >>>>>>> e5a5f0e (📝 Refactor main.dart to improve code clarity and organization)
       title: 'Sandwich Shop App',
-      home: OrderScreen(),
+      home: OrderScreen(maxQuantity: 5),
     );
   }
 }
 
 class OrderScreen extends StatefulWidget {
-  const OrderScreen({super.key});
+  final int maxQuantity;
+
+  const OrderScreen({super.key, this.maxQuantity = 10});
 
   @override
   State<OrderScreen> createState() {
@@ -1647,9 +1649,11 @@ class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
 
   void _increaseQuantity() {
-    setState(() {
-      _quantity = _quantity + 1;
-    });
+    if (_quantity < widget.maxQuantity) {
+      setState(() {
+        _quantity = _quantity + 1;
+      });
+    }
   }
 
   void _decreaseQuantity() {
