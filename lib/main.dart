@@ -426,6 +426,7 @@ class App extends StatelessWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ThemeData theme = ThemeData(
 =======
 
@@ -1628,8 +1629,16 @@ class OrderItemDisplay extends StatelessWidget {
 =======
     return const MaterialApp(
 >>>>>>> e5a5f0e (📝 Refactor main.dart to improve code clarity and organization)
+=======
+    return MaterialApp(
+>>>>>>> f6e2dda (Build UI for OrderScreen)
       title: 'Sandwich Shop App',
-      home: OrderScreen(maxQuantity: 5),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Sandwich Counter')),
+        body: const Center(
+          child: OrderItemDisplay(5, 'Footlong'),
+        ),
+      ),
     );
   }
 }
@@ -1647,22 +1656,6 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
-
-  void _increaseQuantity() {
-    if (_quantity < widget.maxQuantity) {
-      setState(() {
-        _quantity = _quantity + 1;
-      });
-    }
-  }
-
-  void _decreaseQuantity() {
-    setState(() {
-      if (_quantity > 0) {
-        _quantity = _quantity - 1;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -1682,11 +1675,11 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: _increaseQuantity,
+                  onPressed: null, // We'll add this later
                   child: const Text('Add'),
                 ),
                 ElevatedButton(
-                  onPressed: _decreaseQuantity,
+                  onPressed: null, // And this one too
                   child: const Text('Remove'),
                 ),
               ],
@@ -1916,8 +1909,8 @@ class OrderItemDisplay extends StatelessWidget {
     );
 =======
 class OrderItemDisplay extends StatelessWidget {
-  final String itemType;
   final int quantity;
+  final String itemType;
 
   const OrderItemDisplay(this.quantity, this.itemType, {super.key});
 
