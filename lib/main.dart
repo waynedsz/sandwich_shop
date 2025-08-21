@@ -254,6 +254,7 @@ class App extends StatelessWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ThemeData theme = ThemeData(
 =======
 
@@ -1069,13 +1070,11 @@ class OrderItemDisplay extends StatelessWidget {
 =======
     return MaterialApp(
 >>>>>>> f6e2dda (Build UI for OrderScreen)
+=======
+    return const MaterialApp(
+>>>>>>> de43565 (Revert back to original code)
       title: 'Sandwich Shop App',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Sandwich Counter')),
-        body: const Center(
-          child: OrderItemDisplay(5, 'Footlong'),
-        ),
-      ),
+      home: OrderScreen(maxQuantity: 5),
     );
   }
 }
@@ -1093,6 +1092,22 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
+
+  void _increaseQuantity() {
+    if (_quantity < widget.maxQuantity) {
+      setState(() {
+        _quantity = _quantity + 1;
+      });
+    }
+  }
+
+  void _decreaseQuantity() {
+    setState(() {
+      if (_quantity > 0) {
+        _quantity = _quantity - 1;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1112,11 +1127,11 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: null, // We'll add this later
+                  onPressed: _increaseQuantity,
                   child: const Text('Add'),
                 ),
                 ElevatedButton(
-                  onPressed: null, // And this one too
+                  onPressed: _decreaseQuantity,
                   child: const Text('Remove'),
                 ),
               ],
@@ -1130,8 +1145,8 @@ class _OrderScreenState extends State<OrderScreen> {
 }
 
 class OrderItemDisplay extends StatelessWidget {
-  final int quantity;
   final String itemType;
+  final int quantity;
 
   const OrderItemDisplay(this.quantity, this.itemType, {super.key});
 
