@@ -28,6 +28,7 @@ import 'package:sandwich_shop/main.dart';
 void main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /// Groups all landing‑page smoke tests.
   group('LandingPage smoke tests', () {
     /// Verifies that the two primary action buttons appear.
@@ -130,11 +131,19 @@ void main() {
       expect(titleText, findsOneWidget);
 >>>>>>> b59c018 (Update widget_test based on code in stage 2)
 =======
+=======
+  group('App widget', () {
+    testWidgets('App sets OrderScreen as home', (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      expect(find.byType(OrderScreen), findsOneWidget);
+    });
+  });
+
+>>>>>>> 5035cac (📝 Update widget tests in widget_test.dart for improved functionality and coverage)
   group('OrderScreen interaction tests', () {
     testWidgets('Initial state shows 0 sandwiches',
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
-
       expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
       expect(find.text('Sandwich Counter'), findsOneWidget);
     });
@@ -142,38 +151,62 @@ void main() {
     testWidgets('Tapping add button increases quantity',
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
-
       await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
       await tester.pump();
-
       expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
     });
 
     testWidgets('Tapping remove button decreases quantity',
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
-
       await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
       await tester.pump();
       expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
-
       await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
       await tester.pump();
-
       expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
     });
 
     testWidgets('Quantity does not go below zero', (WidgetTester tester) async {
       await tester.pumpWidget(const App());
-
       expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
-
       await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
       await tester.pump();
-
       expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
 >>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
     });
+<<<<<<< HEAD
 >>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
+=======
+
+    testWidgets('Quantity does not exceed maxQuantity',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      for (int i = 0; i < 10; i++) {
+        await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+        await tester.pump();
+      }
+      // maxQuantity is 5 in App
+      expect(find.text('5 Footlong sandwich(es): 🥪🥪🥪🥪🥪'), findsOneWidget);
+    });
+  });
+
+  group('OrderItemDisplay widget', () {
+    testWidgets('Displays correct text and emoji for 0',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(
+        home: Scaffold(body: OrderItemDisplay(0, 'Footlong')),
+      ));
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+    });
+
+    testWidgets('Displays correct text and emoji for 3',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(
+        home: Scaffold(body: OrderItemDisplay(3, 'Footlong')),
+      ));
+      expect(find.text('3 Footlong sandwich(es): 🥪🥪🥪'), findsOneWidget);
+    });
+>>>>>>> 5035cac (📝 Update widget tests in widget_test.dart for improved functionality and coverage)
   });
 }
