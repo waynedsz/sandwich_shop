@@ -44,6 +44,17 @@ import 'package:sandwich_shop/main.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 >>>>>>> 1f0aba9 (update widget_tests and main.dart)
 
+/// Finds the specific [ElevatedButton] inside a [StyledButton] identified by its icon.
+Finder _findElevatedButtonByIcon(IconData icon) {
+  // First, find the specific StyledButton that has the desired icon.
+  Finder styledButtonFinder = find.widgetWithIcon(StyledButton, icon);
+  // Then, find the ElevatedButton that is a descendant of that StyledButton.
+  return find.descendant(
+    of: styledButtonFinder,
+    matching: find.byType(ElevatedButton),
+  );
+}
+
 /// Tests if the [App] widget correctly displays the [OrderScreen] as its home.
 ///
 /// This test pumps the [App] widget and verifies that exactly one [OrderScreen]
@@ -146,6 +157,55 @@ Future<void> _testQuantityDoesNotExceedMaxQuantity(WidgetTester tester) async {
 
   Finder maxQuantityFinder = find.text('5 Footlong sandwich(es): 🥪🥪🥪🥪🥪');
   expect(maxQuantityFinder, findsOneWidget);
+}
+
+/// Verifies that the 'Remove' button is disabled when the quantity is zero.
+///
+/// This test checks the initial state, finds the underlying [ElevatedButton]
+/// for the remove action, and asserts that its `onPressed` property is null,
+/// which signifies it is disabled. It also confirms the 'Add' button is enabled.
+Future<void> _testRemoveButtonIsDisabledAtZero(WidgetTester tester) async {
+  await tester.pumpWidget(const App());
+
+  // Find the 'Remove' button and get its widget instance.
+  Finder removeButtonFinder = _findElevatedButtonByIcon(Icons.remove);
+  ElevatedButton removeButton =
+      tester.widget<ElevatedButton>(removeButtonFinder);
+  // Verify that its onPressed callback is null, meaning it's disabled.
+  expect(removeButton.onPressed, isNull);
+
+  // For completeness, verify the 'Add' button is enabled.
+  Finder addButtonFinder = _findElevatedButtonByIcon(Icons.add);
+  ElevatedButton addButton = tester.widget<ElevatedButton>(addButtonFinder);
+  expect(addButton.onPressed, isNotNull);
+}
+
+/// Verifies that the 'Add' button is disabled when the max quantity is reached.
+///
+/// This test increments the quantity to its maximum limit of 5. It then finds
+/// the underlying [ElevatedButton] for the add action and asserts that its
+/// `onPressed` property is null. It also confirms the 'Remove' button is enabled.
+Future<void> _testAddButtonIsDisabledAtMaxQuantity(WidgetTester tester) async {
+  await tester.pumpWidget(const App());
+
+  Finder addIconFinder = find.byIcon(Icons.add);
+  // Increment to the max quantity (5).
+  for (int i = 0; i < 5; i++) {
+    await tester.tap(addIconFinder);
+    await tester.pump();
+  }
+
+  // Find the 'Add' button and get its widget instance.
+  Finder addButtonFinder = _findElevatedButtonByIcon(Icons.add);
+  ElevatedButton addButton = tester.widget<ElevatedButton>(addButtonFinder);
+  // Verify that its onPressed callback is null, meaning it's disabled.
+  expect(addButton.onPressed, isNull);
+
+  // For completeness, verify the 'Remove' button is enabled.
+  Finder removeButtonFinder = _findElevatedButtonByIcon(Icons.remove);
+  ElevatedButton removeButton =
+      tester.widget<ElevatedButton>(removeButtonFinder);
+  expect(removeButton.onPressed, isNotNull);
 }
 
 /// Tests the [OrderItemDisplay] widget's output for a quantity of zero.
@@ -350,6 +410,10 @@ void main() {
 >>>>>>> 48ab550 (Simplify tests)
     testWidgets('Quantity does not exceed maxQuantity',
         _testQuantityDoesNotExceedMaxQuantity);
+    testWidgets(
+        'Remove button is disabled at zero', _testRemoveButtonIsDisabledAtZero);
+    testWidgets('Add button is disabled at max quantity',
+        _testAddButtonIsDisabledAtMaxQuantity);
   });
 
   group('OrderItemDisplay widget', () {
