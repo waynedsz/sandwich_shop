@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -239,6 +240,9 @@ enum BreadType { white, wheat, wholemeal }
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/models/cart.dart';
 >>>>>>> fd75677 (removed enum)
+=======
+import 'app_styles.dart';
+>>>>>>> 115f280 (Separate styles to app_styles)
 
 void main() {
   runApp(const App());
@@ -1113,7 +1117,10 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sandwich Counter'),
+        title: const Text(
+          'Sandwich Counter',
+          style: Heading1,
+        ),
       ),
       body: Center(
         child: Column(
@@ -1140,7 +1147,49 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
       ),
     );
+<<<<<<< HEAD
 >>>>>>> 8235667 (Create a Stateless only app for stage 1)
+=======
+  }
+}
+
+class StyledButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final IconData icon;
+  final String label;
+  final Color backgroundColor;
+
+  const StyledButton({
+    super.key,
+    required this.onPressed,
+    required this.icon,
+    required this.label,
+    required this.backgroundColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    ButtonStyle myButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: backgroundColor,
+      foregroundColor: Colors.white,
+      textStyle: normalText,
+    );
+
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: myButtonStyle,
+      child: Row(
+        children: [
+          Icon(icon),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: normalText,
+          ),
+        ],
+      ),
+    );
+>>>>>>> 115f280 (Separate styles to app_styles)
   }
 }
 
@@ -1152,6 +1201,9 @@ class OrderItemDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
+    return Text(
+      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
+      style: normalText,
+    );
   }
 }
