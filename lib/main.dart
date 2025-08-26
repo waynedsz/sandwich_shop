@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -409,6 +410,9 @@ import 'package:sandwich_shop/views/about_screen.dart';
 =======
 import 'package:sandwich_shop/views/profile_screen.dart';
 >>>>>>> beea757 (Update requirements.md)
+=======
+import 'app_styles.dart';
+>>>>>>> 115f280 (Separate styles to app_styles)
 
 void main() {
   runApp(const App());
@@ -1676,7 +1680,10 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sandwich Counter'),
+        title: const Text(
+          'Sandwich Counter',
+          style: Heading1,
+        ),
       ),
       body: Center(
         child: Column(
@@ -1855,6 +1862,9 @@ class SandwichCounter extends StatelessWidget {
   Widget build(BuildContext context) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 115f280 (Separate styles to app_styles)
     ButtonStyle myButtonStyle = ElevatedButton.styleFrom(
       backgroundColor: backgroundColor,
       foregroundColor: Colors.white,
@@ -1931,8 +1941,15 @@ class OrderItemDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
 >>>>>>> 4cfe3e7 (Simplified code for worksheet 3)
+=======
+    return Text(
+      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
+      style: normalText,
+    );
+>>>>>>> 115f280 (Separate styles to app_styles)
   }
 }
 >>>>>>> e4280a5 (Draft of code for branch 3)
