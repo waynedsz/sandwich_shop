@@ -718,6 +718,8 @@ class App extends StatelessWidget {
 import 'app_styles.dart';
 >>>>>>> 115f280 (Separate styles to app_styles)
 
+enum BreadType { white, wheat, wholemeal }
+
 void main() {
   runApp(const App());
 }
@@ -1802,6 +1804,9 @@ class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
   bool _isFootlong = true;
   BreadType _selectedBreadType = BreadType.white;
+<<<<<<< HEAD
+>>>>>>> 91c686f (Implement the dropdown and the bread size option)
+=======
 >>>>>>> 91c686f (Implement the dropdown and the bread size option)
 
   SandwichType _selectedSandwichType = SandwichType.veggieDelight;
@@ -2664,6 +2669,7 @@ class OrderItemDisplay extends StatelessWidget {
   final String itemType;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   final int quantity;
 =======
   final BreadType breadType;
@@ -2760,17 +2766,31 @@ class OrderItemDisplay extends StatelessWidget {
 class OrderItemDisplay extends StatelessWidget {
   final String itemType;
   final int quantity;
+=======
+  final BreadType breadType;
+>>>>>>> 91c686f (Implement the dropdown and the bread size option)
 
-  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+  const OrderItemDisplay({
+    super.key,
+    required this.quantity,
+    required this.itemType,
+    required this.breadType,
+  });
 
   @override
   Widget build(BuildContext context) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
 >>>>>>> 4cfe3e7 (Simplified code for worksheet 3)
 =======
+=======
+    String displayText =
+        '$quantity ${breadType.name} $itemType sandwich(es): ${'🥪' * quantity}';
+
+>>>>>>> 91c686f (Implement the dropdown and the bread size option)
     return Text(
-      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
+      displayText,
       style: normalText,
     );
 >>>>>>> 115f280 (Separate styles to app_styles)
