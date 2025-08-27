@@ -244,6 +244,8 @@ import 'package:sandwich_shop/models/cart.dart';
 import 'app_styles.dart';
 >>>>>>> 115f280 (Separate styles to app_styles)
 
+enum BreadType { white, wheat, wholemeal }
+
 void main() {
   runApp(const App());
 }
@@ -1096,6 +1098,8 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
+  bool _isFootlong = true;
+  BreadType _selectedBreadType = BreadType.white;
 
   void _increaseQuantity() {
     if (_quantity < widget.maxQuantity) {
@@ -1115,6 +1119,11 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String sandwichType = 'footlong';
+    if (!_isFootlong) {
+      sandwichType = 'six-inch';
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -1127,8 +1136,43 @@ class _OrderScreenState extends State<OrderScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OrderItemDisplay(
-              _quantity,
-              'Footlong',
+              quantity: _quantity,
+              itemType: sandwichType,
+              breadType: _selectedBreadType,
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('six-inch', style: normalText),
+                Switch(
+                  value: _isFootlong,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _isFootlong = value;
+                    });
+                  },
+                ),
+                const Text('footlong', style: normalText),
+              ],
+            ),
+            const SizedBox(height: 10),
+            DropdownMenu<BreadType>(
+              initialSelection: _selectedBreadType,
+              onSelected: (BreadType? value) {
+                if (value != null) {
+                  setState(() {
+                    _selectedBreadType = value;
+                  });
+                }
+              },
+              dropdownMenuEntries:
+                  BreadType.values.map<DropdownMenuEntry<BreadType>>(
+                (BreadType bread) {
+                  return DropdownMenuEntry<BreadType>(
+                      value: bread, label: bread.name);
+                },
+              ).toList(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1195,14 +1239,26 @@ class StyledButton extends StatelessWidget {
 
 class OrderItemDisplay extends StatelessWidget {
   final String itemType;
+<<<<<<< HEAD
   final int quantity;
+=======
+  final BreadType breadType;
+>>>>>>> 91c686f (Implement the dropdown and the bread size option)
 
-  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+  const OrderItemDisplay({
+    super.key,
+    required this.quantity,
+    required this.itemType,
+    required this.breadType,
+  });
 
   @override
   Widget build(BuildContext context) {
+    String displayText =
+        '$quantity ${breadType.name} $itemType sandwich(es): ${'🥪' * quantity}';
+
     return Text(
-      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
+      displayText,
       style: normalText,
     );
   }
