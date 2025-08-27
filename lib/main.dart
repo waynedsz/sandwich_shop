@@ -493,22 +493,15 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
+  final TextEditingController _notesController = TextEditingController();
   bool _isFootlong = true;
   BreadType _selectedBreadType = BreadType.white;
-  final TextEditingController _notesController = TextEditingController();
-  String _orderNote = 'No notes added.';
 
   @override
   void initState() {
     super.initState();
     _notesController.addListener(() {
-      setState(() {
-        if (_notesController.text.isEmpty) {
-          _orderNote = 'No notes added.';
-        } else {
-          _orderNote = _notesController.text;
-        }
-      });
+      setState(() {});
     });
   }
 
@@ -565,6 +558,13 @@ class _OrderScreenState extends State<OrderScreen> {
       sandwichType = 'six-inch';
     }
 
+    String noteForDisplay;
+    if (_notesController.text.isEmpty) {
+      noteForDisplay = 'No notes added.';
+    } else {
+      noteForDisplay = _notesController.text;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -580,7 +580,7 @@ class _OrderScreenState extends State<OrderScreen> {
               quantity: _quantity,
               itemType: sandwichType,
               breadType: _selectedBreadType,
-              orderNote: _orderNote,
+              orderNote: noteForDisplay,
             ),
             const SizedBox(height: 20),
             Row(
@@ -603,7 +603,7 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 controller: _notesController,
                 decoration: const InputDecoration(
@@ -696,27 +696,18 @@ class OrderItemDisplay extends StatelessWidget {
     String displayText =
         '$quantity ${breadType.name} $itemType sandwich(es): ${'🥪' * quantity}';
 
-    List<Widget> children = [
-      Text(
-        displayText,
-        style: normalText,
-        textAlign: TextAlign.center,
-      ),
-    ];
-
-    if (orderNote.isNotEmpty) {
-      children.add(const SizedBox(height: 8));
-      children.add(
+    return Column(
+      children: [
+        Text(
+          displayText,
+          style: normalText,
+        ),
+        const SizedBox(height: 8),
         Text(
           'Note: $orderNote',
-          style: normalText.copyWith(fontWeight: FontWeight.normal),
-          textAlign: TextAlign.center,
+          style: normalText,
         ),
-      );
-    }
-
-    return Column(
-      children: children,
+      ],
     );
   }
 }
