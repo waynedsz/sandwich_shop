@@ -99,17 +99,23 @@ Future<void> _testAppSetsOrderScreenAsHome(WidgetTester tester) async {
 /// Verifies that the initial UI state of the [OrderScreen] shows zero sandwiches.
 ///
 <<<<<<< HEAD
+<<<<<<< HEAD
 /// This test pumps the [App] widget and checks for two things:
 /// 1. The text '0 Footlong sandwich(es): ' is present, indicating the initial
 ///    quantity is zero.
 /// 2. The app bar title 'Sandwich Counter' is displayed.
 Future<void> _testInitialStateShowsZeroSandwiches(WidgetTester tester) async {
 =======
+=======
+>>>>>>> e06199a (Use that key in the tests)
 /// This test pumps the [App] widget and checks for three things:
 /// 1. The text shows 0 sandwiches with the default bread and item type.
 /// 2. The default note 'No notes added.' is visible.
 /// 3. The app bar title 'Sandwich Counter' is displayed.
 Future<void> _testInitialStateIsCorrect(WidgetTester tester) async {
+<<<<<<< HEAD
+>>>>>>> e06199a (Use that key in the tests)
+=======
 >>>>>>> e06199a (Use that key in the tests)
   await tester.pumpWidget(const App());
 
@@ -311,6 +317,7 @@ Future<void> _testTextFieldUpdatesOrderNote(WidgetTester tester) async {
   expect(initialNoteFinder, findsNothing);
 }
 
+<<<<<<< HEAD
 >>>>>>> e06199a (Use that key in the tests)
 /// Tests the [OrderItemDisplay] widget's output for a quantity of zero.
 ///
@@ -1442,32 +1449,65 @@ Future<void> _testAddButtonIsDisabledAtMaxQuantity(WidgetTester tester) async {
   expect(removeButton.onPressed, isNotNull);
 }
 
+=======
+>>>>>>> e06199a (Use that key in the tests)
 /// Tests the [OrderItemDisplay] widget's output for a quantity of zero.
 ///
-/// This test pumps only the [OrderItemDisplay] widget with a quantity of 0
-/// and verifies that it correctly displays the text for zero items.
+/// This test pumps only the [OrderItemDisplay] widget and verifies that it
+/// correctly displays the text for zero items and the provided note.
 Future<void> _testOrderItemDisplayForZero(WidgetTester tester) async {
   MaterialApp testApp = const MaterialApp(
+<<<<<<< HEAD
     home: Scaffold(body: OrderItemDisplay(0, 'Footlong')),
+=======
+    home: Scaffold(
+      body: OrderItemDisplay(
+        quantity: 0,
+        itemType: 'footlong',
+        breadType: BreadType.white,
+        orderNote: 'test note',
+      ),
+    ),
+>>>>>>> e06199a (Use that key in the tests)
   );
   await tester.pumpWidget(testApp);
 
   Finder zeroDisplayFinder = find.text('0 Footlong sandwich(es): ');
   expect(zeroDisplayFinder, findsOneWidget);
+
+  Finder noteFinder = find.text('Note: test note');
+  expect(noteFinder, findsOneWidget);
 }
 
 /// Tests the [OrderItemDisplay] widget's output for a non-zero quantity.
 ///
 /// This test pumps the [OrderItemDisplay] widget with a quantity of 3 and
+<<<<<<< HEAD
 /// verifies that it correctly displays the text along with three sandwich emojis.
 Future<void> _testOrderItemDisplayForThree(WidgetTester tester) async {
   MaterialApp testApp = const MaterialApp(
     home: Scaffold(body: OrderItemDisplay(3, 'Footlong')),
+=======
+/// verifies that it correctly displays the text with emojis and the note.
+Future<void> _testOrderItemDisplayForThree(WidgetTester tester) async {
+  MaterialApp testApp = const MaterialApp(
+    home: Scaffold(
+      body: OrderItemDisplay(
+        quantity: 3,
+        itemType: 'footlong',
+        breadType: BreadType.wheat,
+        orderNote: 'another test note',
+      ),
+    ),
+>>>>>>> e06199a (Use that key in the tests)
   );
   await tester.pumpWidget(testApp);
 
   Finder threeDisplayFinder = find.text('3 Footlong sandwich(es): 🥪🥪🥪');
   expect(threeDisplayFinder, findsOneWidget);
+
+  Finder noteFinder = find.text('Note: another test note');
+  expect(noteFinder, findsOneWidget);
 }
 
 /// The main entry point for running all widget tests.
@@ -1477,8 +1517,7 @@ void main() {
   });
 
   group('OrderScreen interaction tests', () {
-    testWidgets('Initial state shows 0 sandwiches',
-        _testInitialStateShowsZeroSandwiches);
+    testWidgets('Initial state is correct', _testInitialStateIsCorrect);
     testWidgets('Tapping add button increases quantity',
         _testTappingAddButtonIncreasesQuantity);
     testWidgets('Tapping remove button decreases quantity',
@@ -1491,6 +1530,14 @@ void main() {
         'Remove button is disabled at zero', _testRemoveButtonIsDisabledAtZero);
     testWidgets('Add button is disabled at max quantity',
         _testAddButtonIsDisabledAtMaxQuantity);
+<<<<<<< HEAD
+=======
+    testWidgets('Switch toggles sandwich type', _testSwitchTogglesSandwichType);
+    testWidgets(
+        'Dropdown menu changes bread type', _testDropdownChangesBreadType);
+    testWidgets(
+        'Text field updates order note', _testTextFieldUpdatesOrderNote);
+>>>>>>> e06199a (Use that key in the tests)
   });
 
   group('OrderItemDisplay widget', () {
