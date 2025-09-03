@@ -35,6 +35,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/views/order_screen.dart';
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
+<<<<<<< HEAD
 void dummyFunction() {}
 >>>>>>> f1772b8 (Update widget_test)
 =======
@@ -1511,20 +1512,59 @@ Future<void> _testOrderItemDisplayForThree(WidgetTester tester) async {
 }
 
 /// The main entry point for running all widget tests.
+=======
+>>>>>>> 271729f (Refactor widget tests to use inline functions)
 void main() {
   group('App widget', () {
-    testWidgets('App sets OrderScreen as home', _testAppSetsOrderScreenAsHome);
+    testWidgets('App sets OrderScreen as home', (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      expect(find.byType(OrderScreen), findsOneWidget);
+    });
   });
 
   group('OrderScreen interaction tests', () {
-    testWidgets('Initial state is correct', _testInitialStateIsCorrect);
-    testWidgets('Tapping add button increases quantity',
-        _testTappingAddButtonIncreasesQuantity);
-    testWidgets('Tapping remove button decreases quantity',
-        _testTappingRemoveButtonDecreasesQuantity);
     testWidgets(
-        'Quantity does not go below zero', _testQuantityDoesNotGoBelowZero);
+        '"Sandwich Counter" text and initial sandwich quantity are displayed',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+      expect(find.text('Sandwich Counter'), findsOneWidget);
+    });
+
+    testWidgets('Tapping add button increases quantity',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+      // Rebuild the widget after the state has changed.
+      await tester.pump();
+      expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
+    });
+
+    testWidgets('Tapping remove button decreases quantity',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+      await tester.pump();
+      // Verify the quantity is increased to 1.
+      expect(find.text('1 Footlong sandwich(es): 🥪'), findsOneWidget);
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
+      await tester.pump();
+      // Verify the quantity is decreased back to 0.
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+    });
+
+    testWidgets('Quantity does not go below zero', (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      // Verify the initial quantity is 0.
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Remove'));
+      await tester.pump();
+      // Verify the quantity remains at 0, as it shouldn't go negative.
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+    });
+
     testWidgets('Quantity does not exceed maxQuantity',
+<<<<<<< HEAD
         _testQuantityDoesNotExceedMaxQuantity);
     testWidgets(
         'Remove button is disabled at zero', _testRemoveButtonIsDisabledAtZero);
@@ -1538,13 +1578,42 @@ void main() {
     testWidgets(
         'Text field updates order note', _testTextFieldUpdatesOrderNote);
 >>>>>>> e06199a (Use that key in the tests)
+=======
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const App());
+      // Tap the 'Add' button more times than the maximum allowed quantity.
+      for (int i = 0; i < 10; i++) {
+        await tester.tap(find.widgetWithText(ElevatedButton, 'Add'));
+        await tester.pump();
+      }
+      // Verify the quantity does not exceed the maximum of 5.
+      expect(find.text('5 Footlong sandwich(es): 🥪🥪🥪🥪🥪'), findsOneWidget);
+    });
+>>>>>>> 271729f (Refactor widget tests to use inline functions)
   });
 
-  group('OrderItemDisplay widget', () {
-    testWidgets(
-        'Displays correct text and emoji for 0', _testOrderItemDisplayForZero);
-    testWidgets(
-        'Displays correct text and emoji for 3', _testOrderItemDisplayForThree);
+  group('Group of tests for the OrderItemDisplay widget', () {
+    // Check the OrderItemDisplay widgets in isolation.
+    testWidgets('Displays the correct text for 0 sandwiches',
+        (WidgetTester tester) async {
+      const widgetToBeTested = OrderItemDisplay(0, 'Footlong');
+      const testApp = MaterialApp(
+        home: Scaffold(body: widgetToBeTested),
+      );
+      // Build the OrderItemDisplay widget to be tested.
+      await tester.pumpWidget(testApp);
+      expect(find.text('0 Footlong sandwich(es): '), findsOneWidget);
+    });
+
+    testWidgets('Displays the correct text and emoji for 3 sandwiches',
+        (WidgetTester tester) async {
+      const widgetToBeTested = OrderItemDisplay(3, 'Footlong');
+      const testApp = MaterialApp(
+        home: Scaffold(body: widgetToBeTested),
+      );
+      await tester.pumpWidget(testApp);
+      expect(find.text('3 Footlong sandwich(es): 🥪🥪🥪'), findsOneWidget);
+    });
   });
 >>>>>>> 816cadc (first commit)
 }
