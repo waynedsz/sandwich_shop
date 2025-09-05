@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -18,6 +19,12 @@ import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
+=======
+import 'app_styles.dart';
+import 'package:sandwich_shop/repositories/order_repository.dart';
+
+enum BreadType { white, wheat, wholemeal }
+>>>>>>> 5a7e299 (Use the order repo in main)
 
 void main() {
   runApp(const App());
