@@ -305,8 +305,12 @@ void main() {
 =======
   group('OrderScreen - Controls', () {
 <<<<<<< HEAD
+<<<<<<< HEAD
     testWidgets('toggles sandwich type with Switch',
 >>>>>>> ede0ffc (Restructure widget_test.dart at 4)
+=======
+    testWidgets('toggles sandwich type with Switch',
+>>>>>>> 28dddcb (📝 Add test for toggling sandwich type in OrderScreen)
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
       expect(find.textContaining('footlong sandwich'), findsOneWidget);
@@ -314,9 +318,12 @@ void main() {
       await tester.pump();
       expect(find.textContaining('six-inch sandwich'), findsOneWidget);
     });
+<<<<<<< HEAD
 
 =======
 >>>>>>> 175f964 (Prepare widget test for exercises)
+=======
+>>>>>>> 28dddcb (📝 Add test for toggling sandwich type in OrderScreen)
     testWidgets('changes bread type with DropdownMenu',
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
