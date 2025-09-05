@@ -300,6 +300,7 @@ void main() {
     testWidgets('Displays the correct text for 0 sandwiches',
 =======
   group('OrderScreen - Controls', () {
+<<<<<<< HEAD
     testWidgets('toggles sandwich type with Switch',
 >>>>>>> ede0ffc (Restructure widget_test.dart at 4)
         (WidgetTester tester) async {
@@ -310,6 +311,8 @@ void main() {
       expect(find.textContaining('six-inch sandwich'), findsOneWidget);
     });
 
+=======
+>>>>>>> 175f964 (Prepare widget test for exercises)
     testWidgets('changes bread type with DropdownMenu',
         (WidgetTester tester) async {
       await tester.pumpWidget(const App());
