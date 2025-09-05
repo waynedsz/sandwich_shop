@@ -35,6 +35,7 @@ import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
 =======
 =======
@@ -52,6 +53,9 @@ import 'package:sandwich_shop/repositories/pricing_repository.dart';
 =======
 import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 5a7e299 (Use the order repo in main)
+=======
+import 'package:sandwich_shop/repositories/pricing_repository.dart';
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
 =======
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
@@ -188,6 +192,7 @@ class _OrderScreenState extends State<OrderScreen> {
   BreadType _selectedBreadType = BreadType.white;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   int _quantity = 1;
 =======
   late final PricingRepository _pricingRepository;
@@ -205,10 +210,18 @@ class _OrderScreenState extends State<OrderScreen> {
   BreadType _selectedBreadType = BreadType.white;
   int _quantity = 1;
 >>>>>>> 06067ae (Simplify main)
+=======
+  late final PricingRepository _pricingRepository;
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
+=======
+    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
+    _pricingRepository = PricingRepository();
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
     _notesController.addListener(() {
       setState(() {});
     });
@@ -429,6 +442,7 @@ class _OrderScreenState extends State<OrderScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     final pricingRepository = PricingRepository(
       quantity: _orderRepository.quantity,
       isFootlong: _isFootlong,
@@ -441,6 +455,8 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
 =======
 >>>>>>> 4c718f3 (Revert to the old main)
+=======
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
     final double totalPrice = _pricingRepository.calculatePrice(
       quantity: _orderRepository.quantity,
       isFootlong: _isFootlong,
@@ -449,6 +465,9 @@ class _OrderScreenState extends State<OrderScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
+=======
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
 =======
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
@@ -584,6 +603,11 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
 =======
 >>>>>>> 4c718f3 (Revert to the old main)
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Total Price: £${totalPrice.toStringAsFixed(2)}',
+              style: heading2,
             ),
             const SizedBox(height: 20),
             Row(
