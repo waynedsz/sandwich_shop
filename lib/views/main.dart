@@ -32,8 +32,12 @@ import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 4c718f3 (Revert to the old main)
 import 'app_styles.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
+=======
+import 'package:sandwich_shop/repositories/order_repository.dart';
+>>>>>>> 5a7e299 (Use the order repo in main)
 
 enum BreadType { white, wheat, wholemeal }
 >>>>>>> 5a7e299 (Use the order repo in main)
@@ -111,7 +115,11 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+<<<<<<< HEAD
   final Cart _cart = Cart();
+=======
+  late final OrderRepository _orderRepository;
+>>>>>>> 5a7e299 (Use the order repo in main)
   final TextEditingController _notesController = TextEditingController();
 
   SandwichType _selectedSandwichType = SandwichType.veggieDelight;
@@ -130,6 +138,7 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   void initState() {
     super.initState();
+    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
     _notesController.addListener(() {
       setState(() {});
     });
@@ -141,6 +150,7 @@ class _OrderScreenState extends State<OrderScreen> {
     super.dispose();
   }
 
+<<<<<<< HEAD
   void _addToCart() {
     if (_quantity > 0) {
       final Sandwich sandwich = Sandwich(
@@ -174,6 +184,18 @@ class _OrderScreenState extends State<OrderScreen> {
   VoidCallback? _getAddToCartCallback() {
     if (_quantity > 0) {
       return _addToCart;
+=======
+  VoidCallback? _getIncreaseCallback() {
+    if (_orderRepository.canIncrement) {
+      return () => setState(_orderRepository.increment);
+    }
+    return null;
+  }
+
+  VoidCallback? _getDecreaseCallback() {
+    if (_orderRepository.canDecrement) {
+      return () => setState(_orderRepository.decrement);
+>>>>>>> 5a7e299 (Use the order repo in main)
     }
     return null;
   }
