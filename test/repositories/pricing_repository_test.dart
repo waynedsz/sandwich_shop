@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/PricingRepository.dart';
 
 void main() {
@@ -12,6 +13,8 @@ void main() {
     final repo = PricingRepository(quantity: 3, isFootlong: true);
     expect(repo.getTotalPrice(), 33.0);
 =======
+=======
+>>>>>>> 92c6e97 (Add unit tests for pricing)
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 void main() {
@@ -32,6 +35,9 @@ void main() {
       final price = repository.calculatePrice(quantity: 0, isFootlong: true);
       expect(price, 0.00);
     });
+<<<<<<< HEAD
+>>>>>>> 92c6e97 (Add unit tests for pricing)
+=======
 >>>>>>> 92c6e97 (Add unit tests for pricing)
   });
 }
