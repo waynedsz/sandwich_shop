@@ -25,6 +25,7 @@ import 'package:sandwich_shop/views/app_styles.dart';
 <<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
 =======
 =======
@@ -38,6 +39,9 @@ import 'package:sandwich_shop/repositories/pricing_repository.dart';
 =======
 import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 5a7e299 (Use the order repo in main)
+=======
+import 'package:sandwich_shop/repositories/pricing_repository.dart';
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
 
 enum BreadType { white, wheat, wholemeal }
 >>>>>>> 5a7e299 (Use the order repo in main)
@@ -133,12 +137,17 @@ class _OrderScreenState extends State<OrderScreen> {
 =======
 >>>>>>> 06067ae (Simplify main)
   BreadType _selectedBreadType = BreadType.white;
+<<<<<<< HEAD
   int _quantity = 1;
+=======
+  late final PricingRepository _pricingRepository;
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
 
   @override
   void initState() {
     super.initState();
     _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
+    _pricingRepository = PricingRepository();
     _notesController.addListener(() {
       setState(() {});
     });
@@ -241,6 +250,7 @@ class _OrderScreenState extends State<OrderScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     final pricingRepository = PricingRepository(
       quantity: _orderRepository.quantity,
       isFootlong: _isFootlong,
@@ -249,12 +259,17 @@ class _OrderScreenState extends State<OrderScreen> {
 =======
 =======
 >>>>>>> 4c718f3 (Revert to the old main)
+=======
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
     final double totalPrice = _pricingRepository.calculatePrice(
       quantity: _orderRepository.quantity,
       isFootlong: _isFootlong,
     );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> d04a1a8 (Use pricing repo and heading 2)
+=======
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
     String sandwichType = 'footlong';
 =======
@@ -342,6 +357,11 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
 =======
 >>>>>>> 4c718f3 (Revert to the old main)
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Total Price: £${totalPrice.toStringAsFixed(2)}',
+              style: heading2,
             ),
             const SizedBox(height: 20),
             Row(
