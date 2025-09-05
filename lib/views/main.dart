@@ -46,6 +46,7 @@ import 'package:sandwich_shop/repositories/order_repository.dart';
 import 'app_styles.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 =======
@@ -717,6 +718,9 @@ class App extends StatelessWidget {
 =======
 import 'app_styles.dart';
 >>>>>>> 115f280 (Separate styles to app_styles)
+=======
+import 'package:sandwich_shop/repositories/order_repository.dart';
+>>>>>>> 5a7e299 (Use the order repo in main)
 
 enum BreadType { white, wheat, wholemeal }
 
@@ -1798,7 +1802,11 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
 <<<<<<< HEAD
+<<<<<<< HEAD
   final Cart _cart = Cart();
+=======
+  late final OrderRepository _orderRepository;
+>>>>>>> 5a7e299 (Use the order repo in main)
   final TextEditingController _notesController = TextEditingController();
 =======
   int _quantity = 0;
@@ -1817,6 +1825,7 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   void initState() {
     super.initState();
+    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
     _notesController.addListener(() {
       setState(() {});
     });
@@ -1828,6 +1837,7 @@ class _OrderScreenState extends State<OrderScreen> {
     super.dispose();
   }
 
+<<<<<<< HEAD
   void _addToCart() {
     if (_quantity > 0) {
       final Sandwich sandwich = Sandwich(
@@ -1857,6 +1867,18 @@ class _OrderScreenState extends State<OrderScreen> {
   VoidCallback? _getAddToCartCallback() {
     if (_quantity > 0) {
       return _addToCart;
+=======
+  VoidCallback? _getIncreaseCallback() {
+    if (_orderRepository.canIncrement) {
+      return () => setState(_orderRepository.increment);
+    }
+    return null;
+  }
+
+  VoidCallback? _getDecreaseCallback() {
+    if (_orderRepository.canDecrement) {
+      return () => setState(_orderRepository.decrement);
+>>>>>>> 5a7e299 (Use the order repo in main)
     }
     return null;
   }
@@ -2003,7 +2025,7 @@ class _OrderScreenState extends State<OrderScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OrderItemDisplay(
-              quantity: _quantity,
+              quantity: _orderRepository.quantity,
               itemType: sandwichType,
               breadType: _selectedBreadType,
             ),
@@ -2026,6 +2048,7 @@ class _OrderScreenState extends State<OrderScreen> {
             const SizedBox(height: 10),
             DropdownMenu<BreadType>(
               initialSelection: _selectedBreadType,
+<<<<<<< HEAD
               onSelected: (BreadType? value) {
                 if (value != null) {
                   setState(() {
@@ -2040,6 +2063,21 @@ class _OrderScreenState extends State<OrderScreen> {
                       value: bread, label: bread.name);
                 },
               ).toList(),
+=======
+              onSelected: _onBreadTypeSelected,
+              dropdownMenuEntries: _buildDropdownEntries(),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: TextField(
+                key: const Key('notes_textfield'),
+                controller: _notesController,
+                decoration: const InputDecoration(
+                  labelText: 'Add a note (e.g., no onions)',
+                ),
+              ),
+>>>>>>> 5a7e299 (Use the order repo in main)
             ),
             const SizedBox(height: 20),
             Row(
