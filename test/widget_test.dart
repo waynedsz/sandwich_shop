@@ -21,6 +21,7 @@ import 'package:flutter/material.dart';
 >>>>>>> ec4bfdf (Remove unused import from widget_test.dart)
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/views/main.dart';
 <<<<<<< HEAD
 >>>>>>> cdd80e0 (Move UIs to views)
@@ -34,6 +35,9 @@ import 'package:sandwich_shop/models/sandwich.dart';
 =======
 import 'package:sandwich_shop/views/order_screen.dart';
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+import 'package:sandwich_shop/views/main.dart';
+>>>>>>> cdd80e0 (Move UIs to views)
 
 <<<<<<< HEAD
 void dummyFunction() {}
