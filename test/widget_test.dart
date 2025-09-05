@@ -4,11 +4,17 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
 // primary buttons and that tapping a button shows the
 // placeholder SnackBar.
+=======
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:sandwich_shop/views/main.dart';
+>>>>>>> cdd80e0 (Move UIs to views)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
