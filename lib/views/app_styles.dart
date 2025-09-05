@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:shared_preferences/shared_preferences.dart';
 
 <<<<<<< HEAD
@@ -25,6 +26,11 @@ const heading2 = TextStyle(
 =======
 =======
 >>>>>>> cdd80e0 (Move UIs to views)
+=======
+
+const TextStyle normalText = TextStyle(
+  fontSize: 16,
+>>>>>>> cdd80e0 (Move UIs to views)
   fontWeight: FontWeight.bold,
 );
 
@@ -32,6 +38,7 @@ const Heading1 = TextStyle(
   fontSize: 24,
   fontWeight: FontWeight.bold,
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> cdd80e0 (Move UIs to views)
 =======
@@ -62,3 +69,5 @@ TextStyle get normalText => AppStyles.normalText;
 TextStyle get heading1 => AppStyles.heading1;
 TextStyle get heading2 => AppStyles.heading2;
 >>>>>>> 1bd25d9 (update app_styles.dart to load font sizes)
+=======
+>>>>>>> cdd80e0 (Move UIs to views)

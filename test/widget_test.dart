@@ -33,6 +33,7 @@ import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/views/main.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -60,6 +61,9 @@ import 'package:sandwich_shop/models/sandwich.dart';
 =======
 import 'package:sandwich_shop/views/order_screen.dart';
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+import 'package:sandwich_shop/views/main.dart';
+>>>>>>> cdd80e0 (Move UIs to views)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
