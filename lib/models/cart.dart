@@ -1,4 +1,5 @@
 import 'sandwich.dart';
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 <<<<<<< HEAD
@@ -80,10 +81,25 @@ class Cart {
   }
 
 >>>>>>> 98d78f8 (Add cart model)
+=======
+
+class Cart {
+  final List<Sandwich> _items = [];
+
+  void add(Sandwich sandwich) {
+    _items.add(sandwich);
+  }
+
+  void remove(Sandwich sandwich) {
+    _items.remove(sandwich);
+  }
+
+>>>>>>> 98d78f8 (Add cart model)
   void clear() {
     _items.clear();
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   bool contains(Sandwich sandwich) {
     return _items.any((item) => item.sandwich == sandwich);
@@ -102,11 +118,16 @@ class Cart {
     }
 
     return total;
+=======
+  double get totalPrice {
+    return 0.0;
+>>>>>>> 98d78f8 (Add cart model)
   }
 
   bool get isEmpty => _items.isEmpty;
 
   int get length => _items.length;
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 98d78f8 (Add cart model)
 =======
@@ -172,4 +193,6 @@ class Cart {
     _items.clear();
   }
 >>>>>>> 75a47da (Update cart.dart & cart_screen.dart to fit requirements.md)
+=======
+>>>>>>> 98d78f8 (Add cart model)
 }
