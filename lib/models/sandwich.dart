@@ -4,6 +4,7 @@ enum BreadType { white, wheat, wholemeal }
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 2e33822 (Update sandwich.dart)
 =======
@@ -159,4 +160,18 @@ class Sandwich {
     return 'assets/images/${typeString}_$sizeString.png';
   }
 >>>>>>> 2e33822 (Update sandwich.dart)
+=======
+class Sandwich {
+  final String name;
+  final bool isFootlong;
+  final BreadType breadType;
+  final String image;
+
+  Sandwich({
+    required this.name,
+    required this.isFootlong,
+    required this.breadType,
+    required this.image,
+  });
+>>>>>>> e4ebb3a (Add Sandwich model)
 }
