@@ -1,5 +1,6 @@
 import 'sandwich.dart';
 
+<<<<<<< HEAD
 class CartItem {
   final Sandwich sandwich;
   int quantity;
@@ -48,11 +49,34 @@ class Cart {
 
   int get totalItems => _items.fold(0, (sum, item) => sum + item.quantity);
 
+=======
+class Cart {
+  final List<Sandwich> _items = [];
+
+  void add(Sandwich sandwich) {
+    _items.add(sandwich);
+  }
+
+  void remove(Sandwich sandwich) {
+    _items.remove(sandwich);
+  }
+
+>>>>>>> 98d78f8 (Add cart model)
   void clear() {
     _items.clear();
   }
 
+<<<<<<< HEAD
   bool contains(Sandwich sandwich) {
     return _items.any((item) => item.sandwich == sandwich);
   }
+=======
+  double get totalPrice {
+    return 0.0;
+  }
+
+  bool get isEmpty => _items.isEmpty;
+
+  int get length => _items.length;
+>>>>>>> 98d78f8 (Add cart model)
 }
