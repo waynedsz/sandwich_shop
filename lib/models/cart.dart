@@ -172,16 +172,36 @@ class Cart {
 >>>>>>> c6a9bfb (Update cart model)
 =======
 import 'sandwich.dart';
+import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 class Cart {
-  final List<Sandwich> _items = [];
+  final Map<Sandwich, int> _items = {};
 
+<<<<<<< HEAD
   void add(Sandwich sandwich) {
     _items.add(sandwich);
+=======
+  // Returns a read-only copy of the items and their quantities
+  Map<Sandwich, int> get items => Map.unmodifiable(_items);
+
+  void add(Sandwich sandwich, {int quantity = 1}) {
+    if (_items.containsKey(sandwich)) {
+      _items[sandwich] = _items[sandwich]! + quantity;
+    } else {
+      _items[sandwich] = quantity;
+    }
+>>>>>>> c6a9bfb (Update cart model)
   }
 
-  void remove(Sandwich sandwich) {
-    _items.remove(sandwich);
+  void remove(Sandwich sandwich, {int quantity = 1}) {
+    if (_items.containsKey(sandwich)) {
+      final currentQty = _items[sandwich]!;
+      if (currentQty > quantity) {
+        _items[sandwich] = currentQty - quantity;
+      } else {
+        _items.remove(sandwich);
+      }
+    }
   }
 
   void clear() {
@@ -189,13 +209,28 @@ class Cart {
   }
 
   double get totalPrice {
+<<<<<<< HEAD
     return 0.0;
 >>>>>>> 98d78f8 (Add cart model)
+=======
+    final pricingRepository = PricingRepository();
+    double total = 0.0;
+
+    _items.forEach((sandwich, quantity) {
+      total += pricingRepository.calculatePrice(
+        quantity: quantity,
+        isFootlong: sandwich.isFootlong,
+      );
+    });
+
+    return total;
+>>>>>>> c6a9bfb (Update cart model)
   }
 
   bool get isEmpty => _items.isEmpty;
 
   int get length => _items.length;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -220,6 +255,8 @@ class Cart {
     });
     return total;
   }
+=======
+>>>>>>> c6a9bfb (Update cart model)
 
   int getQuantity(Sandwich sandwich) {
     if (_items.containsKey(sandwich)) {
@@ -227,6 +264,7 @@ class Cart {
     }
     return 0;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> c6a9bfb (Update cart model)
@@ -281,4 +319,6 @@ class Cart {
 >>>>>>> c6a9bfb (Update cart model)
 =======
 >>>>>>> 98d78f8 (Add cart model)
+=======
+>>>>>>> c6a9bfb (Update cart model)
 }
