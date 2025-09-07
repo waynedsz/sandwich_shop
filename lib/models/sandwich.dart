@@ -172,6 +172,17 @@ class Sandwich {
     required this.isFootlong,
     required this.breadType,
     required this.image,
+<<<<<<< HEAD
   });
 >>>>>>> e4ebb3a (Add Sandwich model)
+=======
+  }) {
+    if (name.isEmpty) {
+      throw ArgumentError('Name cannot be empty');
+    }
+    if (image.isEmpty || !image.startsWith('assets/images/')) {
+      throw ArgumentError('Image must be a valid asset path');
+    }
+  }
+>>>>>>> 102d5a8 (📝 Add validation for Sandwich model parameters)
 }
