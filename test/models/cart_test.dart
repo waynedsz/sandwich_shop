@@ -6,6 +6,7 @@ void main() {
   group('Cart', () {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     final sandwich1 = Sandwich(
       type: SandwichType.veggieDelight,
       isFootlong: false,
@@ -77,6 +78,8 @@ void main() {
 =======
 =======
 >>>>>>> 189705e (Add cart unit tests)
+=======
+>>>>>>> 189705e (Add cart unit tests)
     late Cart cart;
     late Sandwich sandwichA;
     late Sandwich sandwichB;
@@ -84,6 +87,7 @@ void main() {
     setUp(() {
       cart = Cart();
       sandwichA = Sandwich(
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         type: SandwichType.veggieDelight,
@@ -96,6 +100,8 @@ void main() {
         isFootlong: true,
       );
 =======
+=======
+>>>>>>> 189705e (Add cart unit tests)
           name: 'A',
           isFootlong: false,
           breadType: BreadType.wheat,
@@ -105,6 +111,7 @@ void main() {
           isFootlong: true,
           breadType: BreadType.white,
           image: 'assets/images/b.png');
+<<<<<<< HEAD
 >>>>>>> 189705e (Add cart unit tests)
 =======
         type: SandwichType.veggieDelight,
@@ -117,6 +124,8 @@ void main() {
         breadType: BreadType.white,
       );
 >>>>>>> c5cc817 (Update the cart test)
+=======
+>>>>>>> 189705e (Add cart unit tests)
     });
 
     test('should start empty', () {
@@ -158,12 +167,15 @@ void main() {
       expect(cart.getQuantity(sandwichA), 1);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       expect(cart.length, 1);
 =======
 >>>>>>> 189705e (Add cart unit tests)
 =======
       expect(cart.length, 1);
 >>>>>>> c5cc817 (Update the cart test)
+=======
+>>>>>>> 189705e (Add cart unit tests)
     });
 
     test('should remove sandwich completely if quantity drops to zero', () {
@@ -192,6 +204,7 @@ void main() {
       expect(cart.getQuantity(sandwichB), 0);
     });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -267,10 +280,13 @@ void main() {
       cart.removeAll();
       expect(cart.items.isEmpty, true);
 =======
+=======
+>>>>>>> 189705e (Add cart unit tests)
     test('totalPrice calculates sum using PricingRepository', () {
       cart.add(sandwichA, quantity: 2); // 2 * 7 = 14
       cart.add(sandwichB, quantity: 1); // 1 * 11 = 11
       expect(cart.totalPrice, 25.0);
+<<<<<<< HEAD
 >>>>>>> 189705e (Add cart unit tests)
 =======
     test('totalPrice calculates sum using PricingRepository', () {
@@ -296,6 +312,8 @@ void main() {
       expect(cart.getQuantity(sandwichA), 0);
       expect(cart.isEmpty, isTrue);
 >>>>>>> c5cc817 (Update the cart test)
+=======
+>>>>>>> 189705e (Add cart unit tests)
     });
   });
 }
