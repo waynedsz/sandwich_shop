@@ -2590,6 +2590,7 @@ class StyledButton extends StatelessWidget {
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class OrderItemDisplay extends StatelessWidget {
   final int quantity;
@@ -3209,3 +3210,5 @@ class OrderItemDisplay extends StatelessWidget {
   }
 }
 >>>>>>> e4280a5 (Draft of code for branch 3)
+=======
+>>>>>>> ef463b3 (Remove OrderItemDisplay)
