@@ -91,27 +91,30 @@ void main() {
 >>>>>>> 2471fd2 (Update the sandwich test accordingly)
 =======
     test('should create a Sandwich with correct properties', () {
-      final sandwich = Sandwich(
-        name: 'Veggie Delight',
+      final Sandwich sandwich = Sandwich(
+        type: SandwichType.veggieDelight,
         isFootlong: true,
         breadType: BreadType.wholemeal,
-        image: 'assets/images/veggie.png',
       );
 
-      expect(sandwich.name, 'Veggie Delight');
+      expect(sandwich.type, SandwichType.veggieDelight);
       expect(sandwich.isFootlong, isTrue);
       expect(sandwich.breadType, BreadType.wholemeal);
-      expect(sandwich.image, 'assets/images/veggie.png');
+      expect(sandwich.name, 'Veggie Delight');
+      expect(sandwich.image, 'assets/images/veggieDelight_footlong.png');
     });
 
     test('should support all BreadType enum values', () {
-      for (final bread in BreadType.values) {
+      for (final BreadType bread in BreadType.values) {
         final sandwich = Sandwich(
-          name: 'Test',
+          type: SandwichType.tunaMelt,
           isFootlong: false,
           breadType: bread,
+<<<<<<< HEAD
           image: 'assets/images/test.png',
 >>>>>>> d01b10f (Add unit test for sandwich)
+=======
+>>>>>>> 2471fd2 (Update the sandwich test accordingly)
         );
         expect(sandwich.breadType, bread);
       }
@@ -120,6 +123,9 @@ void main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2471fd2 (Update the sandwich test accordingly)
 =======
 >>>>>>> 2471fd2 (Update the sandwich test accordingly)
     test('should support all SandwichType enum values and correct names', () {
@@ -132,6 +138,7 @@ void main() {
       for (final SandwichType type in SandwichType.values) {
         final Sandwich sandwich = Sandwich(
           type: type,
+<<<<<<< HEAD
 <<<<<<< HEAD
           isFootlong: false,
           breadType: BreadType.white,
@@ -224,47 +231,36 @@ void main() {
 =======
 >>>>>>> 2471fd2 (Update the sandwich test accordingly)
 =======
+=======
+>>>>>>> 2471fd2 (Update the sandwich test accordingly)
           isFootlong: false,
-          breadType: BreadType.wheat,
-          image: 'assets/images/empty.png',
-        ),
-        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('Name cannot be empty'))),
-      );
+          breadType: BreadType.white,
+        );
+        expect(sandwich.type, type);
+        expect(sandwich.name, expectedNames[type]);
+      }
     });
 
-    test('should throw if image is empty', () {
-      expect(
-        () => Sandwich(
-          name: 'No Image',
-          isFootlong: false,
-          breadType: BreadType.wheat,
-          image: '',
-        ),
-        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('Image must be a valid asset path'))),
-      );
-    });
-
-    test('should throw if image does not start with assets/images/', () {
-      expect(
-        () => Sandwich(
-          name: 'Bad Image',
-          isFootlong: false,
-          breadType: BreadType.wheat,
-          image: 'bad/path.png',
-        ),
-        throwsA(isA<ArgumentError>().having((e) => e.message, 'message', contains('Image must be a valid asset path'))),
-      );
-    });
-
-    test('should allow valid asset image paths', () {
+    test('should generate correct image path for footlong', () {
       final sandwich = Sandwich(
-        name: 'Valid Image',
+        type: SandwichType.chickenTeriyaki,
+        isFootlong: true,
+        breadType: BreadType.wheat,
+      );
+      expect(sandwich.image, 'assets/images/chickenTeriyaki_footlong.png');
+    });
+
+    test('should generate correct image path for six inch', () {
+      final sandwich = Sandwich(
+        type: SandwichType.meatballMarinara,
         isFootlong: false,
         breadType: BreadType.white,
-        image: 'assets/images/valid.png',
       );
-      expect(sandwich.image, 'assets/images/valid.png');
+      expect(sandwich.image, 'assets/images/meatballMarinara_six_inch.png');
     });
   });
 }
+<<<<<<< HEAD
 >>>>>>> d01b10f (Add unit test for sandwich)
+=======
+>>>>>>> 2471fd2 (Update the sandwich test accordingly)
