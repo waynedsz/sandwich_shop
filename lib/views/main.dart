@@ -1,6 +1,5 @@
-import 'package:sandwich_shop/models/sandwich.dart';
-import 'package:sandwich_shop/models/cart.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22,6 +21,9 @@ import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
 =======
+=======
+
+>>>>>>> 4c718f3 (Revert to the old main)
 import 'app_styles.dart';
 <<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
@@ -31,6 +33,12 @@ enum BreadType { white, wheat, wholemeal }
 >>>>>>> 5a7e299 (Use the order repo in main)
 =======
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
+
+import 'package:sandwich_shop/repositories/order_repository.dart';
+
+import 'package:sandwich_shop/repositories/pricing_repository.dart';
+
+enum BreadType { white, wheat, wholemeal }
 
 void main() {
   runApp(const App());
@@ -85,18 +93,28 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  final Cart _cart = Cart();
+  late final OrderRepository _orderRepository;
+
   final TextEditingController _notesController = TextEditingController();
 
-  SandwichType _selectedSandwichType = SandwichType.veggieDelight;
   bool _isFootlong = true;
+<<<<<<< HEAD
   bool _isToasted = false;
+=======
+
+>>>>>>> 4c718f3 (Revert to the old main)
   BreadType _selectedBreadType = BreadType.white;
-  int _quantity = 1;
+
+  late final PricingRepository _pricingRepository;
 
   @override
   void initState() {
     super.initState();
+
+    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
+
+    _pricingRepository = PricingRepository();
+
     _notesController.addListener(() {
       setState(() {});
     });
@@ -105,63 +123,54 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   void dispose() {
     _notesController.dispose();
+
     super.dispose();
   }
 
-  void _addToCart() {
-    if (_quantity > 0) {
-      final sandwich = Sandwich(
-        type: _selectedSandwichType,
-        isFootlong: _isFootlong,
-        breadType: _selectedBreadType,
-      );
-
-      setState(() {
-        _cart.add(sandwich, quantity: _quantity);
-      });
-
-      String sizeText;
-      if (_isFootlong) {
-        sizeText = 'footlong';
-      } else {
-        sizeText = 'six-inch';
-      }
-      String confirmationMessage =
-          'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
-
-      print(confirmationMessage);
+  VoidCallback? _getIncreaseCallback() {
+    if (_orderRepository.canIncrement) {
+      return () => setState(_orderRepository.increment);
     }
-  }
 
-  VoidCallback? _getAddToCartCallback() {
-    if (_quantity > 0) {
-      return _addToCart;
-    }
     return null;
   }
 
-  List<DropdownMenuEntry<SandwichType>> _buildSandwichTypeEntries() {
-    return SandwichType.values.map((type) {
-      return DropdownMenuEntry<SandwichType>(
-        value: type,
-        label:
-            Sandwich(type: type, isFootlong: true, breadType: BreadType.white)
-                .name,
-      );
-    }).toList();
+  VoidCallback? _getDecreaseCallback() {
+    if (_orderRepository.canDecrement) {
+      return () => setState(_orderRepository.decrement);
+    }
+
+    return null;
   }
 
-  List<DropdownMenuEntry<BreadType>> _buildBreadTypeEntries() {
-    return BreadType.values.map((bread) {
-      return DropdownMenuEntry<BreadType>(
+  void _onSandwichTypeChanged(bool value) {
+    setState(() => _isFootlong = value);
+  }
+
+  void _onBreadTypeSelected(BreadType? value) {
+    if (value != null) {
+      setState(() => _selectedBreadType = value);
+    }
+  }
+
+  List<DropdownMenuEntry<BreadType>> _buildDropdownEntries() {
+    List<DropdownMenuEntry<BreadType>> entries = [];
+
+    for (BreadType bread in BreadType.values) {
+      DropdownMenuEntry<BreadType> newEntry = DropdownMenuEntry<BreadType>(
         value: bread,
         label: bread.name,
       );
-    }).toList();
+
+      entries.add(newEntry);
+    }
+
+    return entries;
   }
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     final pricingRepository = PricingRepository(
@@ -170,26 +179,40 @@ class _OrderScreenState extends State<OrderScreen> {
     );
     final totalPrice = pricingRepository.getTotalPrice();
 =======
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
     final double totalPrice = _pricingRepository.calculatePrice(
       quantity: _orderRepository.quantity,
       isFootlong: _isFootlong,
     );
 
+<<<<<<< HEAD
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
     String sandwichType = 'footlong';
+=======
+    String sandwichType = 'footlong';
+
+>>>>>>> 4c718f3 (Revert to the old main)
     if (!_isFootlong) {
       sandwichType = 'six-inch';
     }
 
     String noteForDisplay;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c718f3 (Revert to the old main)
     if (_notesController.text.isEmpty) {
       noteForDisplay = 'No notes added.';
     } else {
       noteForDisplay = _notesController.text;
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -197,10 +220,12 @@ class _OrderScreenState extends State<OrderScreen> {
           style: heading1,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OrderItemDisplay(
@@ -209,14 +234,18 @@ class _OrderScreenState extends State<OrderScreen> {
               breadType: _selectedBreadType,
               orderNote: noteForDisplay,
             ),
+<<<<<<< HEAD
             Text(
               'Total Price: £${totalPrice.toStringAsFixed(2)}',
               style: heading1,
             ),
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
             const SizedBox(height: 20),
             Text(
               'Total Price: £${totalPrice.toStringAsFixed(2)}',
               style: heading2,
+<<<<<<< HEAD
 =======
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -232,22 +261,23 @@ class _OrderScreenState extends State<OrderScreen> {
               },
               dropdownMenuEntries: _buildSandwichTypeEntries(),
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
             ),
-
             const SizedBox(height: 20),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Six-inch', style: normalText),
+                const Text('six-inch', style: normalText),
                 Switch(
                   key: const Key('sandwichTypeSwitch'),
                   value: _isFootlong,
-                  onChanged: (value) => setState(() => _isFootlong = value),
+                  onChanged: _onSandwichTypeChanged,
                 ),
-                const Text('Footlong', style: normalText),
+                const Text('footlong', style: normalText),
               ],
             ),
+<<<<<<< HEAD
 <<<<<<< HEAD
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -656,37 +686,46 @@ class _LandingPageState extends State<LandingPage> {
 
             const SizedBox(height: 20),
 
+=======
+            const SizedBox(height: 10),
+>>>>>>> 4c718f3 (Revert to the old main)
             DropdownMenu<BreadType>(
-              width: double.infinity,
-              label: const Text('Bread Type'),
               textStyle: normalText,
               initialSelection: _selectedBreadType,
-              onSelected: (BreadType? value) {
-                if (value != null) {
-                  setState(() => _selectedBreadType = value);
-                }
-              },
-              dropdownMenuEntries: _buildBreadTypeEntries(),
+              onSelected: _onBreadTypeSelected,
+              dropdownMenuEntries: _buildDropdownEntries(),
             ),
-
             const SizedBox(height: 20),
-
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: TextField(
+                key: const Key('notes_textfield'),
+                controller: _notesController,
+                decoration: const InputDecoration(
+                  labelText: 'Add a note (e.g., no onions)',
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Quantity: ', style: normalText),
-                IconButton(
-                  onPressed:
-                      _quantity > 0 ? () => setState(() => _quantity--) : null,
-                  icon: const Icon(Icons.remove),
+                StyledButton(
+                  onPressed: _getIncreaseCallback(),
+                  icon: Icons.add,
+                  label: 'Add',
+                  backgroundColor: Colors.green,
                 ),
-                Text('$_quantity', style: heading2),
-                IconButton(
-                  onPressed: () => setState(() => _quantity++),
-                  icon: const Icon(Icons.add),
+                const SizedBox(width: 8),
+                StyledButton(
+                  onPressed: _getDecreaseCallback(),
+                  icon: Icons.remove,
+                  label: 'Remove',
+                  backgroundColor: Colors.red,
                 ),
               ],
             ),
+<<<<<<< HEAD
 
             const SizedBox(height: 20),
 
@@ -706,6 +745,8 @@ class _LandingPageState extends State<LandingPage> {
               textAlign: TextAlign.center,
             ),
 >>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
+=======
+>>>>>>> 4c718f3 (Revert to the old main)
           ],
 =======
           children: <Widget>[selectMenuButton, buildOwnButton],
@@ -1099,8 +1140,11 @@ class _OrderScreenState extends State<OrderScreen> {
 
 class StyledButton extends StatelessWidget {
   final VoidCallback? onPressed;
+
   final IconData icon;
+
   final String label;
+
   final Color backgroundColor;
 
   const StyledButton({
@@ -1135,8 +1179,11 @@ class StyledButton extends StatelessWidget {
 
 class OrderItemDisplay extends StatelessWidget {
   final int quantity;
+
   final String itemType;
+
   final BreadType breadType;
+
   final String orderNote;
 
   const OrderItemDisplay({
