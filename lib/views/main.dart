@@ -1357,6 +1357,7 @@ class StyledButton extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 
 class OrderItemDisplay extends StatelessWidget {
   final int quantity;
@@ -1612,3 +1613,5 @@ class OrderItemDisplay extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> ef463b3 (Remove OrderItemDisplay)
