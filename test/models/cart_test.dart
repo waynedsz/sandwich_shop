@@ -90,6 +90,7 @@ void main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         type: SandwichType.veggieDelight,
         breadType: BreadType.white,
         isFootlong: false,
@@ -119,13 +120,23 @@ void main() {
         breadType: BreadType.wheat,
       );
       sandwichB = Sandwich(
+=======
+        type: SandwichType.veggieDelight,
+        isFootlong: false,
+        breadType: BreadType.wheat,
+      );
+      sandwichB = Sandwich(
+>>>>>>> c5cc817 (Update the cart test)
         type: SandwichType.chickenTeriyaki,
         isFootlong: true,
         breadType: BreadType.white,
       );
+<<<<<<< HEAD
 >>>>>>> c5cc817 (Update the cart test)
 =======
 >>>>>>> 189705e (Add cart unit tests)
+=======
+>>>>>>> c5cc817 (Update the cart test)
     });
 
     test('should start empty', () {
@@ -168,6 +179,7 @@ void main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       expect(cart.length, 1);
 =======
 >>>>>>> 189705e (Add cart unit tests)
@@ -176,6 +188,9 @@ void main() {
 >>>>>>> c5cc817 (Update the cart test)
 =======
 >>>>>>> 189705e (Add cart unit tests)
+=======
+      expect(cart.length, 1);
+>>>>>>> c5cc817 (Update the cart test)
     });
 
     test('should remove sandwich completely if quantity drops to zero', () {
@@ -207,6 +222,9 @@ void main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c5cc817 (Update the cart test)
 =======
 >>>>>>> c5cc817 (Update the cart test)
     test('items getter is unmodifiable', () {
@@ -215,6 +233,7 @@ void main() {
       expect(() => items[sandwichB] = 2, throwsUnsupportedError);
     });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     test('totalPrice calculates sum using PricingRepository', () {
 <<<<<<< HEAD
@@ -290,6 +309,9 @@ void main() {
 >>>>>>> 189705e (Add cart unit tests)
 =======
     test('totalPrice calculates sum using PricingRepository', () {
+=======
+    test('totalPrice calculates sum using PricingRepository', () {
+>>>>>>> c5cc817 (Update the cart test)
       cart.add(sandwichA, quantity: 2);
       cart.add(sandwichB, quantity: 1);
       expect(cart.totalPrice, isA<double>());
@@ -311,9 +333,12 @@ void main() {
       cart.remove(sandwichA, quantity: 5);
       expect(cart.getQuantity(sandwichA), 0);
       expect(cart.isEmpty, isTrue);
+<<<<<<< HEAD
 >>>>>>> c5cc817 (Update the cart test)
 =======
 >>>>>>> 189705e (Add cart unit tests)
+=======
+>>>>>>> c5cc817 (Update the cart test)
     });
   });
 }
