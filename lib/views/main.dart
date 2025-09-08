@@ -2315,10 +2315,14 @@ class _OrderScreenState extends State<OrderScreen> {
       ),
       body: Center(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+<<<<<<< HEAD
               // --- Cart Summary Widget ---
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -2432,6 +2436,22 @@ class _OrderScreenState extends State<OrderScreen> {
                     },
                   ),
                 ),
+=======
+              SizedBox(
+                height: 200,
+                child: Image.asset(
+                  _getCurrentImagePath(),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Text(
+                        'Image not found',
+                        style: normalText,
+                      ),
+                    );
+                  },
+                ),
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
               ),
               const SizedBox(height: 20),
               DropdownMenu<SandwichType>(
@@ -2439,7 +2459,15 @@ class _OrderScreenState extends State<OrderScreen> {
                 label: const Text('Sandwich Type'),
                 textStyle: normalText,
                 initialSelection: _selectedSandwichType,
+<<<<<<< HEAD
                 onSelected: _onSandwichTypeChanged,
+=======
+                onSelected: (SandwichType? value) {
+                  if (value != null) {
+                    setState(() => _selectedSandwichType = value);
+                  }
+                },
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
                 dropdownMenuEntries: _buildSandwichTypeEntries(),
               ),
               const SizedBox(height: 20),
@@ -2449,7 +2477,11 @@ class _OrderScreenState extends State<OrderScreen> {
                   const Text('Six-inch', style: normalText),
                   Switch(
                     value: _isFootlong,
+<<<<<<< HEAD
                     onChanged: _onSizeChanged,
+=======
+                    onChanged: (value) => setState(() => _isFootlong = value),
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
                   ),
                   const Text('Footlong', style: normalText),
                 ],
@@ -2460,7 +2492,15 @@ class _OrderScreenState extends State<OrderScreen> {
                 label: const Text('Bread Type'),
                 textStyle: normalText,
                 initialSelection: _selectedBreadType,
+<<<<<<< HEAD
                 onSelected: _onBreadTypeChanged,
+=======
+                onSelected: (BreadType? value) {
+                  if (value != null) {
+                    setState(() => _selectedBreadType = value);
+                  }
+                },
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
                 dropdownMenuEntries: _buildBreadTypeEntries(),
               ),
               const SizedBox(height: 20),
@@ -2469,12 +2509,22 @@ class _OrderScreenState extends State<OrderScreen> {
                 children: [
                   const Text('Quantity: ', style: normalText),
                   IconButton(
+<<<<<<< HEAD
                     onPressed: _getDecreaseCallback(),
+=======
+                    onPressed: _quantity > 0
+                        ? () => setState(() => _quantity--)
+                        : null,
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
                     icon: const Icon(Icons.remove),
                   ),
                   Text('$_quantity', style: heading2),
                   IconButton(
+<<<<<<< HEAD
                     onPressed: _increaseQuantity,
+=======
+                    onPressed: () => setState(() => _quantity++),
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
                     icon: const Icon(Icons.add),
                   ),
                 ],
@@ -2487,8 +2537,11 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.green,
               ),
               const SizedBox(height: 20),
+<<<<<<< HEAD
 =======
 >>>>>>> 948df75 (Add summary text)
+=======
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
             ],
           ),
         ),
