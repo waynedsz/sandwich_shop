@@ -1,3 +1,5 @@
+import 'package:sandwich_shop/models/sandwich.dart';
+import 'package:sandwich_shop/models/cart.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21,11 +23,14 @@ import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 40459b4 (Added a import to fix errors)
 =======
 import 'app_styles.dart';
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 enum BreadType { white, wheat, wholemeal }
 >>>>>>> 5a7e299 (Use the order repo in main)
+=======
+>>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
 
 void main() {
   runApp(const App());
@@ -80,18 +85,18 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  late final OrderRepository _orderRepository;
+  final Cart _cart = Cart();
   final TextEditingController _notesController = TextEditingController();
+
+  SandwichType _selectedSandwichType = SandwichType.veggieDelight;
   bool _isFootlong = true;
   bool _isToasted = false;
   BreadType _selectedBreadType = BreadType.white;
-  late final PricingRepository _pricingRepository;
+  int _quantity = 1;
 
   @override
   void initState() {
     super.initState();
-    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
-    _pricingRepository = PricingRepository();
     _notesController.addListener(() {
       setState(() {});
     });
@@ -103,44 +108,61 @@ class _OrderScreenState extends State<OrderScreen> {
     super.dispose();
   }
 
-  VoidCallback? _getIncreaseCallback() {
-    if (_orderRepository.canIncrement) {
-      return () => setState(_orderRepository.increment);
+  void _addToCart() {
+    if (_quantity > 0) {
+      final sandwich = Sandwich(
+        type: _selectedSandwichType,
+        isFootlong: _isFootlong,
+        breadType: _selectedBreadType,
+      );
+
+      setState(() {
+        _cart.add(sandwich, quantity: _quantity);
+      });
+
+      String sizeText;
+      if (_isFootlong) {
+        sizeText = 'footlong';
+      } else {
+        sizeText = 'six-inch';
+      }
+      String confirmationMessage =
+          'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
+
+      print(confirmationMessage);
+    }
+  }
+
+  VoidCallback? _getAddToCartCallback() {
+    if (_quantity > 0) {
+      return _addToCart;
     }
     return null;
   }
 
-  VoidCallback? _getDecreaseCallback() {
-    if (_orderRepository.canDecrement) {
-      return () => setState(_orderRepository.decrement);
-    }
-    return null;
+  List<DropdownMenuEntry<SandwichType>> _buildSandwichTypeEntries() {
+    return SandwichType.values.map((type) {
+      return DropdownMenuEntry<SandwichType>(
+        value: type,
+        label:
+            Sandwich(type: type, isFootlong: true, breadType: BreadType.white)
+                .name,
+      );
+    }).toList();
   }
 
-  void _onSandwichTypeChanged(bool value) {
-    setState(() => _isFootlong = value);
-  }
-
-  void _onBreadTypeSelected(BreadType? value) {
-    if (value != null) {
-      setState(() => _selectedBreadType = value);
-    }
-  }
-
-  List<DropdownMenuEntry<BreadType>> _buildDropdownEntries() {
-    List<DropdownMenuEntry<BreadType>> entries = [];
-    for (BreadType bread in BreadType.values) {
-      DropdownMenuEntry<BreadType> newEntry = DropdownMenuEntry<BreadType>(
+  List<DropdownMenuEntry<BreadType>> _buildBreadTypeEntries() {
+    return BreadType.values.map((bread) {
+      return DropdownMenuEntry<BreadType>(
         value: bread,
         label: bread.name,
       );
-      entries.add(newEntry);
-    }
-    return entries;
+    }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     final pricingRepository = PricingRepository(
       quantity: _orderRepository.quantity,
@@ -166,6 +188,8 @@ class _OrderScreenState extends State<OrderScreen> {
       noteForDisplay = _notesController.text;
     }
 
+=======
+>>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -173,8 +197,10 @@ class _OrderScreenState extends State<OrderScreen> {
           style: heading1,
         ),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+<<<<<<< HEAD
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OrderItemDisplay(
@@ -191,20 +217,38 @@ class _OrderScreenState extends State<OrderScreen> {
             Text(
               'Total Price: £${totalPrice.toStringAsFixed(2)}',
               style: heading2,
+=======
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            DropdownMenu<SandwichType>(
+              width: double.infinity,
+              label: const Text('Sandwich Type'),
+              textStyle: normalText,
+              initialSelection: _selectedSandwichType,
+              onSelected: (SandwichType? value) {
+                if (value != null) {
+                  setState(() => _selectedSandwichType = value);
+                }
+              },
+              dropdownMenuEntries: _buildSandwichTypeEntries(),
+>>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
             ),
+
             const SizedBox(height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('six-inch', style: normalText),
+                const Text('Six-inch', style: normalText),
                 Switch(
                   key: const Key('sandwichTypeSwitch'),
                   value: _isFootlong,
-                  onChanged: _onSandwichTypeChanged,
+                  onChanged: (value) => setState(() => _isFootlong = value),
                 ),
-                const Text('footlong', style: normalText),
+                const Text('Footlong', style: normalText),
               ],
             ),
+<<<<<<< HEAD
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -608,6 +652,60 @@ class _LandingPageState extends State<LandingPage> {
             const SizedBox(height: 16),
             buildOwnButton,
 >>>>>>> 816cadc (first commit)
+=======
+
+            const SizedBox(height: 20),
+
+            DropdownMenu<BreadType>(
+              width: double.infinity,
+              label: const Text('Bread Type'),
+              textStyle: normalText,
+              initialSelection: _selectedBreadType,
+              onSelected: (BreadType? value) {
+                if (value != null) {
+                  setState(() => _selectedBreadType = value);
+                }
+              },
+              dropdownMenuEntries: _buildBreadTypeEntries(),
+            ),
+
+            const SizedBox(height: 20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Quantity: ', style: normalText),
+                IconButton(
+                  onPressed:
+                      _quantity > 0 ? () => setState(() => _quantity--) : null,
+                  icon: const Icon(Icons.remove),
+                ),
+                Text('$_quantity', style: heading2),
+                IconButton(
+                  onPressed: () => setState(() => _quantity++),
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            StyledButton(
+              onPressed: _getAddToCartCallback(),
+              icon: Icons.add_shopping_cart,
+              label: 'Add to Cart',
+              backgroundColor: Colors.green,
+            ),
+
+            const SizedBox(height: 20),
+
+            // Simple cart display
+            Text(
+              'Cart has ${_cart.length} item(s)',
+              style: normalText,
+              textAlign: TextAlign.center,
+            ),
+>>>>>>> 9b1ece5 (Update main.dart based on worksheet 5)
           ],
 =======
           children: <Widget>[selectMenuButton, buildOwnButton],
