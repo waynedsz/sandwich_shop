@@ -98,6 +98,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+<<<<<<< HEAD
     - assets/images/
 =======
   flutter_lints: ^5.0.0
@@ -142,3 +143,6 @@ flutter:
 >>>>>>> 816cadc (first commit)
 =======
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+    - assets/images/
+>>>>>>> cbb25ee (Add assets to pubspec)
