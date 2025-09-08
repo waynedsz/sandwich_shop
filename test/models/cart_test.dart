@@ -85,6 +85,7 @@ void main() {
       cart = Cart();
       sandwichA = Sandwich(
 <<<<<<< HEAD
+<<<<<<< HEAD
         type: SandwichType.veggieDelight,
         breadType: BreadType.white,
         isFootlong: false,
@@ -105,6 +106,17 @@ void main() {
           breadType: BreadType.white,
           image: 'assets/images/b.png');
 >>>>>>> 189705e (Add cart unit tests)
+=======
+        type: SandwichType.veggieDelight,
+        isFootlong: false,
+        breadType: BreadType.wheat,
+      );
+      sandwichB = Sandwich(
+        type: SandwichType.chickenTeriyaki,
+        isFootlong: true,
+        breadType: BreadType.white,
+      );
+>>>>>>> c5cc817 (Update the cart test)
     });
 
     test('should start empty', () {
@@ -145,9 +157,13 @@ void main() {
       cart.remove(sandwichA, quantity: 2);
       expect(cart.getQuantity(sandwichA), 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
       expect(cart.length, 1);
 =======
 >>>>>>> 189705e (Add cart unit tests)
+=======
+      expect(cart.length, 1);
+>>>>>>> c5cc817 (Update the cart test)
     });
 
     test('should remove sandwich completely if quantity drops to zero', () {
@@ -177,12 +193,16 @@ void main() {
     });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c5cc817 (Update the cart test)
     test('items getter is unmodifiable', () {
       cart.add(sandwichA);
       final Map<Sandwich, int> items = cart.items;
       expect(() => items[sandwichB] = 2, throwsUnsupportedError);
     });
 
+<<<<<<< HEAD
     test('totalPrice calculates sum using PricingRepository', () {
 <<<<<<< HEAD
       cart.add(sandwichA, quantity: 2); // 2 * 7 = 14
@@ -252,6 +272,30 @@ void main() {
       cart.add(sandwichB, quantity: 1); // 1 * 11 = 11
       expect(cart.totalPrice, 25.0);
 >>>>>>> 189705e (Add cart unit tests)
+=======
+    test('totalPrice calculates sum using PricingRepository', () {
+      cart.add(sandwichA, quantity: 2);
+      cart.add(sandwichB, quantity: 1);
+      expect(cart.totalPrice, isA<double>());
+      expect(cart.totalPrice, greaterThan(0));
+    });
+
+    test('should handle adding and removing multiple sandwiches correctly', () {
+      cart.add(sandwichA, quantity: 2);
+      cart.add(sandwichB, quantity: 3);
+      cart.remove(sandwichA, quantity: 1);
+      cart.remove(sandwichB, quantity: 2);
+      expect(cart.getQuantity(sandwichA), 1);
+      expect(cart.getQuantity(sandwichB), 1);
+      expect(cart.length, 2);
+    });
+
+    test('should not allow negative quantities', () {
+      cart.add(sandwichA, quantity: 2);
+      cart.remove(sandwichA, quantity: 5);
+      expect(cart.getQuantity(sandwichA), 0);
+      expect(cart.isEmpty, isTrue);
+>>>>>>> c5cc817 (Update the cart test)
     });
   });
 }
