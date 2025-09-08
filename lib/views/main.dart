@@ -246,6 +246,13 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 06067ae (Simplify main)
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 100,
+            child: Image.asset('assets/images/logo.png'),
+          ),
+        ),
         title: const Text(
           'Sandwich Counter',
           style: heading1,
@@ -851,7 +858,7 @@ class _LandingPageState extends State<LandingPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: 200,
+                height: 400,
                 child: Image.asset(
                   _getCurrentImagePath(),
                   fit: BoxFit.cover,
