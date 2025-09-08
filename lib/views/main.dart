@@ -1875,7 +1875,11 @@ class _LandingPageState extends State<LandingPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
+<<<<<<< HEAD
                 height: 300,
+=======
+                height: 400,
+>>>>>>> 18eafbd (Add the logo to appbar)
                 child: Image.asset(
                   _getCurrentImagePath(),
                   fit: BoxFit.cover,
