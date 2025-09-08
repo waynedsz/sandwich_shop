@@ -549,6 +549,7 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 4c718f3 (Revert to the old main)
 =======
       body: Center(
+<<<<<<< HEAD
         child: Column(
 <<<<<<< HEAD
           mainAxisAlignment: MainAxisAlignment.center,
@@ -1408,6 +1409,27 @@ class _LandingPageState extends State<LandingPage> {
                   },
                 ),
               ),
+=======
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: 200,
+                child: Image.asset(
+                  _getCurrentImagePath(),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Text(
+                        'Image not found',
+                        style: normalText,
+                      ),
+                    );
+                  },
+                ),
+              ),
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
               const SizedBox(height: 20),
               DropdownMenu<SandwichType>(
                 width: double.infinity,
@@ -1472,12 +1494,17 @@ class _LandingPageState extends State<LandingPage> {
                 backgroundColor: Colors.green,
               ),
               const SizedBox(height: 20),
+<<<<<<< HEAD
               Text(
                 'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
                 style: normalText,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
+            ],
+          ),
+>>>>>>> 50c98de (Add a SingleChildScrollView to the column)
+=======
             ],
           ),
 >>>>>>> 50c98de (Add a SingleChildScrollView to the column)
