@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -49,6 +50,9 @@ import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 >>>>>>> 06067ae (Simplify main)
+=======
+import 'package:sandwich_shop/views/order_screen_view.dart';
+>>>>>>> 6ba2694 (Move order screen to its own view)
 
 void main() {
   runApp(const App());
@@ -90,6 +94,7 @@ class App extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -1637,3 +1642,5 @@ class OrderItemDisplay extends StatelessWidget {
 }
 =======
 >>>>>>> ef463b3 (Remove OrderItemDisplay)
+=======
+>>>>>>> 6ba2694 (Move order screen to its own view)
