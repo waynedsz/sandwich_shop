@@ -1056,8 +1056,12 @@ void main() {
 
       expect(find.text('Sandwich Counter'), findsOneWidget);
 
+<<<<<<< HEAD
       expect(find.byType(Image), findsOneWidget);
 >>>>>>> f1772b8 (Update widget_test)
+=======
+      expect(find.byType(Image), findsNWidgets(2));
+>>>>>>> ede51d1 (Add tests for the confirmation message)
 
       expect(find.text('Veggie Delight'), findsWidgets);
 
@@ -1648,6 +1652,23 @@ void main() {
   });
 
   group('OrderScreen - Interactions', () {
+    testWidgets('shows SnackBar confirmation when item is added to cart',
+        (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      final Finder addToCartButtonFinder =
+          find.widgetWithText(StyledButton, 'Add to Cart');
+      await tester.ensureVisible(addToCartButtonFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(addToCartButtonFinder);
+      await tester.pumpAndSettle();
+
+      const String expectedMessage =
+          'Added 1 footlong Veggie Delight sandwich(es) on white bread to cart';
+
+      expect(find.text(expectedMessage), findsOneWidget);
+    });
     testWidgets('updates sandwich type when a new option is selected',
         (WidgetTester tester) async {
       const App app = App();
@@ -1702,8 +1723,10 @@ void main() {
       await tester.pumpWidget(app);
 
       final Finder addButtonFinder = find.byIcon(Icons.add);
+      await tester.ensureVisible(addButtonFinder);
+      await tester.pumpAndSettle();
       await tester.tap(addButtonFinder);
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('2'), findsOneWidget);
     });
@@ -1714,13 +1737,17 @@ void main() {
       await tester.pumpWidget(app);
 
       final Finder addButtonFinder = find.byIcon(Icons.add);
+      await tester.ensureVisible(addButtonFinder);
+      await tester.pumpAndSettle();
       await tester.tap(addButtonFinder);
-      await tester.pump();
+      await tester.pumpAndSettle();
       expect(find.text('2'), findsOneWidget);
 
       final Finder removeButtonFinder = find.byIcon(Icons.remove);
+      await tester.ensureVisible(removeButtonFinder);
+      await tester.pumpAndSettle();
       await tester.tap(removeButtonFinder);
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('1'), findsOneWidget);
     });
@@ -1732,8 +1759,10 @@ void main() {
 
       final Finder removeButtonFinder =
           find.widgetWithIcon(IconButton, Icons.remove);
+      await tester.ensureVisible(removeButtonFinder);
+      await tester.pumpAndSettle();
       await tester.tap(removeButtonFinder);
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('0'), findsOneWidget);
       IconButton removeButton = tester.widget<IconButton>(removeButtonFinder);
@@ -1745,8 +1774,10 @@ void main() {
           tester.widget<StyledButton>(addToCartButtonFinder);
       expect(styledButton.onPressed, isNull);
 
+      await tester.ensureVisible(removeButtonFinder);
+      await tester.pumpAndSettle();
       await tester.tap(removeButtonFinder);
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('0'), findsOneWidget);
     });
