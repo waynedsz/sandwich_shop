@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -42,6 +43,9 @@ import 'package:sandwich_shop/repositories/pricing_repository.dart';
 enum BreadType { white, wheat, wholemeal }
 =======
 import 'app_styles.dart';
+=======
+import 'package:sandwich_shop/views/app_styles.dart';
+>>>>>>> 212586f (Move main.dart back to lib):lib/main.dart
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 >>>>>>> 06067ae (Simplify main)
