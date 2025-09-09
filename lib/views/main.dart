@@ -1980,6 +1980,9 @@ class _LandingPageState extends State<LandingPage> {
               const SizedBox(height: 20),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 948df75 (Add summary text)
 =======
 >>>>>>> 948df75 (Add summary text)
               Text(
@@ -1988,6 +1991,7 @@ class _LandingPageState extends State<LandingPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
+<<<<<<< HEAD
 <<<<<<< HEAD
             ],
           ),
@@ -2546,6 +2550,8 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 948df75 (Add summary text)
 =======
 >>>>>>> 50c98de (Add a SingleChildScrollView to the column)
+=======
+>>>>>>> 948df75 (Add summary text)
             ],
           ),
         ),
