@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 >>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 =======
 import 'package:flutter/material.dart';
@@ -28,6 +29,9 @@ import 'package:sandwich_shop/main.dart';
 =======
 import 'package:sandwich_shop/views/main.dart';
 >>>>>>> cdd80e0 (Move UIs to views)
+=======
+import 'package:sandwich_shop/main.dart';
+>>>>>>> 816369a (Move main.dart back to lib and update references)
 
 void main() {
 <<<<<<< HEAD

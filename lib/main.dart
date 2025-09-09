@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 =======
 import 'package:sandwich_shop/repositories/PricingRepository.dart';
 >>>>>>> 70d9ab4 (Added a pricing repository, unit testing for it and display)
+=======
+>>>>>>> 816369a (Move main.dart back to lib and update references):lib/main.dart
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
