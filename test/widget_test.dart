@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
@@ -12,6 +13,8 @@
 // placeholder SnackBar.
 =======
 import 'package:flutter/material.dart';
+=======
+>>>>>>> ec4bfdf (Remove unused import from widget_test.dart)
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
 import 'package:sandwich_shop/views/main.dart';
