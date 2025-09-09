@@ -941,6 +941,12 @@ class _LandingPageState extends State<LandingPage> {
                 backgroundColor: Colors.green,
               ),
               const SizedBox(height: 20),
+              Text(
+                'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
+                style: normalText,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
             ],
           ),
 >>>>>>> 50c98de (Add a SingleChildScrollView to the column)
