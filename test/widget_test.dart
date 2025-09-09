@@ -20,11 +20,15 @@ import 'package:sandwich_shop/views/main.dart';
 =======
 =======
 import 'package:sandwich_shop/main.dart';
+<<<<<<< HEAD
 >>>>>>> 212586f (Move main.dart back to lib)
 import 'package:sandwich_shop/models/sandwich.dart';
 
 void dummyFunction() {}
 >>>>>>> f1772b8 (Update widget_test)
+=======
+import 'package:sandwich_shop/views/order_screen_view.dart';
+>>>>>>> 7508644 (widget_test dart is only for main)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -512,6 +516,7 @@ void main() {
       expect(find.byType(OrderScreen), findsOneWidget);
     });
   });
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1242,4 +1247,6 @@ void main() {
     });
 >>>>>>> 26da1cf (📝 Update widget tests for Sandwich Shop application)
   });
+=======
+>>>>>>> 7508644 (widget_test dart is only for main)
 }
