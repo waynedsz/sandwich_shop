@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
@@ -29,6 +30,8 @@ import 'package:flutter/material.dart';
 =======
 import 'package:flutter/material.dart';
 >>>>>>> dbe9ace (📝 Refactor widget_test.dart to improve order screen interaction tests and enhance clarity)
+=======
+>>>>>>> ec4bfdf (Remove unused import from widget_test.dart)
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
