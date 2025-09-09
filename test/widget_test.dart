@@ -34,6 +34,7 @@ import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/views/main.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -66,6 +67,9 @@ import 'package:sandwich_shop/views/order_screen.dart';
 import 'package:sandwich_shop/views/main.dart';
 >>>>>>> cdd80e0 (Move UIs to views)
 =======
+=======
+import 'package:sandwich_shop/main.dart';
+>>>>>>> 212586f (Move main.dart back to lib)
 import 'package:sandwich_shop/models/sandwich.dart';
 
 void dummyFunction() {}
