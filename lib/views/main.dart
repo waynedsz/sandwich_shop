@@ -1495,12 +1495,16 @@ class _LandingPageState extends State<LandingPage> {
               ),
               const SizedBox(height: 20),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 948df75 (Add summary text)
               Text(
                 'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
                 style: normalText,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
+<<<<<<< HEAD
             ],
           ),
 >>>>>>> 50c98de (Add a SingleChildScrollView to the column)
@@ -1966,6 +1970,8 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.green,
               ),
               const SizedBox(height: 20),
+=======
+>>>>>>> 948df75 (Add summary text)
             ],
           ),
         ),
