@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -60,6 +61,9 @@ class ProfileScreen extends StatelessWidget {
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:provider/provider.dart';
 import 'package:sandwich_shop/models/cart.dart';
+=======
+import 'package:sandwich_shop/views/app_styles.dart';
+>>>>>>> 4aae054 (Add the link to the profile)
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -114,6 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -142,13 +147,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ],
+=======
+        title: const Text('Profile', style: heading1),
+>>>>>>> 4aae054 (Add the link to the profile)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+<<<<<<< HEAD
             Text('Enter your details:', style: heading2),
+=======
+            const Text('Enter your details:', style: heading2),
+>>>>>>> 4aae054 (Add the link to the profile)
             const SizedBox(height: 20),
             TextField(
               controller: _nameController,
@@ -169,6 +181,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ElevatedButton(
               onPressed: _saveProfile,
               child: const Text('Save Profile'),
+<<<<<<< HEAD
+>>>>>>> 4aae054 (Add the link to the profile)
+=======
 >>>>>>> 4aae054 (Add the link to the profile)
             ),
           ],

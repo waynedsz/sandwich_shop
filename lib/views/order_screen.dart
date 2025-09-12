@@ -4,6 +4,7 @@ import 'package:sandwich_shop/views/cart_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 <<<<<<< HEAD:lib/views/order_screen.dart
+<<<<<<< HEAD:lib/views/order_screen.dart
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 =======
 import 'package:sandwich_shop/views/profile_screen.dart';
@@ -20,6 +21,9 @@ import 'package:sandwich_shop/views/settings_screen.dart';
 =======
 import 'package:sandwich_shop/views/common_widgets.dart';
 >>>>>>> f912bed (Removed duplicates and imported common_widgets)
+=======
+import 'package:sandwich_shop/views/profile_screen.dart';
+>>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -309,6 +313,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.purple,
               ),
               const SizedBox(height: 20),
+<<<<<<< HEAD:lib/views/order_screen.dart
               StyledButton(
                 onPressed: _navigateToSettings,
                 icon: Icons.settings,
@@ -323,6 +328,12 @@ class _OrderScreenState extends State<OrderScreen> {
                     textAlign: TextAlign.center,
                   );
                 },
+=======
+              Text(
+                'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
+                style: normalText,
+                textAlign: TextAlign.center,
+>>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
               ),
               const SizedBox(height: 20),
             ],
