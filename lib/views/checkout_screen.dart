@@ -43,6 +43,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     final Cart cart = Provider.of<Cart>(context, listen: false);
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
@@ -69,6 +70,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     if (mounted) {
 =======
     final Map<String, dynamic> orderConfirmation = {
+=======
+    final Map orderConfirmation = {
+>>>>>>> 37af532 (Simplify cart and checkout screens)
       'orderId': orderId,
       'totalAmount': widget.cart.totalPrice,
       'itemCount': widget.cart.countOfItems,
