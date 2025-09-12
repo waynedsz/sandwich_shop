@@ -3,7 +3,11 @@ import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/views/cart_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
+<<<<<<< HEAD:lib/views/order_screen.dart
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
+=======
+import 'package:sandwich_shop/views/profile_screen.dart';
+>>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -37,6 +41,36 @@ class _OrderScreenState extends State<OrderScreen> {
   void dispose() {
     _notesController.dispose();
     super.dispose();
+  }
+
+  Future<void> _navigateToProfile() async {
+    final Map<String, String>? result =
+        await Navigator.push<Map<String, String>>(
+      context,
+      MaterialPageRoute<Map<String, String>>(
+        builder: (BuildContext context) => const ProfileScreen(),
+      ),
+    );
+
+    final bool hasResult = result != null;
+    final bool widgetStillMounted = mounted;
+
+    if (hasResult && widgetStillMounted) {
+      _showWelcomeMessage(result);
+    }
+  }
+
+  void _showWelcomeMessage(Map<String, String> profileData) {
+    final String name = profileData['name']!;
+    final String location = profileData['location']!;
+    final String welcomeMessage = 'Welcome, $name! Ordering from $location';
+
+    final SnackBar welcomeSnackBar = SnackBar(
+      content: Text(welcomeMessage),
+      duration: const Duration(seconds: 3),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(welcomeSnackBar);
   }
 
   void _addToCart() {
@@ -213,6 +247,13 @@ class _OrderScreenState extends State<OrderScreen> {
                 icon: Icons.shopping_cart,
                 label: 'View Cart',
                 backgroundColor: Colors.blue,
+              ),
+              const SizedBox(height: 20),
+              StyledButton(
+                onPressed: _navigateToProfile,
+                icon: Icons.person,
+                label: 'Profile',
+                backgroundColor: Colors.purple,
               ),
               const SizedBox(height: 20),
               Text(
