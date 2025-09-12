@@ -308,6 +308,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ElevatedButton(
           onPressed: _processPayment,
 <<<<<<< HEAD
+<<<<<<< HEAD
           child: const Text('Confirm Payment', style: normalText),
         ),
       );
@@ -344,6 +345,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     }
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> ef53ff8 (Add the checkout page)
           child: const Text('Confirm Payment', style: normalText),
         ),
       );
@@ -418,6 +421,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       appBar: AppBar(
         title: const Text('Checkout', style: heading1),
       ),
+<<<<<<< HEAD
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -552,6 +556,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
         ),
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+      body: Column(
+        children: columnChildren,
+>>>>>>> ef53ff8 (Add the checkout page)
       ),
     );
   }
