@@ -29,10 +29,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final String orderId = 'ORD$timestamp';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     final Map orderConfirmation = {
 =======
     final Map<String, dynamic> orderConfirmation = {
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+    final Map orderConfirmation = {
+>>>>>>> 37af532 (Simplify cart and checkout screens)
       'orderId': orderId,
       'totalAmount': widget.cart.totalPrice,
       'itemCount': widget.cart.countOfItems,
