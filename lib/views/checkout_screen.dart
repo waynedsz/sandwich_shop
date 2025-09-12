@@ -38,9 +38,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       'itemCount': widget.cart.countOfItems,
       'estimatedTime': '15-20 minutes',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       'status': 'confirmed'
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+>>>>>>> c12b154 (Remove order cancellation)
     };
 
     // Check if this State object is being shown in the widget tree
@@ -51,6 +54,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   void _cancelOrder() {
     final Map<String, String> cancellationData = {'status': 'cancelled'};
@@ -58,6 +62,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   }
 
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+>>>>>>> c12b154 (Remove order cancellation)
   double _calculateItemPrice(Sandwich sandwich, int quantity) {
     PricingRepository repo = PricingRepository();
     return repo.calculatePrice(
@@ -222,13 +228,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           child: const Text('Confirm Payment', style: normalText),
         ),
       );
-      columnChildren.add(const SizedBox(height: 16));
-      columnChildren.add(
-        OutlinedButton(
-          onPressed: _cancelOrder,
-          child: const Text('Cancel Order', style: normalText),
-        ),
-      );
     }
 <<<<<<< HEAD
   }
@@ -245,6 +244,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       appBar: AppBar(
         title: const Text('Checkout', style: heading1),
       ),
+<<<<<<< HEAD
 <<<<<<< HEAD
       body: Padding(
 <<<<<<< HEAD
@@ -290,6 +290,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       body: Column(
         children: columnChildren,
 >>>>>>> ef53ff8 (Add the checkout page)
+=======
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: columnChildren,
+        ),
+>>>>>>> c12b154 (Remove order cancellation)
       ),
     );
   }
