@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
+=======
+>>>>>>> 51d5237 (Simplify checkout screen)
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 class CheckoutScreen extends StatefulWidget {
+<<<<<<< HEAD
   const CheckoutScreen({super.key});
+=======
+  final Cart cart;
+
+  const CheckoutScreen({super.key, required this.cart});
+>>>>>>> 51d5237 (Simplify checkout screen)
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -20,12 +29,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       _isProcessing = true;
     });
 
+<<<<<<< HEAD
+=======
+    // A fake delay to simulate payment processing
+>>>>>>> 51d5237 (Simplify checkout screen)
     await Future.delayed(const Duration(seconds: 2));
 
     final DateTime currentTime = DateTime.now();
     final int timestamp = currentTime.millisecondsSinceEpoch;
     final String orderId = 'ORD$timestamp';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -53,27 +67,47 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     };
 
     if (mounted) {
+=======
+    final Map<String, dynamic> orderConfirmation = {
+      'orderId': orderId,
+      'totalAmount': widget.cart.totalPrice,
+      'itemCount': widget.cart.countOfItems,
+      'estimatedTime': '15-20 minutes',
+      'status': 'confirmed'
+    };
+
+    // Check if this State object is being shown in the widget tree
+    if (mounted) {
+      // Pop the checkout screen and return to the order screen with the confirmation
+>>>>>>> 51d5237 (Simplify checkout screen)
       Navigator.pop(context, orderConfirmation);
     }
   }
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 51d5237 (Simplify checkout screen)
   void _cancelOrder() {
     final Map<String, String> cancellationData = {'status': 'cancelled'};
     Navigator.pop(context, cancellationData);
   }
 
+<<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
 =======
 >>>>>>> c12b154 (Remove order cancellation)
+=======
+>>>>>>> 51d5237 (Simplify checkout screen)
   double _calculateItemPrice(Sandwich sandwich, int quantity) {
     PricingRepository repo = PricingRepository();
     return repo.calculatePrice(
         quantity: quantity, isFootlong: sandwich.isFootlong);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -92,6 +126,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> 51d5237 (Simplify checkout screen)
 =======
 >>>>>>> 3c9bb58 (Simplify the checkout page)
+=======
+  List<Widget> _buildOrderItems() {
+    List<Widget> orderItems = [];
+>>>>>>> 51d5237 (Simplify checkout screen)
 
     for (MapEntry<Sandwich, int> entry in widget.cart.items.entries) {
       final Sandwich sandwich = entry.key;
@@ -112,6 +150,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ],
       );
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       columnChildren.add(itemRow);
@@ -198,11 +237,28 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       columnChildren.add(const SizedBox(height: 20));
       columnChildren.add(
 >>>>>>> 3c9bb58 (Simplify the checkout page)
+=======
+      orderItems.add(itemRow);
+      orderItems.add(const SizedBox(height: 8));
+    }
+
+    return orderItems;
+  }
+
+  List<Widget> _buildPaymentSection() {
+    if (_isProcessing) {
+      return [
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+        const SizedBox(height: 20),
+>>>>>>> 51d5237 (Simplify checkout screen)
         const Text(
           'Processing payment...',
           style: normalText,
           textAlign: TextAlign.center,
         ),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       );
@@ -222,12 +278,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> 3c9bb58 (Simplify the checkout page)
     } else {
       columnChildren.add(
+=======
+      ];
+    } else {
+      return [
+>>>>>>> 51d5237 (Simplify checkout screen)
         ElevatedButton(
           onPressed: _processPayment,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.green,
             foregroundColor: Colors.white,
           ),
+<<<<<<< HEAD
 =======
 >>>>>>> ef53ff8 (Add the checkout page)
           child: const Text('Confirm Payment', style: normalText),
@@ -235,12 +297,24 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       );
     }
 <<<<<<< HEAD
+=======
+          child: const Text('Confirm Payment', style: normalText),
+        ),
+        const SizedBox(height: 16),
+        OutlinedButton(
+          onPressed: _cancelOrder,
+          child: const Text('Cancel Order', style: normalText),
+        ),
+      ];
+    }
+>>>>>>> 51d5237 (Simplify checkout screen)
   }
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> orderItems = _buildOrderItems();
     final List<Widget> paymentSection = _buildPaymentSection();
+<<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
 =======
 >>>>>>> 3c9bb58 (Simplify the checkout page)
@@ -287,6 +361,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
 <<<<<<< HEAD
+=======
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Checkout', style: heading1),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+>>>>>>> 51d5237 (Simplify checkout screen)
           children: [
             const Text('Order Summary', style: heading2),
             const SizedBox(height: 20),
@@ -312,6 +397,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             const SizedBox(height: 20),
             ...paymentSection,
           ],
+<<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
 =======
           children: columnChildren,
@@ -408,6 +494,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           },
         ),
 >>>>>>> c12b154 (Remove order cancellation)
+=======
+        ),
+>>>>>>> 51d5237 (Simplify checkout screen)
       ),
     );
   }
