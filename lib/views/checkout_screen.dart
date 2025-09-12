@@ -110,15 +110,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 3c9bb58 (Simplify the checkout page)
   @override
   Widget build(BuildContext context) {
 <<<<<<< HEAD
+=======
+  @override
+  Widget build(BuildContext context) {
+>>>>>>> 3c9bb58 (Simplify the checkout page)
     List<Widget> columnChildren = [];
 
     columnChildren.add(const Text('Order Summary', style: heading2));
     columnChildren.add(const SizedBox(height: 20));
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   List<Widget> _buildOrderItems() {
@@ -130,6 +136,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   List<Widget> _buildOrderItems() {
     List<Widget> orderItems = [];
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+>>>>>>> 3c9bb58 (Simplify the checkout page)
 
     for (MapEntry<Sandwich, int> entry in widget.cart.items.entries) {
       final Sandwich sandwich = entry.key;
@@ -153,6 +161,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       columnChildren.add(itemRow);
       columnChildren.add(const SizedBox(height: 8));
     }
@@ -240,24 +249,56 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
       orderItems.add(itemRow);
       orderItems.add(const SizedBox(height: 8));
+=======
+      columnChildren.add(itemRow);
+      columnChildren.add(const SizedBox(height: 8));
+>>>>>>> 3c9bb58 (Simplify the checkout page)
     }
 
-    return orderItems;
-  }
+    columnChildren.add(const Divider());
+    columnChildren.add(const SizedBox(height: 10));
 
-  List<Widget> _buildPaymentSection() {
+    final Widget totalRow = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text('Total:', style: heading2),
+        Text(
+          '£${widget.cart.totalPrice.toStringAsFixed(2)}',
+          style: heading2,
+        ),
+      ],
+    );
+    columnChildren.add(totalRow);
+    columnChildren.add(const SizedBox(height: 40));
+
+    columnChildren.add(
+      const Text(
+        'Payment Method: Card ending in 1234',
+        style: normalText,
+        textAlign: TextAlign.center,
+      ),
+    );
+    columnChildren.add(const SizedBox(height: 20));
+
     if (_isProcessing) {
-      return [
+      columnChildren.add(
         const Center(
           child: CircularProgressIndicator(),
         ),
+<<<<<<< HEAD
         const SizedBox(height: 20),
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+      );
+      columnChildren.add(const SizedBox(height: 20));
+      columnChildren.add(
+>>>>>>> 3c9bb58 (Simplify the checkout page)
         const Text(
           'Processing payment...',
           style: normalText,
           textAlign: TextAlign.center,
         ),
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -283,6 +324,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     } else {
       return [
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+      );
+    } else {
+      columnChildren.add(
+>>>>>>> 3c9bb58 (Simplify the checkout page)
         ElevatedButton(
           onPressed: _processPayment,
           style: ElevatedButton.styleFrom(
@@ -300,13 +346,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
           child: const Text('Confirm Payment', style: normalText),
         ),
-        const SizedBox(height: 16),
+      );
+      columnChildren.add(const SizedBox(height: 16));
+      columnChildren.add(
         OutlinedButton(
           onPressed: _cancelOrder,
           child: const Text('Cancel Order', style: normalText),
         ),
-      ];
+      );
     }
+<<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
   }
 
@@ -362,6 +411,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 3c9bb58 (Simplify the checkout page)
 
     return Scaffold(
       appBar: AppBar(
@@ -371,6 +422,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+<<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
           children: [
             const Text('Order Summary', style: heading2),
@@ -399,6 +451,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ],
 <<<<<<< HEAD
 >>>>>>> 51d5237 (Simplify checkout screen)
+=======
+          children: columnChildren,
+>>>>>>> 3c9bb58 (Simplify the checkout page)
 =======
           children: columnChildren,
 >>>>>>> 3c9bb58 (Simplify the checkout page)
