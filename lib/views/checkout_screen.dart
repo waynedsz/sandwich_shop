@@ -28,11 +28,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final int timestamp = currentTime.millisecondsSinceEpoch;
     final String orderId = 'ORD$timestamp';
 
+<<<<<<< HEAD
     final Map orderConfirmation = {
+=======
+    final Map<String, dynamic> orderConfirmation = {
+>>>>>>> 51d5237 (Simplify checkout screen)
       'orderId': orderId,
       'totalAmount': widget.cart.totalPrice,
       'itemCount': widget.cart.countOfItems,
       'estimatedTime': '15-20 minutes',
+<<<<<<< HEAD
+=======
+      'status': 'confirmed'
+>>>>>>> 51d5237 (Simplify checkout screen)
     };
 
     // Check if this State object is being shown in the widget tree
@@ -42,18 +50,31 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     }
   }
 
+<<<<<<< HEAD
+=======
+  void _cancelOrder() {
+    final Map<String, String> cancellationData = {'status': 'cancelled'};
+    Navigator.pop(context, cancellationData);
+  }
+
+>>>>>>> 51d5237 (Simplify checkout screen)
   double _calculateItemPrice(Sandwich sandwich, int quantity) {
     PricingRepository repo = PricingRepository();
     return repo.calculatePrice(
         quantity: quantity, isFootlong: sandwich.isFootlong);
   }
 
+<<<<<<< HEAD
   @override
   Widget build(BuildContext context) {
     List<Widget> columnChildren = [];
 
     columnChildren.add(const Text('Order Summary', style: heading2));
     columnChildren.add(const SizedBox(height: 20));
+=======
+  List<Widget> _buildOrderItems() {
+    List<Widget> orderItems = [];
+>>>>>>> 51d5237 (Simplify checkout screen)
 
     for (MapEntry<Sandwich, int> entry in widget.cart.items.entries) {
       final Sandwich sandwich = entry.key;
@@ -74,6 +95,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ],
       );
 
+<<<<<<< HEAD
       columnChildren.add(itemRow);
       columnChildren.add(const SizedBox(height: 8));
     }
@@ -111,11 +133,28 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       );
       columnChildren.add(const SizedBox(height: 20));
       columnChildren.add(
+=======
+      orderItems.add(itemRow);
+      orderItems.add(const SizedBox(height: 8));
+    }
+
+    return orderItems;
+  }
+
+  List<Widget> _buildPaymentSection() {
+    if (_isProcessing) {
+      return [
+        const Center(
+          child: CircularProgressIndicator(),
+        ),
+        const SizedBox(height: 20),
+>>>>>>> 51d5237 (Simplify checkout screen)
         const Text(
           'Processing payment...',
           style: normalText,
           textAlign: TextAlign.center,
         ),
+<<<<<<< HEAD
       );
     } else {
       columnChildren.add(
@@ -125,15 +164,72 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ),
       );
     }
+=======
+      ];
+    } else {
+      return [
+        ElevatedButton(
+          onPressed: _processPayment,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
+          ),
+          child: const Text('Confirm Payment', style: normalText),
+        ),
+        const SizedBox(height: 16),
+        OutlinedButton(
+          onPressed: _cancelOrder,
+          child: const Text('Cancel Order', style: normalText),
+        ),
+      ];
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> orderItems = _buildOrderItems();
+    final List<Widget> paymentSection = _buildPaymentSection();
+>>>>>>> 51d5237 (Simplify checkout screen)
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checkout', style: heading1),
       ),
       body: Padding(
+<<<<<<< HEAD
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: columnChildren,
+=======
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Text('Order Summary', style: heading2),
+            const SizedBox(height: 20),
+            ...orderItems,
+            const Divider(),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Total:', style: heading2),
+                Text(
+                  '£${widget.cart.totalPrice.toStringAsFixed(2)}',
+                  style: heading2,
+                ),
+              ],
+            ),
+            const SizedBox(height: 40),
+            const Text(
+              'Payment Method: Card ending in 1234',
+              style: normalText,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            ...paymentSection,
+          ],
+>>>>>>> 51d5237 (Simplify checkout screen)
         ),
       ),
     );
