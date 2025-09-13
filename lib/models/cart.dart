@@ -90,12 +90,13 @@ class Cart {
     final pricingRepository = PricingRepository();
     double total = 0.0;
 
-    _items.forEach((sandwich, quantity) {
+    for (Sandwich sandwich in _items.keys) {
+      int quantity = _items[sandwich]!;
       total += pricingRepository.calculatePrice(
         quantity: quantity,
         isFootlong: sandwich.isFootlong,
       );
-    });
+    }
 
     return total;
   }
@@ -109,9 +110,9 @@ class Cart {
 
   int get countOfItems {
     int total = 0;
-    _items.forEach((sandwich, quantity) {
-      total += quantity;
-    });
+    for (Sandwich sandwich in _items.keys) {
+      total += _items[sandwich]!;
+    }
     return total;
   }
 
