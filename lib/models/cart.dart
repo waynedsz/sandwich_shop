@@ -1,10 +1,14 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c56d08 (Make cart extend change notifier)
 import 'package:flutter/foundation.dart';
 import 'sandwich.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 class CartItem {
@@ -105,6 +109,11 @@ class Cart {
     _items.add(sandwich);
 =======
   // Returns a read-only copy of the items and their quantities
+=======
+class Cart extends ChangeNotifier {
+  final Map<Sandwich, int> _items = {};
+
+>>>>>>> 4c56d08 (Make cart extend change notifier)
   Map<Sandwich, int> get items => Map.unmodifiable(_items);
 
   void add(Sandwich sandwich, {int quantity = 1}) {
@@ -113,6 +122,7 @@ class Cart {
     } else {
       _items[sandwich] = quantity;
     }
+<<<<<<< HEAD
 >>>>>>> c6a9bfb (Update cart model)
   }
 
@@ -191,6 +201,9 @@ class Cart {
       _items[sandwich] = quantity;
     }
 >>>>>>> c6a9bfb (Update cart model)
+=======
+    notifyListeners();
+>>>>>>> 4c56d08 (Make cart extend change notifier)
   }
 
   void remove(Sandwich sandwich, {int quantity = 1}) {
@@ -201,11 +214,13 @@ class Cart {
       } else {
         _items.remove(sandwich);
       }
+      notifyListeners();
     }
   }
 
   void clear() {
     _items.clear();
+    notifyListeners();
   }
 
   double get totalPrice {
@@ -260,9 +275,9 @@ class Cart {
 
   int get countOfItems {
     int total = 0;
-    _items.forEach((sandwich, quantity) {
+    for (int quantity in _items.values) {
       total += quantity;
-    });
+    }
     return total;
   }
 
