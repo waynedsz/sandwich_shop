@@ -116,6 +116,7 @@ dependencies:
 =======
   cupertino_icons: ^1.0.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
 =======
 >>>>>>> 816cadc (first commit)
@@ -134,6 +135,9 @@ dependencies:
 =======
   cupertino_icons: ^1.0.0
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+  provider: ^6.1.5+1
+>>>>>>> 76133a0 (Add provider and import it in main)
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -87,6 +88,10 @@ import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 >>>>>>> 06067ae (Simplify main)
 =======
+=======
+import 'package:provider/provider.dart';
+import 'package:sandwich_shop/models/cart.dart';
+>>>>>>> 76133a0 (Add provider and import it in main)
 import 'package:sandwich_shop/views/order_screen_view.dart';
 >>>>>>> 6ba2694 (Move order screen to its own view)
 =======
@@ -973,6 +978,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2764,6 +2770,14 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> de43565 (Revert back to original code)
       title: 'Sandwich Shop App',
       home: OrderScreen(maxQuantity: 5),
+=======
+    return ChangeNotifierProvider(
+      create: (context) => Cart(),
+      child: const MaterialApp(
+        title: 'Sandwich Shop App',
+        home: OrderScreen(maxQuantity: 5),
+      ),
+>>>>>>> 76133a0 (Add provider and import it in main)
     );
   }
 }

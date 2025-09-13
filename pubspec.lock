@@ -449,6 +449,9 @@ packages:
     source: hosted
     version: "1.16.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 76133a0 (Add provider and import it in main)
   nested:
     dependency: transitive
     description:
@@ -457,8 +460,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+<<<<<<< HEAD
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 76133a0 (Add provider and import it in main)
   path:
     dependency: transitive
     description:
@@ -467,6 +473,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+<<<<<<< HEAD
 <<<<<<< HEAD
   path_provider_linux:
     dependency: transitive
@@ -508,6 +515,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+=======
+>>>>>>> 76133a0 (Add provider and import it in main)
   provider:
     dependency: "direct main"
     description:
@@ -516,6 +525,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.5+1"
+<<<<<<< HEAD
   shared_preferences:
     dependency: "direct main"
     description:
@@ -574,6 +584,8 @@ packages:
     version: "2.4.1"
 =======
 >>>>>>> 816cadc (first commit)
+=======
+>>>>>>> 76133a0 (Add provider and import it in main)
   sky_engine:
     dependency: transitive
     description: flutter
