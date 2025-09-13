@@ -213,12 +213,17 @@ class _OrderScreenState extends State<OrderScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
 <<<<<<< HEAD:lib/views/order_screen.dart
+<<<<<<< HEAD:lib/views/order_screen.dart
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
 =======
                     Icon(Icons.shopping_cart),
                     SizedBox(width: 4),
 >>>>>>> 2889716 (Show the cart icon):lib/views/order_screen_view.dart
+=======
+                    const Icon(Icons.shopping_cart),
+                    const SizedBox(width: 4),
+>>>>>>> 0f69d42 (📝 Update OrderScreen to use const constructors for Icon and SizedBox widgets):lib/views/order_screen_view.dart
                     Text('${cart.countOfItems}'),
                   ],
                 ),
