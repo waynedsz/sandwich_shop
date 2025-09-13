@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Flutter widget tests for the Sandwich Shop application.
 //
 // These tests confirm that the landing page renders the
@@ -75,6 +76,14 @@ import 'package:sandwich_shop/views/main.dart';
 import 'package:sandwich_shop/main.dart';
 >>>>>>> 212586f (Move main.dart back to lib)
 import 'package:sandwich_shop/models/sandwich.dart';
+=======
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
+import 'package:sandwich_shop/main.dart';
+import 'package:sandwich_shop/models/cart.dart';
+import 'package:sandwich_shop/views/order_screen_view.dart';
+>>>>>>> fc7a69d (Update widget_tests for main)
 
 void dummyFunction() {}
 >>>>>>> f1772b8 (Update widget_test)
@@ -709,6 +718,75 @@ void main() {
       await tester.pumpWidget(app);
 >>>>>>> f1772b8 (Update widget_test)
       expect(find.byType(OrderScreen), findsOneWidget);
+    });
+
+    testWidgets('provides Cart through ChangeNotifierProvider',
+        (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      // Verify ChangeNotifierProvider exists
+      expect(find.byType(ChangeNotifierProvider<Cart>), findsOneWidget);
+
+      // Verify MaterialApp exists
+      expect(find.byType(MaterialApp), findsOneWidget);
+    });
+
+    testWidgets('displays logo in app bar', (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      // Find the app bar first
+      final appBarFinder = find.byType(AppBar);
+      expect(appBarFinder, findsOneWidget);
+
+      // Find images within the app bar
+      final appBarImagesFinder = find.descendant(
+        of: appBarFinder,
+        matching: find.byType(Image),
+      );
+      expect(appBarImagesFinder, findsOneWidget);
+
+      // Verify the logo image asset path
+      final Image logoImage = tester.widget(appBarImagesFinder);
+      expect(
+          (logoImage.image as AssetImage).assetName, 'assets/images/logo.png');
+    });
+
+    testWidgets('displays app bar title', (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      // Find the app bar title
+      expect(find.text('Sandwich Counter'), findsOneWidget);
+    });
+
+    testWidgets('displays cart indicator with initial values',
+        (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      // Find the cart indicator text showing initial cart state
+      expect(find.text('Cart: 0 items - £0.00'), findsOneWidget);
+    });
+
+    testWidgets('has proper app structure with Provider and MaterialApp',
+        (WidgetTester tester) async {
+      const App app = App();
+      await tester.pumpWidget(app);
+
+      // Verify the widget tree structure
+      expect(find.byType(ChangeNotifierProvider<Cart>), findsOneWidget);
+      expect(find.byType(MaterialApp), findsOneWidget);
+
+      // Verify OrderScreen is the home screen with correct maxQuantity
+      final OrderScreen orderScreen = tester.widget(find.byType(OrderScreen));
+      expect(orderScreen.maxQuantity, equals(5));
+
+      // Verify MaterialApp properties
+      final MaterialApp materialApp = tester.widget(find.byType(MaterialApp));
+      expect(materialApp.title, equals('Sandwich Shop App'));
+      expect(materialApp.debugShowCheckedModeBanner, equals(false));
     });
   });
 <<<<<<< HEAD
