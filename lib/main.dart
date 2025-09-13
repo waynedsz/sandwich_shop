@@ -2775,6 +2775,7 @@ class OrderItemDisplay extends StatelessWidget {
       create: (context) => Cart(),
       child: const MaterialApp(
         title: 'Sandwich Shop App',
+        debugShowCheckedModeBanner: false,
         home: OrderScreen(maxQuantity: 5),
       ),
 >>>>>>> 76133a0 (Add provider and import it in main)
