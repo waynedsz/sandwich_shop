@@ -212,8 +212,13 @@ class _OrderScreenState extends State<OrderScreen> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+<<<<<<< HEAD:lib/views/order_screen.dart
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
+=======
+                    Icon(Icons.shopping_cart),
+                    SizedBox(width: 4),
+>>>>>>> 2889716 (Show the cart icon):lib/views/order_screen_view.dart
                     Text('${cart.countOfItems}'),
                   ],
                 ),

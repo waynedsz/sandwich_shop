@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -64,6 +65,11 @@ import 'package:sandwich_shop/models/cart.dart';
 =======
 import 'package:sandwich_shop/views/app_styles.dart';
 >>>>>>> 4aae054 (Add the link to the profile)
+=======
+import 'package:provider/provider.dart';
+import 'package:sandwich_shop/views/app_styles.dart';
+import 'package:sandwich_shop/models/cart.dart';
+>>>>>>> 2889716 (Show the cart icon)
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -119,6 +125,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2889716 (Show the cart icon)
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -126,7 +135,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Image.asset('assets/images/logo.png'),
           ),
         ),
+<<<<<<< HEAD
         title: Text(
+=======
+        title: const Text(
+>>>>>>> 2889716 (Show the cart icon)
           'Profile',
           style: heading1,
         ),
@@ -138,8 +151,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+<<<<<<< HEAD
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
+=======
+                    Icon(Icons.shopping_cart),
+                    SizedBox(width: 4),
+>>>>>>> 2889716 (Show the cart icon)
                     Text('${cart.countOfItems}'),
                   ],
                 ),
@@ -147,9 +165,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ],
+<<<<<<< HEAD
 =======
         title: const Text('Profile', style: heading1),
 >>>>>>> 4aae054 (Add the link to the profile)
+=======
+>>>>>>> 2889716 (Show the cart icon)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
