@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
 =======
 >>>>>>> 51d5237 (Simplify checkout screen)
@@ -10,6 +11,9 @@ import 'package:provider/provider.dart';
 >>>>>>> 33b1971 (📝 Refactor CheckoutScreen to use Provider for Cart management)
 =======
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
+=======
+import 'package:provider/provider.dart';
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
@@ -19,6 +23,7 @@ class CheckoutScreen extends StatefulWidget {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const CheckoutScreen({super.key});
 =======
   final Cart cart;
@@ -33,6 +38,9 @@ class CheckoutScreen extends StatefulWidget {
 
   const CheckoutScreen({super.key, required this.cart});
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
+=======
+  const CheckoutScreen({super.key});
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -49,6 +57,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // A fake delay to simulate payment processing
 >>>>>>> 51d5237 (Simplify checkout screen)
@@ -57,12 +66,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
     // A fake delay to simulate payment processing
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
+=======
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
     await Future.delayed(const Duration(seconds: 2));
 
     final DateTime currentTime = DateTime.now();
     final int timestamp = currentTime.millisecondsSinceEpoch;
     final String orderId = 'ORD$timestamp';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -78,6 +90,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> 33b1971 (📝 Refactor CheckoutScreen to use Provider for Cart management)
 =======
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
+=======
+    final Cart cart = Provider.of<Cart>(context, listen: false);
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
     final Map orderConfirmation = {
 =======
     final Map<String, dynamic> orderConfirmation = {
@@ -105,13 +120,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final Map orderConfirmation = {
 >>>>>>> 37af532 (Simplify cart and checkout screens)
       'orderId': orderId,
-      'totalAmount': widget.cart.totalPrice,
-      'itemCount': widget.cart.countOfItems,
+      'totalAmount': cart.totalPrice,
+      'itemCount': cart.countOfItems,
       'estimatedTime': '15-20 minutes',
     };
 
-    // Check if this State object is being shown in the widget tree
     if (mounted) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       // Pop the checkout screen and return to the order screen with the confirmation
@@ -121,6 +136,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
       // Pop the checkout screen and return to the order screen with the confirmation
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
+=======
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
       Navigator.pop(context, orderConfirmation);
     }
   }
@@ -159,6 +176,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> 3c9bb58 (Simplify the checkout page)
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -533,6 +551,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       );
     }
 
+=======
+>>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checkout', style: heading1),
@@ -680,8 +700,88 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          children: columnChildren,
+        child: Consumer<Cart>(
+          builder: (context, cart, child) {
+            List<Widget> columnChildren = [];
+
+            columnChildren.add(const Text('Order Summary', style: heading2));
+            columnChildren.add(const SizedBox(height: 20));
+
+            for (MapEntry<Sandwich, int> entry in cart.items.entries) {
+              final Sandwich sandwich = entry.key;
+              final int quantity = entry.value;
+              final double itemPrice = _calculateItemPrice(sandwich, quantity);
+
+              final Widget itemRow = Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${quantity}x ${sandwich.name}',
+                    style: normalText,
+                  ),
+                  Text(
+                    '£${itemPrice.toStringAsFixed(2)}',
+                    style: normalText,
+                  ),
+                ],
+              );
+
+              columnChildren.add(itemRow);
+              columnChildren.add(const SizedBox(height: 8));
+            }
+
+            columnChildren.add(const Divider());
+            columnChildren.add(const SizedBox(height: 10));
+
+            final Widget totalRow = Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Total:', style: heading2),
+                Text(
+                  '£${cart.totalPrice.toStringAsFixed(2)}',
+                  style: heading2,
+                ),
+              ],
+            );
+            columnChildren.add(totalRow);
+            columnChildren.add(const SizedBox(height: 40));
+
+            columnChildren.add(
+              const Text(
+                'Payment Method: Card ending in 1234',
+                style: normalText,
+                textAlign: TextAlign.center,
+              ),
+            );
+            columnChildren.add(const SizedBox(height: 20));
+
+            if (_isProcessing) {
+              columnChildren.add(
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+              columnChildren.add(const SizedBox(height: 20));
+              columnChildren.add(
+                const Text(
+                  'Processing payment...',
+                  style: normalText,
+                  textAlign: TextAlign.center,
+                ),
+              );
+            } else {
+              columnChildren.add(
+                ElevatedButton(
+                  onPressed: _processPayment,
+                  child: const Text('Confirm Payment', style: normalText),
+                ),
+              );
+            }
+
+            return Column(
+              children: columnChildren,
+            );
+          },
         ),
 >>>>>>> c12b154 (Remove order cancellation)
       ),
