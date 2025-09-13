@@ -155,6 +155,7 @@ class Cart extends ChangeNotifier {
 
     for (Sandwich sandwich in _items.keys) {
       int quantity = _items[sandwich]!;
+<<<<<<< HEAD
       total += pricingRepository.calculatePrice(
         quantity: quantity,
         isFootlong: sandwich.isFootlong,
@@ -172,11 +173,13 @@ class Cart extends ChangeNotifier {
     double total = 0.0;
 
     _items.forEach((sandwich, quantity) {
+=======
+>>>>>>> a48981e (Use a for loop instead of foreach)
       total += pricingRepository.calculatePrice(
         quantity: quantity,
         isFootlong: sandwich.isFootlong,
       );
-    });
+    }
 
     return total;
 >>>>>>> c6a9bfb (Update cart model)
