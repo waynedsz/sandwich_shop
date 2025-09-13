@@ -58,6 +58,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // A fake delay to simulate payment processing
 >>>>>>> 51d5237 (Simplify checkout screen)
@@ -68,12 +69,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> 2cce733 (📝 Refactor CheckoutScreen to accept Cart as a parameter and remove Provider dependency)
 =======
 >>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
+=======
+    final Cart cart = Provider.of<Cart>(context, listen: false);
+
+>>>>>>> 54f5b9c (📝 Refactor CheckoutScreen to remove duplicate Cart retrieval in _processPayment method)
     await Future.delayed(const Duration(seconds: 2));
 
     final DateTime currentTime = DateTime.now();
     final int timestamp = currentTime.millisecondsSinceEpoch;
     final String orderId = 'ORD$timestamp';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -93,6 +99,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
     final Cart cart = Provider.of<Cart>(context, listen: false);
 >>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
+=======
+>>>>>>> 54f5b9c (📝 Refactor CheckoutScreen to remove duplicate Cart retrieval in _processPayment method)
     final Map orderConfirmation = {
 =======
     final Map<String, dynamic> orderConfirmation = {
