@@ -8,6 +8,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 =======
 import 'package:sandwich_shop/views/profile_screen.dart';
+<<<<<<< HEAD:lib/views/order_screen.dart
 <<<<<<< HEAD
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
 =======
@@ -24,6 +25,9 @@ import 'package:sandwich_shop/views/common_widgets.dart';
 =======
 import 'package:sandwich_shop/views/profile_screen.dart';
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
+=======
+import 'package:provider/provider.dart';
+>>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -137,7 +141,11 @@ class _OrderScreenState extends State<OrderScreen> {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
+<<<<<<< HEAD:lib/views/order_screen.dart
         builder: (BuildContext context) => const CartScreen(),
+=======
+        builder: (BuildContext context) => const CartViewScreen(),
+>>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
       ),
     );
   }
@@ -314,12 +322,15 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               const SizedBox(height: 20),
 <<<<<<< HEAD:lib/views/order_screen.dart
+<<<<<<< HEAD:lib/views/order_screen.dart
               StyledButton(
                 onPressed: _navigateToSettings,
                 icon: Icons.settings,
                 label: 'Settings',
                 backgroundColor: Colors.grey,
               ),
+=======
+>>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
               Consumer<Cart>(
                 builder: (context, cart, child) {
                   return Text(
@@ -328,12 +339,15 @@ class _OrderScreenState extends State<OrderScreen> {
                     textAlign: TextAlign.center,
                   );
                 },
+<<<<<<< HEAD:lib/views/order_screen.dart
 =======
               Text(
                 'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
                 style: normalText,
                 textAlign: TextAlign.center,
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
+=======
+>>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
               ),
               const SizedBox(height: 20),
             ],
