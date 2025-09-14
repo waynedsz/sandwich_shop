@@ -35,7 +35,11 @@ import 'package:sandwich_shop/views/settings_screen.dart';
 >>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
 =======
 import 'package:sandwich_shop/views/order_history_screen.dart';
+<<<<<<< HEAD:lib/views/order_screen.dart
 >>>>>>> 549fba5 (Link up the order history screen):lib/views/order_screen_view.dart
+=======
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+>>>>>>> 9b2bb75 (Add the common app bar):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -218,18 +222,8 @@ class _OrderScreenState extends State<OrderScreen> {
       title: 'Order Sandwiches',
 =======
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 100,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-        ),
-        title: Text(
-          'Sandwich Counter',
-          style: heading1,
-        ),
+      appBar: CommonAppBar(
+        title: 'Sandwich Counter',
         actions: [
           Consumer<Cart>(
             builder: (context, cart, child) {

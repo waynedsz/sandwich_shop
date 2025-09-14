@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 =======
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
 import 'package:sandwich_shop/views/app_styles.dart';
+import 'package:sandwich_shop/widgets/common_widgets.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -78,6 +79,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
 
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -114,6 +116,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 =======
 >>>>>>> 9ef8f8d (Simplify settings screen)
       ),
+=======
+      appBar: const CommonAppBar(title: 'Settings'),
+>>>>>>> 9b2bb75 (Add the common app bar)
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

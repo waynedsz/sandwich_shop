@@ -69,7 +69,11 @@ import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:provider/provider.dart';
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
+<<<<<<< HEAD
 >>>>>>> 2889716 (Show the cart icon)
+=======
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+>>>>>>> 9b2bb75 (Add the common app bar)
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -123,6 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -147,6 +152,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           'Profile',
           style: heading1,
         ),
+=======
+      appBar: CommonAppBar(
+        title: 'Profile',
+>>>>>>> 9b2bb75 (Add the common app bar)
         actions: [
           Consumer<Cart>(
             builder: (context, cart, child) {

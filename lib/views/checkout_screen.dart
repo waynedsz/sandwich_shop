@@ -20,6 +20,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 import 'package:sandwich_shop/services/database_service.dart';
 import 'package:sandwich_shop/models/saved_order.dart';
+import 'package:sandwich_shop/widgets/common_widgets.dart';
 
 class CheckoutScreen extends StatefulWidget {
 <<<<<<< HEAD
@@ -583,6 +584,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 =======
 >>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         title: Text('Checkout', style: heading1),
       ),
@@ -633,6 +635,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         children: columnChildren,
 >>>>>>> ef53ff8 (Add the checkout page)
 =======
+=======
+      appBar: const CommonAppBar(title: 'Checkout'),
+>>>>>>> 9b2bb75 (Add the common app bar)
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Consumer<Cart>(
