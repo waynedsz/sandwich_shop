@@ -175,12 +175,16 @@ dev_dependencies:
 <<<<<<< HEAD
 <<<<<<< HEAD
   flutter_lints: ^2.0.0
+<<<<<<< HEAD
 =======
   flutter_lints: ^5.0.0
 >>>>>>> 816cadc (first commit)
 =======
   flutter_lints: ^2.0.0
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+  sqflite_common_ffi: ^2.3.0
+>>>>>>> 3529394 (Add sqflite_common_ffi)
 
 flutter:
   uses-material-design: true
