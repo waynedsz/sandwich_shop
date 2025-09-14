@@ -160,6 +160,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onChanged: _saveFontSize,
             ),
 <<<<<<< HEAD
+<<<<<<< HEAD
             const SizedBox(height: 20),
             Text(
               'This is sample text to preview the font size.',
@@ -183,16 +184,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: TextStyle(fontSize: 16),
 >>>>>>> 67b8abe (Add a settings screen)
 =======
+=======
+            const SizedBox(height: 20),
+>>>>>>> c59de71 (📝 Update settings_screen.dart to reduce spacing between elements for improved layout consistency)
             Text(
               'This is sample text to preview the font size.',
               style: TextStyle(fontSize: _fontSize),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             Text(
               'Font size changes are saved automatically. Restart the app to see changes in all screens.',
               style: AppStyles.normalText,
               textAlign: TextAlign.center,
             ),
+<<<<<<< HEAD
             const SizedBox(height: 40),
 <<<<<<< HEAD
             Container(
@@ -231,6 +236,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
 =======
+=======
+            const SizedBox(height: 20),
+>>>>>>> c59de71 (📝 Update settings_screen.dart to reduce spacing between elements for improved layout consistency)
             ElevatedButton(
               onPressed: () => Navigator.pop(context),
               child: Text('Back to Order', style: AppStyles.normalText),
