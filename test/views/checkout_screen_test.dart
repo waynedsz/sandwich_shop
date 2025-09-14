@@ -4,10 +4,18 @@ import 'package:provider/provider.dart';
 import 'package:sandwich_shop/views/checkout_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
+<<<<<<< HEAD
 import 'package:provider/provider.dart';
+=======
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+>>>>>>> 1cf0400 (Update tests for screens cart and checkout)
 
 void main() {
   group('CheckoutScreen', () {
+    setUpAll(() {
+      sqfliteFfiInit();
+      databaseFactory = databaseFactoryFfi;
+    });
     testWidgets('displays order summary with empty cart',
         (WidgetTester tester) async {
 <<<<<<< HEAD
