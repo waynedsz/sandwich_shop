@@ -2778,7 +2778,9 @@ class OrderItemDisplay extends StatelessWidget {
       home: OrderScreen(maxQuantity: 5),
 =======
     return ChangeNotifierProvider(
-      create: (context) => Cart(),
+      create: (BuildContext context) {
+        return Cart();
+      },
       child: const MaterialApp(
         title: 'Sandwich Shop App',
         debugShowCheckedModeBanner: false,
