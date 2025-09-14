@@ -76,6 +76,7 @@ const Heading1 = TextStyle(
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 TextStyle get normalText => AppStyles.normalText;
 TextStyle get heading1 => AppStyles.heading1;
 TextStyle get heading2 => AppStyles.heading2;
@@ -84,6 +85,8 @@ TextStyle get heading2 => AppStyles.heading2;
 >>>>>>> cdd80e0 (Move UIs to views)
 =======
 // Keep these for backward compatibility, but they now use the dynamic styles
+=======
+>>>>>>> d49ab6e (Remove comments from app styles)
 TextStyle get normalText => AppStyles.normalText;
 TextStyle get heading1 => AppStyles.heading1;
 TextStyle get heading2 => AppStyles.heading2;
