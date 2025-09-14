@@ -9,7 +9,11 @@ import 'package:provider/provider.dart';
 import 'package:sandwich_shop/views/order_screen_view.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/models/cart.dart';
+<<<<<<< HEAD:test/views/order_screen_test.dart
 >>>>>>> 44a2465 (Update order screen view tests):test/views/order_screen_view_test.dart
+=======
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+>>>>>>> 7ae35b4 (Update tests for order_screen view):test/views/order_screen_view_test.dart
 
 void dummyFunction() {}
 
@@ -45,6 +49,8 @@ void main() {
       expect(find.widgetWithText(StyledButton, 'View Cart'), findsOneWidget);
       expect(find.widgetWithText(StyledButton, 'Profile'), findsOneWidget);
       expect(find.widgetWithText(StyledButton, 'Settings'), findsOneWidget);
+      expect(
+          find.widgetWithText(StyledButton, 'Order History'), findsOneWidget);
     });
 
     testWidgets('displays cart indicator in app bar',
@@ -455,6 +461,28 @@ void main() {
       final StyledButton settingsButton =
           tester.widget<StyledButton>(settingsButtonFinder);
       expect(settingsButton.onPressed, isNotNull);
+    });
+
+    testWidgets(
+        'navigates to order history when Order History button is tapped',
+        (WidgetTester tester) async {
+      final Cart cart = Cart();
+      const OrderScreen orderScreen = OrderScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: orderScreen,
+        ),
+      );
+      await tester.pumpWidget(app);
+
+      final Finder orderHistoryButtonFinder =
+          find.widgetWithText(StyledButton, 'Order History');
+      expect(orderHistoryButtonFinder, findsOneWidget);
+
+      final StyledButton orderHistoryButton =
+          tester.widget<StyledButton>(orderHistoryButtonFinder);
+      expect(orderHistoryButton.onPressed, isNotNull);
     });
   });
 
