@@ -13,6 +13,7 @@ import 'package:sandwich_shop/views/profile_screen.dart';
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
 =======
 import 'package:provider/provider.dart';
+<<<<<<< HEAD:lib/views/order_screen.dart
 <<<<<<< HEAD
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
 =======
@@ -28,6 +29,9 @@ import 'package:sandwich_shop/views/profile_screen.dart';
 =======
 import 'package:provider/provider.dart';
 >>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
+=======
+import 'package:sandwich_shop/views/settings_screen.dart';
+>>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -69,6 +73,15 @@ class _OrderScreenState extends State<OrderScreen> {
   void dispose() {
     _notesController.dispose();
     super.dispose();
+  }
+
+  void _navigateToSettings() {
+    Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const SettingsScreen(),
+      ),
+    );
   }
 
   Future<void> _navigateToProfile() async {
@@ -333,14 +346,21 @@ class _OrderScreenState extends State<OrderScreen> {
               const SizedBox(height: 20),
 <<<<<<< HEAD:lib/views/order_screen.dart
 <<<<<<< HEAD:lib/views/order_screen.dart
+<<<<<<< HEAD:lib/views/order_screen.dart
+=======
+>>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
               StyledButton(
                 onPressed: _navigateToSettings,
                 icon: Icons.settings,
                 label: 'Settings',
                 backgroundColor: Colors.grey,
               ),
+<<<<<<< HEAD:lib/views/order_screen.dart
 =======
 >>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
+=======
+              const SizedBox(height: 20),
+>>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
               Consumer<Cart>(
                 builder: (context, cart, child) {
                   return Text(
