@@ -19,7 +19,7 @@ void main() {
       );
 =======
       final Cart emptyCart = Cart();
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: emptyCart,
@@ -48,6 +48,7 @@ void main() {
       cart.add(sandwich, quantity: 2);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -56,6 +57,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -89,6 +93,7 @@ void main() {
       cart.add(sandwich2, quantity: 3);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -97,6 +102,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -123,7 +131,7 @@ void main() {
       );
 =======
       final Cart cart = Cart();
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -151,6 +159,7 @@ void main() {
       cart.add(sandwich, quantity: 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -159,6 +168,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -191,6 +203,7 @@ void main() {
       cart.add(footlongSandwich, quantity: 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -199,6 +212,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -224,6 +240,7 @@ void main() {
       cart.add(sixInchSandwich, quantity: 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -232,6 +249,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -263,6 +283,7 @@ void main() {
       cart.add(sixInchSandwich, quantity: 2);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -271,6 +292,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -296,7 +320,7 @@ void main() {
       );
 =======
       final Cart cart = Cart();
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -324,7 +348,7 @@ void main() {
       );
 =======
       final Cart cart = Cart();
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -354,6 +378,7 @@ void main() {
       cart.add(sandwich, quantity: 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -362,6 +387,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -393,6 +421,7 @@ void main() {
       cart.add(sandwich, quantity: 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -401,6 +430,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -425,6 +457,7 @@ void main() {
       cart.add(sandwich, quantity: 3);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       await tester.pumpWidget(
         ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -433,6 +466,9 @@ void main() {
       );
 =======
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
+=======
+      const CheckoutScreen checkoutScreen = CheckoutScreen();
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,

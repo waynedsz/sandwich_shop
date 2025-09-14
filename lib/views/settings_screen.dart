@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import 'package:shared_preferences/shared_preferences.dart';
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
 import 'package:sandwich_shop/views/app_styles.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -24,6 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _loadSettings() async {
 <<<<<<< HEAD
+<<<<<<< HEAD
     await AppStyles.loadFontSize();
     setState(() {
       _fontSize = AppStyles.baseFontSize;
@@ -38,20 +42,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
       }
 
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+    await AppStyles.loadFontSize();
+    setState(() {
+      _fontSize = AppStyles.baseFontSize;
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       _isLoading = false;
     });
   }
 
   Future<void> _saveFontSize(double fontSize) async {
 <<<<<<< HEAD
+<<<<<<< HEAD
     await AppStyles.saveFontSize(fontSize);
 =======
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('fontSize', fontSize);
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+    await AppStyles.saveFontSize(fontSize);
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
     setState(() {
       _fontSize = fontSize;
     });
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+              'Font size saved! Restart the app to see changes in all screens.'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
   }
 
   @override
@@ -67,6 +90,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -75,9 +101,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         title: Text('Settings', style: AppStyles.heading1),
+<<<<<<< HEAD
 =======
         title: const Text('Settings', style: heading1),
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.settings),
+                const SizedBox(width: 4),
+                Text('Settings', style: AppStyles.normalText),
+              ],
+            ),
+          ),
+        ],
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -91,11 +133,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 =======
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Font Size', style: heading2),
+            Text('Font Size Settings', style: AppStyles.heading2),
             const SizedBox(height: 10),
             Text(
+<<<<<<< HEAD
               'Current size: ${_fontSize.toInt()}',
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+              'Current size: ${_fontSize.toInt()}px',
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
               style: TextStyle(fontSize: _fontSize),
             ),
             const SizedBox(height: 20),
@@ -125,10 +171,65 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Text('Back to Order', style: AppStyles.normalText),
 =======
             const SizedBox(height: 40),
+<<<<<<< HEAD
             const Text(
               'This is sample text to preview the font size.',
               style: TextStyle(fontSize: 16),
 >>>>>>> 67b8abe (Add a settings screen)
+=======
+            Text(
+              'Preview Text',
+              style: AppStyles.heading2,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'This is how normal text will look with the selected font size.',
+              style: TextStyle(fontSize: _fontSize),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'This is how headings will look.',
+              style: TextStyle(
+                fontSize: _fontSize + 8,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 40),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.blue.shade200),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.info, color: Colors.blue.shade700),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Note',
+                        style: TextStyle(
+                          fontSize: _fontSize,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue.shade700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Font size changes are saved automatically. You may need to restart the app to see changes in all screens.',
+                    style: TextStyle(
+                      fontSize: _fontSize - 2,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
+                ],
+              ),
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
             ),
           ],
         ),

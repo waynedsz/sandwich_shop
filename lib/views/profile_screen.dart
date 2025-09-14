@@ -136,10 +136,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
 <<<<<<< HEAD
+<<<<<<< HEAD
         title: Text(
 =======
         title: const Text(
 >>>>>>> 2889716 (Show the cart icon)
+=======
+        title: Text(
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
           'Profile',
           style: heading1,
         ),
@@ -152,12 +156,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
 <<<<<<< HEAD
+<<<<<<< HEAD
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
 =======
                     Icon(Icons.shopping_cart),
                     SizedBox(width: 4),
 >>>>>>> 2889716 (Show the cart icon)
+=======
+                    const Icon(Icons.shopping_cart),
+                    const SizedBox(width: 4),
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
                     Text('${cart.countOfItems}'),
                   ],
                 ),
@@ -178,10 +187,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
 <<<<<<< HEAD
+<<<<<<< HEAD
             Text('Enter your details:', style: heading2),
 =======
             const Text('Enter your details:', style: heading2),
 >>>>>>> 4aae054 (Add the link to the profile)
+=======
+            Text('Enter your details:', style: heading2),
+>>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
             const SizedBox(height: 20),
             TextField(
               controller: _nameController,

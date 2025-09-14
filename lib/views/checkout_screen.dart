@@ -563,7 +563,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 >>>>>>> b2b0415 (📝 Refactor CheckoutScreen to remove Cart parameter and utilize Provider for cart access)
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout', style: heading1),
+        title: Text('Checkout', style: heading1),
       ),
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -712,7 +712,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           builder: (context, cart, child) {
             List<Widget> columnChildren = [];
 
-            columnChildren.add(const Text('Order Summary', style: heading2));
+            columnChildren.add(Text('Order Summary', style: heading2));
             columnChildren.add(const SizedBox(height: 20));
 
             for (MapEntry<Sandwich, int> entry in cart.items.entries) {
@@ -744,7 +744,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             final Widget totalRow = Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Total:', style: heading2),
+                Text('Total:', style: heading2),
                 Text(
                   '£${cart.totalPrice.toStringAsFixed(2)}',
                   style: heading2,
@@ -755,7 +755,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             columnChildren.add(const SizedBox(height: 40));
 
             columnChildren.add(
-              const Text(
+              Text(
                 'Payment Method: Card ending in 1234',
                 style: normalText,
                 textAlign: TextAlign.center,
@@ -771,7 +771,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               );
               columnChildren.add(const SizedBox(height: 20));
               columnChildren.add(
-                const Text(
+                Text(
                   'Processing payment...',
                   style: normalText,
                   textAlign: TextAlign.center,
@@ -781,7 +781,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               columnChildren.add(
                 ElevatedButton(
                   onPressed: _processPayment,
-                  child: const Text('Confirm Payment', style: normalText),
+                  child: Text('Confirm Payment', style: normalText),
                 ),
               );
             }
