@@ -102,6 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         title: Text('Settings', style: AppStyles.heading1),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         title: const Text('Settings', style: heading1),
 >>>>>>> 67b8abe (Add a settings screen)
@@ -120,10 +121,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ],
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
+=======
+>>>>>>> 9ef8f8d (Simplify settings screen)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+<<<<<<< HEAD
 <<<<<<< HEAD
           children: [
             Text('Font Size', style: AppStyles.heading2),
@@ -132,9 +136,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               'Current size: ${_fontSize.toInt()}px',
 =======
           crossAxisAlignment: CrossAxisAlignment.start,
+=======
+>>>>>>> 9ef8f8d (Simplify settings screen)
           children: [
-            Text('Font Size Settings', style: AppStyles.heading2),
-            const SizedBox(height: 10),
+            Text('Font Size', style: AppStyles.heading2),
+            const SizedBox(height: 20),
             Text(
 <<<<<<< HEAD
               'Current size: ${_fontSize.toInt()}',
@@ -178,23 +184,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
 >>>>>>> 67b8abe (Add a settings screen)
 =======
             Text(
-              'Preview Text',
-              style: AppStyles.heading2,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'This is how normal text will look with the selected font size.',
+              'This is sample text to preview the font size.',
               style: TextStyle(fontSize: _fontSize),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 40),
             Text(
-              'This is how headings will look.',
-              style: TextStyle(
-                fontSize: _fontSize + 8,
-                fontWeight: FontWeight.bold,
-              ),
+              'Font size changes are saved automatically. Restart the app to see changes in all screens.',
+              style: AppStyles.normalText,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),
+<<<<<<< HEAD
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -230,6 +230,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ],
               ),
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
+=======
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Back to Order', style: AppStyles.normalText),
+>>>>>>> 9ef8f8d (Simplify settings screen)
             ),
           ],
         ),
