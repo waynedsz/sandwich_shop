@@ -126,6 +126,7 @@ dependencies:
 =======
   provider: ^6.1.5+1
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
 =======
   shared_preferences: ^2.5.3
@@ -138,6 +139,9 @@ dependencies:
 =======
   provider: ^6.1.5+1
 >>>>>>> 76133a0 (Add provider and import it in main)
+=======
+  shared_preferences: ^2.5.3
+>>>>>>> 730c01a (Add shared preferences)
 
 dev_dependencies:
   flutter_test:
