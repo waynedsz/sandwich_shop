@@ -93,6 +93,7 @@ import 'package:provider/provider.dart';
 import 'package:sandwich_shop/models/cart.dart';
 >>>>>>> 76133a0 (Add provider and import it in main)
 import 'package:sandwich_shop/views/order_screen_view.dart';
+<<<<<<< HEAD
 >>>>>>> 6ba2694 (Move order screen to its own view)
 =======
 import 'app_styles.dart';
@@ -968,8 +969,13 @@ import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 5a7e299 (Use the order repo in main)
 
 enum BreadType { white, wheat, wholemeal }
+=======
+import 'package:sandwich_shop/views/app_styles.dart';
+>>>>>>> 35b41f8 (📝 Update main.dart to initialize font size loading in main function)
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppStyles.loadFontSize();
   runApp(const App());
 }
 
