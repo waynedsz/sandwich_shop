@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
 =======
 import 'package:sandwich_shop/views/settings_screen.dart';
+<<<<<<< HEAD:lib/views/order_screen.dart
 <<<<<<< HEAD
 >>>>>>> 7888c14 (Update order_screen to add settings screen)
 =======
@@ -32,6 +33,9 @@ import 'package:provider/provider.dart';
 =======
 import 'package:sandwich_shop/views/settings_screen.dart';
 >>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
+=======
+import 'package:sandwich_shop/views/order_history_screen.dart';
+>>>>>>> 549fba5 (Link up the order history screen):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -159,6 +163,15 @@ class _OrderScreenState extends State<OrderScreen> {
 =======
         builder: (BuildContext context) => const CartViewScreen(),
 >>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
+      ),
+    );
+  }
+
+  void _navigateToOrderHistory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const OrderHistoryScreen(),
       ),
     );
   }
@@ -360,7 +373,17 @@ class _OrderScreenState extends State<OrderScreen> {
 >>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
 =======
               const SizedBox(height: 20),
+<<<<<<< HEAD:lib/views/order_screen.dart
 >>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
+=======
+              StyledButton(
+                onPressed: _navigateToOrderHistory,
+                icon: Icons.history,
+                label: 'Order History',
+                backgroundColor: Colors.indigo,
+              ),
+              const SizedBox(height: 20),
+>>>>>>> 549fba5 (Link up the order history screen):lib/views/order_screen_view.dart
               Consumer<Cart>(
                 builder: (context, cart, child) {
                   return Text(
