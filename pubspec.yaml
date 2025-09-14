@@ -130,6 +130,7 @@ dependencies:
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
 =======
   shared_preferences: ^2.5.3
+<<<<<<< HEAD
 >>>>>>> 359ef96 (added shared_preferences)
 =======
 >>>>>>> 816cadc (first commit)
@@ -142,6 +143,10 @@ dependencies:
 =======
   shared_preferences: ^2.5.3
 >>>>>>> 730c01a (Add shared preferences)
+=======
+  sqflite: ^2.4.2
+  path: ^1.9.1
+>>>>>>> 2a79532 (Add sqlite and path)
 
 dev_dependencies:
   flutter_test:
