@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -396,6 +397,9 @@ import 'app_styles.dart';
 >>>>>>> 115f280 (Separate styles to app_styles)
 
 enum BreadType { white, wheat, wholemeal }
+=======
+import 'package:sandwich_shop/views/order_screen.dart';
+>>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
 void main() {
   runApp(const App());

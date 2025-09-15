@@ -24,8 +24,12 @@ import 'package:sandwich_shop/views/main.dart';
 =======
 import 'package:sandwich_shop/main.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 212586f (Move main.dart back to lib)
 import 'package:sandwich_shop/models/sandwich.dart';
+=======
+import 'package:sandwich_shop/views/order_screen.dart';
+>>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
 void dummyFunction() {}
 >>>>>>> f1772b8 (Update widget_test)
