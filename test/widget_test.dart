@@ -82,8 +82,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:sandwich_shop/main.dart';
 import 'package:sandwich_shop/models/cart.dart';
+<<<<<<< HEAD
 import 'package:sandwich_shop/views/order_screen_view.dart';
 >>>>>>> fc7a69d (Update widget_tests for main)
+=======
+import 'package:sandwich_shop/views/order_screen.dart';
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
 void dummyFunction() {}
 >>>>>>> f1772b8 (Update widget_test)

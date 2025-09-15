@@ -91,6 +91,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 =======
 import 'package:provider/provider.dart';
 import 'package:sandwich_shop/models/cart.dart';
+<<<<<<< HEAD
 >>>>>>> 76133a0 (Add provider and import it in main)
 import 'package:sandwich_shop/views/order_screen_view.dart';
 <<<<<<< HEAD
@@ -107,6 +108,9 @@ enum BreadType { white, wheat, wholemeal }
 =======
 import 'app_styles.dart';
 =======
+=======
+import 'package:sandwich_shop/views/order_screen.dart';
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 import 'package:sandwich_shop/views/app_styles.dart';
 >>>>>>> 212586f (Move main.dart back to lib):lib/main.dart
 import 'package:sandwich_shop/models/cart.dart';

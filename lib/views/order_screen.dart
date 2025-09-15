@@ -162,11 +162,15 @@ class _OrderScreenState extends State<OrderScreen> {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/order_screen.dart
         builder: (BuildContext context) => const CartScreen(),
 =======
         builder: (BuildContext context) => const CartViewScreen(),
 >>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
+=======
+        builder: (BuildContext context) => const CartScreen(),
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       ),
     );
   }

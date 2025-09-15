@@ -6,7 +6,7 @@ import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/views/common_widgets.dart';
 =======
 import 'package:provider/provider.dart';
-import 'package:sandwich_shop/views/order_screen_view.dart';
+import 'package:sandwich_shop/views/order_screen.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/models/cart.dart';
 <<<<<<< HEAD:test/views/order_screen_test.dart

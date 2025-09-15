@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/views/cart_screen.dart';
@@ -14,11 +15,19 @@ import 'package:sandwich_shop/models/sandwich.dart';
 =======
 import 'package:provider/provider.dart';
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
+=======
+import 'package:provider/provider.dart';
+import 'package:sandwich_shop/views/cart_screen.dart';
+import 'package:sandwich_shop/models/cart.dart';
+import 'package:sandwich_shop/models/sandwich.dart';
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
 void main() {
   group('CartScreen', () {
     testWidgets('displays empty cart message when cart is empty',
         (WidgetTester tester) async {
+<<<<<<< HEAD
 <<<<<<< HEAD
       final Cart emptyCart = Cart();
 <<<<<<< HEAD
@@ -47,11 +56,27 @@ void main() {
       expect(find.text('Cart View'), findsOneWidget);
       expect(find.text('Your cart is empty.'), findsOneWidget);
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final Cart emptyCart = Cart();
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: emptyCart,
+          child: cartScreen,
+        ),
+      );
+
+      await tester.pumpWidget(app);
+
+      expect(find.text('Cart'), findsOneWidget);
+      expect(find.text('Your cart is empty.'), findsOneWidget);
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       expect(find.text('Total: £0.00'), findsOneWidget);
     });
 
     testWidgets('displays cart items when cart has items',
         (WidgetTester tester) async {
+<<<<<<< HEAD
       final cart = Cart();
       final sandwich = Sandwich(
         type: SandwichType.veggieDelight,
@@ -64,10 +89,27 @@ void main() {
       final CartScreen cartScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(
         home: cartScreen,
+=======
+      final Cart cart = Cart();
+      final Sandwich sandwich = Sandwich(
+        type: SandwichType.veggieDelight,
+        isFootlong: true,
+        breadType: BreadType.white,
+      );
+      cart.add(sandwich, quantity: 2);
+
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       );
 
       await tester.pumpWidget(app);
 
+<<<<<<< HEAD
       expect(find.text('Cart View'), findsOneWidget);
       expect(find.text(sandwich.name), findsOneWidget);
       final sizeLabel =
@@ -94,10 +136,19 @@ void main() {
       expect(find.text('Qty: 2'), findsOneWidget);
       expect(find.text('Total: £22.00'), findsOneWidget);
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      expect(find.text('Cart'), findsOneWidget);
+      expect(find.text('Veggie Delight'), findsOneWidget);
+      expect(find.text('Footlong on white bread'), findsOneWidget);
+      expect(find.text('Qty: 2'), findsOneWidget);
+      expect(find.text('£22.00'), findsOneWidget);
+      expect(find.text('Total: £22.00'), findsOneWidget);
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
     });
 
     testWidgets('displays multiple cart items correctly',
         (WidgetTester tester) async {
+<<<<<<< HEAD
       final cart = Cart();
       final sandwich1 = Sandwich(
         type: SandwichType.veggieDelight,
@@ -118,10 +169,23 @@ void main() {
         isFootlong: false,
         breadType: BreadType.wheat,
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final Cart cart = Cart();
+      final Sandwich sandwich1 = Sandwich(
+        type: SandwichType.veggieDelight,
+        isFootlong: true,
+        breadType: BreadType.white,
+      );
+      final Sandwich sandwich2 = Sandwich(
+        type: SandwichType.chickenTeriyaki,
+        isFootlong: false,
+        breadType: BreadType.wheat,
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       );
       cart.add(sandwich1, quantity: 1);
       cart.add(sandwich2, quantity: 3);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       final CartScreen cartScreen = CartScreen(cart: cart);
@@ -155,6 +219,17 @@ void main() {
         ),
       );
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+
+      await tester.pumpWidget(app);
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       expect(find.text('Veggie Delight'), findsOneWidget);
       expect(find.text('Chicken Teriyaki'), findsOneWidget);
@@ -165,6 +240,9 @@ void main() {
       expect(find.text('Total: £32.00'), findsOneWidget);
     });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
     testWidgets('shows checkout button when cart has items',
         (WidgetTester tester) async {
@@ -176,8 +254,18 @@ void main() {
       );
       cart.add(sandwich, quantity: 1);
 
+<<<<<<< HEAD
       final CartScreen cartViewScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       await tester.pumpWidget(app);
 
@@ -187,8 +275,18 @@ void main() {
     testWidgets('hides checkout button when cart is empty',
         (WidgetTester tester) async {
       final Cart emptyCart = Cart();
+<<<<<<< HEAD
       final CartScreen cartViewScreen = CartScreen(cart: emptyCart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: emptyCart,
+          child: cartScreen,
+        ),
+      );
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       await tester.pumpWidget(app);
 
@@ -205,8 +303,18 @@ void main() {
       );
       cart.add(sandwich, quantity: 1);
 
+<<<<<<< HEAD
       final CartScreen cartViewScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       await tester.pumpWidget(app);
 
@@ -230,8 +338,18 @@ void main() {
       );
       cart.add(sandwich, quantity: 2);
 
+<<<<<<< HEAD
       final CartScreen cartViewScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       await tester.pumpWidget(app);
 
@@ -255,8 +373,18 @@ void main() {
       );
       cart.add(sandwich, quantity: 2);
 
+<<<<<<< HEAD
       final CartScreen cartViewScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
       await tester.pumpWidget(app);
 
@@ -269,11 +397,15 @@ void main() {
       expect(find.text('Veggie Delight'), findsNothing);
       expect(find.text('Your cart is empty.'), findsOneWidget);
       expect(find.text('Item removed from cart'), findsOneWidget);
+<<<<<<< HEAD
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
     });
 
     testWidgets('back button navigates back', (WidgetTester tester) async {
       final Cart cart = Cart();
+<<<<<<< HEAD
 <<<<<<< HEAD
       final CartScreen cartScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(
@@ -368,6 +500,16 @@ void main() {
       final CartScreen cartViewScreen = CartScreen(cart: cart);
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 
+=======
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       await tester.pumpWidget(app);
 
       final Finder backButtonFinder =
@@ -378,8 +520,72 @@ void main() {
           tester.widget<StyledButton>(backButtonFinder);
       expect(backButton.onPressed, isNotNull);
     });
+<<<<<<< HEAD
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 =======
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
+=======
+
+    testWidgets('displays logo in app bar', (WidgetTester tester) async {
+      final Cart cart = Cart();
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+
+      await tester.pumpWidget(app);
+
+      // Find the app bar first
+      final appBarFinder = find.byType(AppBar);
+      expect(appBarFinder, findsOneWidget);
+
+      // Find images within the app bar
+      final appBarImagesFinder = find.descendant(
+        of: appBarFinder,
+        matching: find.byType(Image),
+      );
+      expect(appBarImagesFinder, findsOneWidget);
+
+      // Verify the logo image asset path
+      final Image logoImage = tester.widget(appBarImagesFinder);
+      expect(
+          (logoImage.image as AssetImage).assetName, 'assets/images/logo.png');
+    });
+
+    testWidgets('displays cart indicator in app bar',
+        (WidgetTester tester) async {
+      final Cart cart = Cart();
+      final Sandwich sandwich = Sandwich(
+        type: SandwichType.veggieDelight,
+        isFootlong: true,
+        breadType: BreadType.white,
+      );
+      cart.add(sandwich, quantity: 3);
+
+      const CartScreen cartScreen = CartScreen();
+      final MaterialApp app = MaterialApp(
+        home: ChangeNotifierProvider<Cart>.value(
+          value: cart,
+          child: cartScreen,
+        ),
+      );
+
+      await tester.pumpWidget(app);
+
+      // Find the cart indicator in the app bar
+      final appBarFinder = find.byType(AppBar);
+      final cartIconFinder = find.descendant(
+        of: appBarFinder,
+        matching: find.byIcon(Icons.shopping_cart),
+      );
+      expect(cartIconFinder, findsOneWidget);
+
+      // Verify cart count is displayed
+      expect(find.text('3'), findsOneWidget);
+    });
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
   });
 }

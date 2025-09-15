@@ -5,7 +5,11 @@ import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 import 'package:sandwich_shop/views/checkout_screen.dart';
+<<<<<<< HEAD
 import 'package:sandwich_shop/views/common_widgets.dart';
+=======
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -18,6 +22,87 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  Future<void> _navigateToCheckout() async {
+<<<<<<< HEAD
+    final bool cartIsEmpty = widget.cart.items.isEmpty;
+
+    if (cartIsEmpty) {
+      const SnackBar emptyCartSnackBar = SnackBar(
+        content: Text('Your cart is empty'),
+        duration: Duration(seconds: 2),
+=======
+    final Cart cart = Provider.of<Cart>(context, listen: false);
+
+    if (cart.items.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Your cart is empty'),
+          duration: Duration(seconds: 2),
+        ),
+>>>>>>> fdf19a4 (📝 Refactor CartViewScreen to use Provider for Cart management)
+      );
+      ScaffoldMessenger.of(context).showSnackBar(emptyCartSnackBar);
+      return;
+    }
+
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CheckoutScreen(),
+      ),
+    );
+
+<<<<<<< HEAD
+    final bool hasResult = result != null;
+    final bool widgetStillMounted = mounted;
+=======
+    if (result != null && mounted) {
+      cart.clear();
+>>>>>>> fdf19a4 (📝 Refactor CartViewScreen to use Provider for Cart management)
+
+    if (hasResult && widgetStillMounted) {
+      final String status = result['status'] as String;
+
+      if (status == 'confirmed') {
+        _handleConfirmedOrder(result);
+      } else if (status == 'cancelled') {
+        _handleCancelledOrder();
+      }
+    }
+  }
+
+  void _handleConfirmedOrder(Map<String, dynamic> orderData) {
+    setState(() {
+      widget.cart.clear();
+    });
+
+    final String orderId = orderData['orderId'] as String;
+    final String estimatedTime = orderData['estimatedTime'] as String;
+
+    final String successMessage =
+        'Order $orderId confirmed! Estimated time: $estimatedTime';
+    final SnackBar successSnackBar = SnackBar(
+      content: Text(successMessage),
+      duration: const Duration(seconds: 4),
+      backgroundColor: Colors.green,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(successSnackBar);
+
+    Navigator.pop(context);
+  }
+
+  void _handleCancelledOrder() {
+    const SnackBar cancelledSnackBar = SnackBar(
+      content: Text('Order cancelled'),
+      duration: Duration(seconds: 2),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(cancelledSnackBar);
+  }
+
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
   void _goBack() {
     Navigator.pop(context);
   }
@@ -38,6 +123,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
+<<<<<<< HEAD
   void _showClearCartDialog() async {
     final shouldClear = await showDialog<bool>(
       context: context,
@@ -124,6 +210,20 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   void _incrementQuantity(Sandwich sandwich) {
+=======
+  void _incrementQuantity(Sandwich sandwich) {
+<<<<<<< HEAD
+    setState(() {
+      widget.cart.add(sandwich, quantity: 1);
+    });
+  }
+
+  void _decrementQuantity(Sandwich sandwich) {
+    setState(() {
+      widget.cart.remove(sandwich, quantity: 1);
+    });
+=======
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
     final Cart cart = Provider.of<Cart>(context, listen: false);
     cart.add(sandwich, quantity: 1);
     ScaffoldMessenger.of(context).showSnackBar(
@@ -152,6 +252,7 @@ class _CartScreenState extends State<CartScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Item removed from cart')),
     );
+<<<<<<< HEAD
   }
 
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
@@ -170,6 +271,16 @@ class _CartScreenState extends State<CartScreen> {
           'Cart View',
           style: heading1,
         ),
+=======
+>>>>>>> fdf19a4 (📝 Refactor CartViewScreen to use Provider for Cart management)
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CommonAppBar(
+        title: 'Cart',
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
         actions: [
           Consumer<Cart>(
             builder: (context, cart, child) {
@@ -195,6 +306,7 @@ class _CartScreenState extends State<CartScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
+<<<<<<< HEAD
 <<<<<<< HEAD
               for (MapEntry<Sandwich, int> entry in widget.cart.items.entries)
                 Card(
@@ -277,6 +389,71 @@ class _CartScreenState extends State<CartScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
 =======
+              for (MapEntry<Sandwich, int> entry in widget.cart.items.entries)
+                Column(
+                  children: [
+                    Text(entry.key.name, style: heading2),
+                    Text(
+                      '${_getSizeText(entry.key.isFootlong)} on ${entry.key.breadType.name} bread',
+                      style: normalText,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: () => _decrementQuantity(entry.key),
+                        ),
+                        Text(
+                          'Qty: ${entry.value}',
+                          style: normalText,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () => _incrementQuantity(entry.key),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          '£${_getItemPrice(entry.key, entry.value).toStringAsFixed(2)}',
+                          style: normalText,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              Text(
+                'Total: £${widget.cart.totalPrice.toStringAsFixed(2)}',
+                style: heading2,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              Builder(
+                builder: (BuildContext context) {
+                  final bool cartHasItems = widget.cart.items.isNotEmpty;
+                  if (cartHasItems) {
+                    return StyledButton(
+                      onPressed: _navigateToCheckout,
+                      icon: Icons.payment,
+                      label: 'Checkout',
+                      backgroundColor: Colors.orange,
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+              StyledButton(
+                onPressed: _goBack,
+                icon: Icons.arrow_back,
+                label: 'Back to Order',
+                backgroundColor: Colors.grey,
+              ),
+              const SizedBox(height: 20),
+            ],
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
           child: Consumer<Cart>(
             builder: (context, cart, child) {
               return Column(
@@ -292,7 +469,10 @@ class _CartScreenState extends State<CartScreen> {
                   else
                     for (MapEntry<Sandwich, int> entry in cart.items.entries)
                       Column(
+<<<<<<< HEAD
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
+=======
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
                         children: [
                           Text(entry.key.name, style: heading2),
                           Text(
@@ -334,6 +514,7 @@ class _CartScreenState extends State<CartScreen> {
                     style: heading2,
                     textAlign: TextAlign.center,
                   ),
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
               Text(
@@ -383,6 +564,8 @@ class _CartScreenState extends State<CartScreen> {
               const SizedBox(height: 20),
             ],
 =======
+=======
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
                   const SizedBox(height: 20),
                   Builder(
                     builder: (BuildContext context) {
@@ -410,7 +593,11 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               );
             },
+<<<<<<< HEAD
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
+=======
+>>>>>>> fdf19a4 (📝 Refactor CartViewScreen to use Provider for Cart management)
+>>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
           ),
         ),
       ),
