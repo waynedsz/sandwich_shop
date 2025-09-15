@@ -65,7 +65,6 @@ void main() {
       );
       await tester.pumpWidget(app);
 
-      // Find the cart indicator in the app bar
       final appBarFinder = find.byType(AppBar);
       final cartIconFinder = find.descendant(
         of: appBarFinder,
@@ -73,7 +72,6 @@ void main() {
       );
       expect(cartIconFinder, findsOneWidget);
 
-      // Verify initial cart count is displayed
       expect(find.text('0'), findsOneWidget);
     });
   });
@@ -193,7 +191,6 @@ void main() {
       );
       await tester.pumpWidget(app);
 
-      // Initially shows 0
       final appBarFinder = find.byType(AppBar);
       final cartCountFinder = find.descendant(
         of: appBarFinder,
@@ -201,7 +198,6 @@ void main() {
       );
       expect(cartCountFinder, findsOneWidget);
 
-      // Add item to cart
       final Finder addToCartButtonFinder =
           find.widgetWithText(StyledButton, 'Add to Cart');
       await tester.ensureVisible(addToCartButtonFinder);
@@ -209,7 +205,6 @@ void main() {
       await tester.tap(addToCartButtonFinder);
       await tester.pumpAndSettle();
 
-      // Should now show 1 in app bar
       final updatedCartCountFinder = find.descendant(
         of: appBarFinder,
         matching: find.text('1'),
@@ -381,7 +376,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('0'),
-          findsNWidgets(2)); // One for quantity, one for cart indicator
+          findsNWidgets(2));
       IconButton removeButton = tester.widget<IconButton>(removeButtonFinder);
       expect(removeButton.onPressed, isNull);
 
@@ -397,7 +392,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('0'),
-          findsNWidgets(2)); // One for quantity, one for cart indicator
+          findsNWidgets(2));
     });
 
     testWidgets('navigates to cart view when View Cart button is tapped',

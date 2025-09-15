@@ -538,18 +538,15 @@ void main() {
 
       await tester.pumpWidget(app);
 
-      // Find the app bar first
       final appBarFinder = find.byType(AppBar);
       expect(appBarFinder, findsOneWidget);
 
-      // Find images within the app bar
       final appBarImagesFinder = find.descendant(
         of: appBarFinder,
         matching: find.byType(Image),
       );
       expect(appBarImagesFinder, findsOneWidget);
 
-      // Verify the logo image asset path
       final Image logoImage = tester.widget(appBarImagesFinder);
       expect(
           (logoImage.image as AssetImage).assetName, 'assets/images/logo.png');
@@ -575,7 +572,6 @@ void main() {
 
       await tester.pumpWidget(app);
 
-      // Find the cart indicator in the app bar
       final appBarFinder = find.byType(AppBar);
       final cartIconFinder = find.descendant(
         of: appBarFinder,
@@ -583,7 +579,6 @@ void main() {
       );
       expect(cartIconFinder, findsOneWidget);
 
-      // Verify cart count is displayed
       expect(find.text('3'), findsOneWidget);
     });
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
