@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:provider/provider.dart';
 import 'package:sandwich_shop/views/checkout_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import 'package:provider/provider.dart';
 =======
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 >>>>>>> 1cf0400 (Update tests for screens cart and checkout)
+=======
+import '../helpers/test_helpers.dart';
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
 void main() {
   group('CheckoutScreen', () {
     setUpAll(() {
-      sqfliteFfiInit();
-      databaseFactory = databaseFactoryFfi;
+      initializeTestDatabase();
     });
     testWidgets('displays order summary with empty cart',
         (WidgetTester tester) async {
@@ -28,12 +30,7 @@ void main() {
 =======
       final Cart emptyCart = Cart();
       const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: emptyCart,
-          child: checkoutScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(checkoutScreen, cart: emptyCart);
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -67,6 +64,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -74,6 +72,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -112,6 +113,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -119,6 +121,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -140,12 +145,7 @@ void main() {
 =======
       final Cart cart = Cart();
       const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -211,12 +211,7 @@ void main() {
 >>>>>>> 4d93793 (Remove comments from tests)
 
       const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
 
 <<<<<<< HEAD
     //   await tester.pumpWidget(app);
@@ -233,7 +228,8 @@ void main() {
       expect(find.text('Processing payment...'), findsOneWidget);
       expect(find.text('Confirm Payment'), findsNothing);
 
-      await tester.pumpAndSettle();
+      // Wait for the payment processing to complete (2 seconds + some buffer)
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('calculates item prices correctly for footlong sandwiches',
@@ -258,6 +254,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -265,6 +262,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -295,6 +295,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -302,6 +303,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -338,6 +342,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -345,6 +350,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -354,6 +362,7 @@ void main() {
       expect(find.textContaining('£25.00'), findsWidgets);
     });
 
+<<<<<<< HEAD
     testWidgets('has proper layout structure', (WidgetTester tester) async {
 <<<<<<< HEAD
       await tester.pumpWidget(
@@ -381,6 +390,8 @@ void main() {
       expect(find.byType(SizedBox), findsWidgets);
     });
 
+=======
+>>>>>>> 6dcd949 (refactor widget tests at 8)
     testWidgets('payment method text is displayed correctly',
         (WidgetTester tester) async {
 <<<<<<< HEAD
@@ -393,12 +404,7 @@ void main() {
 =======
       final Cart cart = Cart();
       const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)
@@ -411,6 +417,7 @@ void main() {
       expect(paymentMethodText.textAlign, equals(TextAlign.center));
     });
 
+<<<<<<< HEAD
     testWidgets('order summary items are properly aligned',
         (WidgetTester tester) async {
       final cart = Cart();
@@ -490,6 +497,8 @@ void main() {
       expect(find.byType(Divider), findsOneWidget);
     });
 
+=======
+>>>>>>> 6dcd949 (refactor widget tests at 8)
     testWidgets('shows correct quantity and name format',
         (WidgetTester tester) async {
       final cart = Cart();
@@ -512,6 +521,7 @@ void main() {
       final CheckoutScreen checkoutScreen = const CheckoutScreen();
 =======
       const CheckoutScreen checkoutScreen = CheckoutScreen();
+<<<<<<< HEAD
 >>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
@@ -519,6 +529,9 @@ void main() {
           child: checkoutScreen,
         ),
       );
+=======
+      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 >>>>>>> fa11dab (Update checkout screen tests)

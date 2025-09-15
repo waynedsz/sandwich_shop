@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/views/cart_screen.dart';
@@ -17,11 +18,17 @@ import 'package:provider/provider.dart';
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
 =======
 import 'package:provider/provider.dart';
+=======
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 import 'package:sandwich_shop/views/cart_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/widgets/common_widgets.dart';
+<<<<<<< HEAD
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+import '../helpers/test_helpers.dart';
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
 void main() {
   group('CartScreen', () {
@@ -59,12 +66,7 @@ void main() {
 =======
       final Cart emptyCart = Cart();
       const CartScreen cartScreen = CartScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: emptyCart,
-          child: cartScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(cartScreen, cart: emptyCart);
 
       await tester.pumpWidget(app);
 
@@ -99,6 +101,7 @@ void main() {
       cart.add(sandwich, quantity: 2);
 
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -106,6 +109,9 @@ void main() {
         ),
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       );
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -221,12 +227,7 @@ void main() {
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
 =======
       const CartScreen cartScreen = CartScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: cartScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
 
       await tester.pumpWidget(app);
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
@@ -259,6 +260,7 @@ void main() {
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 =======
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -266,6 +268,9 @@ void main() {
         ),
       );
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -280,6 +285,7 @@ void main() {
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 =======
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: emptyCart,
@@ -287,6 +293,9 @@ void main() {
         ),
       );
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: emptyCart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -308,6 +317,7 @@ void main() {
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 =======
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -315,6 +325,9 @@ void main() {
         ),
       );
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -343,6 +356,7 @@ void main() {
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 =======
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -350,6 +364,9 @@ void main() {
         ),
       );
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -378,6 +395,7 @@ void main() {
       final MaterialApp app = MaterialApp(home: cartViewScreen);
 =======
       const CartScreen cartScreen = CartScreen();
+<<<<<<< HEAD
       final MaterialApp app = MaterialApp(
         home: ChangeNotifierProvider<Cart>.value(
           value: cart,
@@ -385,6 +403,9 @@ void main() {
         ),
       );
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
+>>>>>>> 6dcd949 (refactor widget tests at 8)
 
       await tester.pumpWidget(app);
 
@@ -502,23 +523,12 @@ void main() {
 
 =======
       const CartScreen cartScreen = CartScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: cartScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
 
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
       await tester.pumpWidget(app);
 
-      final Finder backButtonFinder =
-          find.widgetWithText(StyledButton, 'Back to Order');
-      expect(backButtonFinder, findsOneWidget);
-
-      final StyledButton backButton =
-          tester.widget<StyledButton>(backButtonFinder);
-      expect(backButton.onPressed, isNotNull);
+      testStyledButtonProperties(tester, 'Back to Order');
     });
 <<<<<<< HEAD
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
@@ -526,33 +536,7 @@ void main() {
 >>>>>>> 84e5cdc (Update tests to use ChangeNotifier)
 =======
 
-    testWidgets('displays logo in app bar', (WidgetTester tester) async {
-      final Cart cart = Cart();
-      const CartScreen cartScreen = CartScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: cartScreen,
-        ),
-      );
-
-      await tester.pumpWidget(app);
-
-      final appBarFinder = find.byType(AppBar);
-      expect(appBarFinder, findsOneWidget);
-
-      final appBarImagesFinder = find.descendant(
-        of: appBarFinder,
-        matching: find.byType(Image),
-      );
-      expect(appBarImagesFinder, findsOneWidget);
-
-      final Image logoImage = tester.widget(appBarImagesFinder);
-      expect(
-          (logoImage.image as AssetImage).assetName, 'assets/images/logo.png');
-    });
-
-    testWidgets('displays cart indicator in app bar',
+    testWidgets('displays common app bar elements correctly',
         (WidgetTester tester) async {
       final Cart cart = Cart();
       final Sandwich sandwich = Sandwich(
@@ -563,23 +547,13 @@ void main() {
       cart.add(sandwich, quantity: 3);
 
       const CartScreen cartScreen = CartScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: cartScreen,
-        ),
-      );
+      final MaterialApp app = createTestApp(cartScreen, cart: cart);
 
       await tester.pumpWidget(app);
 
-      final appBarFinder = find.byType(AppBar);
-      final cartIconFinder = find.descendant(
-        of: appBarFinder,
-        matching: find.byIcon(Icons.shopping_cart),
-      );
-      expect(cartIconFinder, findsOneWidget);
-
-      expect(find.text('3'), findsOneWidget);
+      testCommonAppBarLogo(tester);
+      testCartIndicator(tester, 3);
+      testBasicScaffoldStructure(tester);
     });
 >>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
   });
