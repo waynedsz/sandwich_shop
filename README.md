@@ -87,19 +87,23 @@ browser.
 
 ## Install the essential tools
 
-1.  **Terminal**:
+1. **Terminal**:
 
     - **macOS** – use the built-in Terminal app by pressing **⌘ + Space**, typing **Terminal**, and pressing **Return**.
     - **Windows** – open the start menu using the **Windows** key. Then enter **cmd** to open the **Command Prompt**. Alternatively, you can use **Windows PowerShell** or **Windows Terminal**.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 2. **Git** – verify that you have `git` installed by entering `git --version`, in the terminal.
 =======
 2.  **Git** – verify that you have `git` installed by entering `git --version`, in the terminal.
 >>>>>>> 05897b7 (Update README for branch 2)
+=======
+2. **Git** – verify that you have `git` installed by entering `git --version`, in the terminal.
+>>>>>>> 69fa965 (📝 Update README.md)
     If this is missing, download the installer from [Git's official site](https://git-scm.com/downloads?utm_source=chatgpt.com).
 
-3.  **Package managers**:
+3. **Package managers**:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -129,12 +133,12 @@ samples, guidance on mobile development, and a full API reference.
     - **Chocolatey** (Windows) – verify that you have `choco` installed with `choco --version`; if missing, follow the instructions on the [Chocolatey installation page](https://chocolatey.org/install).
 >>>>>>> 05897b7 (Update README for branch 2)
 
-4.  **Flutter SDK** – verify that you have `flutter` installed and it is working with `flutter doctor`; if missing, install it using your package manager:
+4. **Flutter SDK** – verify that you have `flutter` installed and it is working with `flutter doctor`; if missing, install it using your package manager:
 
     - **macOS**: `brew install --cask flutter`
     - **Windows**: `choco install flutter`
 
-5.  **Visual Studio Code** – verify that you have `code` installed with `code --version`; if missing, use your package manager to install it:
+5. **Visual Studio Code** – verify that you have `code` installed with `code --version`; if missing, use your package manager to install it:
 
     - **macOS**: `brew install --cask visual-studio-code`
     - **Windows**: `choco install vscode`
@@ -149,7 +153,11 @@ You may want to change directory (`cd`) to the directory where you want to clone
 repository first.
 
 ```bash
+<<<<<<< HEAD
 git clone --branch 5 https://github.com/manighahrmani/sandwich_shop
+=======
+git clone --branch 6 https://github.com/manighahrmani/sandwich_shop
+>>>>>>> 69fa965 (📝 Update README.md)
 cd sandwich_shop
 code .
 ```
@@ -161,7 +169,11 @@ Remember to `cd` to the directory where you cloned the repository first.
 
 ```bash
 git fetch origin
+<<<<<<< HEAD
 git checkout 5
+=======
+git checkout 6
+>>>>>>> 69fa965 (📝 Update README.md)
 ```
 
 ## Run the app
