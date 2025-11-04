@@ -677,7 +677,7 @@ class StyledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     ButtonStyle myButtonStyle = ElevatedButton.styleFrom(
       backgroundColor: backgroundColor,
-      foregroundColor: Colors.orange,
+      foregroundColor: Colors.white,
       textStyle: normalText,
     );
 
