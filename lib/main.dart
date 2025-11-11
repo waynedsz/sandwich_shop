@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+import 'package:sandwich_shop/repositories/PricingRepository.dart';
+>>>>>>> 70d9ab4 (Added a pricing repository, unit testing for it and display)
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 40459b4 (Added a import to fix errors)
@@ -117,6 +121,11 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final pricingRepository = PricingRepository(
+      quantity: _orderRepository.quantity,
+      isFootlong: _isFootlong,
+    );
+    final totalPrice = pricingRepository.getTotalPrice();
     String sandwichType = 'footlong';
     if (!_isFootlong) {
       sandwichType = 'six-inch';
@@ -145,6 +154,10 @@ class _OrderScreenState extends State<OrderScreen> {
               itemType: sandwichType,
               breadType: _selectedBreadType,
               orderNote: noteForDisplay,
+            ),
+            Text(
+              'Total Price: £${totalPrice.toStringAsFixed(2)}',
+              style: heading1,
             ),
             const SizedBox(height: 20),
             Row(
