@@ -185,11 +185,16 @@ class _OrderScreenState extends State<OrderScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            DropdownMenu<BreadType>(
-              textStyle: normalText,
-              initialSelection: _selectedBreadType,
-              onSelected: _onBreadTypeSelected,
-              dropdownMenuEntries: _buildDropdownEntries(),
+            DropdownButton<BreadType>(
+              value: _selectedBreadType,
+              items: BreadType.values.map((bread) {
+                return DropdownMenuItem<BreadType>(
+                  value: bread,
+                  child: Text(bread.name, style: normalText),
+                );
+              }).toList(),
+              onChanged: _onBreadTypeSelected,
+              style: normalText,
             ),
             const SizedBox(height: 20),
             Padding(
