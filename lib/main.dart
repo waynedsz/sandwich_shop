@@ -9,6 +9,8 @@ void main() {
   runApp(const App());
 }
 
+enum BreadType { white, wheat, wholemeal }
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -47,13 +49,80 @@ class App extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
 class OrderItemDisplay extends StatelessWidget {
   final String itemType;
   final int quantity;
   const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+=======
+class StyledButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final IconData icon;
+  final String label;
+  final Color backgroundColor;
+
+  const StyledButton({
+    super.key,
+    required this.onPressed,
+    required this.icon,
+    required this.label,
+    required this.backgroundColor,
+  });
+>>>>>>> e6df372 (Fix all errors regarding missing methods and variables)
 
   @override
   Widget build(BuildContext context) {
-    return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
+    ButtonStyle myButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: backgroundColor,
+      foregroundColor: Colors.white,
+      textStyle: normalText,
+    );
+
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: myButtonStyle,
+      child: Row(
+        children: [
+          Icon(icon),
+          const SizedBox(width: 8),
+          Text(label),
+        ],
+      ),
+    );
+  }
+}
+
+class OrderItemDisplay extends StatelessWidget {
+  final int quantity;
+  final String itemType;
+  final BreadType breadType;
+  final String orderNote;
+
+  const OrderItemDisplay({
+    super.key,
+    required this.quantity,
+    required this.itemType,
+    required this.breadType,
+    required this.orderNote,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    String displayText =
+        '$quantity ${breadType.name} $itemType sandwich(es): ${'🥪' * quantity}';
+
+    return Column(
+      children: [
+        Text(
+          displayText,
+          style: normalText,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Note: $orderNote',
+          style: normalText,
+        ),
+      ],
+    );
   }
 }
