@@ -1,5 +1,4 @@
-import 'package:sandwich_shop/views/app_styles.dart';
-import 'package:sandwich_shop/repositories/order_repository.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const App());
@@ -17,169 +16,145 @@ class App extends StatelessWidget {
   }
 }
 
+class OrderItemDisplay extends StatelessWidget {
+  final String itemType;
+  final int quantity;
+
+  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
+      style: const TextStyle(fontSize: 16),
+    );
+  }
+}
+
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
 
   const OrderScreen({super.key, this.maxQuantity = 10});
 
   @override
-  State<OrderScreen> createState() {
-    return _OrderScreenState();
+  State<OrderScreen> createState() => _OrderScreenState();
+}
+
+class StyledButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Color textColor;
+  final bool enabled;
+
+  const StyledButton({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    this.backgroundColor = Colors.red,
+    this.textColor = Colors.white,
+    this.enabled = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: enabled ? onPressed : null,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor,
+        foregroundColor: textColor,
+      ),
+      child: Text(label),
+    );
   }
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  late final OrderRepository _orderRepository;
-  final TextEditingController _notesController = TextEditingController();
-  bool _isFootlong = true;
-  BreadType _selectedBreadType = BreadType.white;
+  int _footlongQuantity = 0;
+  int _sixInchQuantity = 0;
+  String _selectedType = 'Footlong';
 
-  @override
-  void initState() {
-    super.initState();
-    _orderRepository = OrderRepository(maxQuantity: widget.maxQuantity);
-    _notesController.addListener(() {
-      setState(() {});
+  void _increaseQuantity() {
+    setState(() {
+      if (_selectedType == 'Footlong' &&
+          _footlongQuantity < widget.maxQuantity) {
+        _footlongQuantity++;
+      } else if (_selectedType == 'Six-inch' &&
+          _sixInchQuantity < widget.maxQuantity) {
+        _sixInchQuantity++;
+      }
+    });
+  }
+
+  void _decreaseQuantity() {
+    setState(() {
+      if (_selectedType == 'Footlong' && _footlongQuantity > 0) {
+        _footlongQuantity--;
+      } else if (_selectedType == 'Six-inch' && _sixInchQuantity > 0) {
+        _sixInchQuantity--;
+      }
     });
   }
 
   @override
-  void dispose() {
-    _notesController.dispose();
-    super.dispose();
-  }
-
-  VoidCallback? _getIncreaseCallback() {
-    if (_orderRepository.canIncrement) {
-      return () => setState(_orderRepository.increment);
-    }
-    return null;
-  }
-
-  VoidCallback? _getDecreaseCallback() {
-    if (_orderRepository.canDecrement) {
-      return () => setState(_orderRepository.decrement);
-    }
-    return null;
-  }
-
-  void _onSandwichTypeChanged(bool value) {
-    setState(() => _isFootlong = value);
-  }
-
-  void _onBreadTypeSelected(BreadType? value) {
-    if (value != null) {
-      setState(() => _selectedBreadType = value);
-    }
-  }
-
-  List<DropdownMenuEntry<BreadType>> _buildDropdownEntries() {
-    List<DropdownMenuEntry<BreadType>> entries = [];
-    for (BreadType bread in BreadType.values) {
-      DropdownMenuEntry<BreadType> newEntry = DropdownMenuEntry<BreadType>(
-        value: bread,
-        label: bread.name,
-      );
-      entries.add(newEntry);
-    }
-    return entries;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    String sandwichType = 'footlong';
-    if (!_isFootlong) {
-      sandwichType = 'six-inch';
-    }
-
-    String noteForDisplay;
-    if (_notesController.text.isEmpty) {
-      noteForDisplay = 'No notes added.';
-    } else {
-      noteForDisplay = _notesController.text;
-    }
+    final int currentQuantity =
+        _selectedType == 'Footlong' ? _footlongQuantity : _sixInchQuantity;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Sandwich Counter',
-          style: heading1,
-        ),
+        title: const Text('Sandwich Counter'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            OrderItemDisplay(
-              quantity: _orderRepository.quantity,
-              itemType: sandwichType,
-              breadType: _selectedBreadType,
-              orderNote: noteForDisplay,
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('six-inch', style: normalText),
-                Switch(
-                  value: _isFootlong,
-                  onChanged: _onSandwichTypeChanged,
+            SegmentedButton<String>(
+              segments: const [
+                ButtonSegment(
+                  value: 'Footlong',
+                  label: Text('Footlong'),
                 ),
-                const Text('footlong', style: normalText),
+                ButtonSegment(
+                  value: 'Six-inch',
+                  label: Text('Six-inch'),
+                ),
               ],
-            ),
-            const SizedBox(height: 10),
-            DropdownMenu<BreadType>(
-              textStyle: normalText,
-              initialSelection: _selectedBreadType,
-              onSelected: _onBreadTypeSelected,
-              dropdownMenuEntries: _buildDropdownEntries(),
+              selected: {_selectedType},
+              onSelectionChanged: (Set<String> newSelection) {
+                setState(() {
+                  _selectedType = newSelection.first;
+                });
+              },
             ),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: TextField(
-                key: const Key('notes_textfield'),
-                controller: _notesController,
-                decoration: const InputDecoration(
-                  labelText: 'Add a note (e.g., no onions)',
-                ),
-              ),
-            ),
+            OrderItemDisplay(currentQuantity, _selectedType),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StyledButton(
-                  onPressed: _getIncreaseCallback(),
-                  icon: Icons.add,
                   label: 'Add',
-                  backgroundColor: Colors.green,
+                  onPressed: _increaseQuantity,
+                  enabled: (_selectedType == 'Footlong' &&
+                          _footlongQuantity < widget.maxQuantity) ||
+                      (_selectedType == 'Six-inch' &&
+                          _sixInchQuantity < widget.maxQuantity),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 16),
                 StyledButton(
-                  onPressed: _getDecreaseCallback(),
-                  icon: Icons.remove,
                   label: 'Remove',
-                  backgroundColor: Colors.red,
+                  onPressed: _decreaseQuantity,
+                  enabled:
+                      (_selectedType == 'Footlong' && _footlongQuantity > 0) ||
+                          (_selectedType == 'Six-inch' && _sixInchQuantity > 0),
                 ),
               ],
             ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
     );
-  }
-}
-
-class OrderItemDisplay extends StatelessWidget {
-  final int quantity;
-  final String itemType;
-
-  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
   }
 }
