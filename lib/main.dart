@@ -28,6 +28,13 @@ class OrderItemDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}');
+    return Center(
+      child: Container(
+        width: 400,
+        height: 200,
+        color: Colors.blue,
+        child: Text('$quantity $itemType sandwich(es): ${'🥪' * quantity}'),
+      ),
+    );
   }
 }
