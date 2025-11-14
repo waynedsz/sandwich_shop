@@ -1,160 +1,122 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const App());
+  runApp(const MyApp());
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Sandwich Shop App',
-      home: OrderScreen(maxQuantity: 5),
-    );
-  }
-}
-
-class OrderItemDisplay extends StatelessWidget {
-  final String itemType;
-  final int quantity;
-
-  const OrderItemDisplay(this.quantity, this.itemType, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      '$quantity $itemType sandwich(es): ${'🥪' * quantity}',
-      style: const TextStyle(fontSize: 16),
-    );
-  }
-}
-
-class OrderScreen extends StatefulWidget {
-  final int maxQuantity;
-
-  const OrderScreen({super.key, this.maxQuantity = 10});
-
-  @override
-  State<OrderScreen> createState() => _OrderScreenState();
-}
-
-class StyledButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onPressed;
-  final Color backgroundColor;
-  final Color textColor;
-  final bool enabled;
-
-  const StyledButton({
-    super.key,
-    required this.label,
-    required this.onPressed,
-    this.backgroundColor = Colors.red,
-    this.textColor = Colors.white,
-    this.enabled = true,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: enabled ? onPressed : null,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        foregroundColor: textColor,
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      child: Text(label),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class _OrderScreenState extends State<OrderScreen> {
-  int _footlongQuantity = 0;
-  int _sixInchQuantity = 0;
-  String _selectedType = 'Footlong';
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
-  void _increaseQuantity() {
-    setState(() {
-      if (_selectedType == 'Footlong' &&
-          _footlongQuantity < widget.maxQuantity) {
-        _footlongQuantity++;
-      } else if (_selectedType == 'Six-inch' &&
-          _sixInchQuantity < widget.maxQuantity) {
-        _sixInchQuantity++;
-      }
-    });
-  }
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
 
-  void _decreaseQuantity() {
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
     setState(() {
-      if (_selectedType == 'Footlong' && _footlongQuantity > 0) {
-        _footlongQuantity--;
-      } else if (_selectedType == 'Six-inch' && _sixInchQuantity > 0) {
-        _sixInchQuantity--;
-      }
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final int currentQuantity =
-        _selectedType == 'Footlong' ? _footlongQuantity : _sixInchQuantity;
-
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sandwich Counter'),
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
       ),
       body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
         child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          //
+          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+          // action in the IDE, or press "p" in the console), to see the
+          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SegmentedButton<String>(
-              segments: const [
-                ButtonSegment(
-                  value: 'Footlong',
-                  label: Text('Footlong'),
-                ),
-                ButtonSegment(
-                  value: 'Six-inch',
-                  label: Text('Six-inch'),
-                ),
-              ],
-              selected: {_selectedType},
-              onSelectionChanged: (Set<String> newSelection) {
-                setState(() {
-                  _selectedType = newSelection.first;
-                });
-              },
+            const Text('You have pushed the button this many times:'),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const SizedBox(height: 20),
-            OrderItemDisplay(currentQuantity, _selectedType),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                StyledButton(
-                  label: 'Add',
-                  onPressed: _increaseQuantity,
-                  enabled: (_selectedType == 'Footlong' &&
-                          _footlongQuantity < widget.maxQuantity) ||
-                      (_selectedType == 'Six-inch' &&
-                          _sixInchQuantity < widget.maxQuantity),
-                ),
-                const SizedBox(width: 16),
-                StyledButton(
-                  label: 'Remove',
-                  onPressed: _decreaseQuantity,
-                  enabled:
-                      (_selectedType == 'Footlong' && _footlongQuantity > 0) ||
-                          (_selectedType == 'Six-inch' && _sixInchQuantity > 0),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
