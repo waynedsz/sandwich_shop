@@ -44,7 +44,7 @@ sandwich_shop/
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/sandwich_shop.git
+   git clone https://github.com/waynedsz/sandwich_shop.git
    cd sandwich_shop
    ```
 
@@ -62,10 +62,6 @@ sandwich_shop/
 
 - You can change the maximum sandwich quantity by editing `OrderScreen(maxQuantity: ...)` in `main.dart`.
 - Add more bread types or customize the UI by editing the relevant widgets in `main.dart`.
-
-## Screenshots
-
-*(Add screenshots here if available)*
 
 ## Resources
 
