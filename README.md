@@ -17,6 +17,7 @@ A Flutter application for ordering sandwiches with customizable options.
 sandwich_shop/
 ├── lib/
 │   ├── main.dart                # Main app entry point and UI
+|   ├── view_models/
 │   ├── views/
 │   │   └── app_styles.dart      # Custom text styles for the app
 │   └── repositories/
