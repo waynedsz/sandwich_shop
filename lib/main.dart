@@ -11,6 +11,7 @@ import 'package:sandwich_shop/repositories/PricingRepository.dart';
 =======
 >>>>>>> 816369a (Move main.dart back to lib and update references):lib/main.dart
 import 'package:sandwich_shop/views/app_styles.dart';
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
@@ -226,6 +227,8 @@ import 'app_styles.dart';
 import 'package:sandwich_shop/repositories/order_repository.dart';
 >>>>>>> 5a7e299 (Use the order repo in main)
 =======
+=======
+>>>>>>> 1f69015 (Add sandwich.dart & remove order_repository)
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
 
