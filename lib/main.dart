@@ -12,6 +12,7 @@ import 'package:sandwich_shop/repositories/PricingRepository.dart';
 >>>>>>> 816369a (Move main.dart back to lib and update references):lib/main.dart
 import 'package:sandwich_shop/views/app_styles.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/order_repository.dart';
 <<<<<<< HEAD
 >>>>>>> 40459b4 (Added a import to fix errors)
@@ -233,6 +234,10 @@ import 'package:sandwich_shop/repositories/pricing_repository.dart';
 >>>>>>> d04a1a8 (Use pricing repo and heading 2)
 
 enum BreadType { white, wheat, wholemeal }
+=======
+import 'package:sandwich_shop/models/sandwich.dart';
+import 'package:sandwich_shop/models/cart.dart';
+>>>>>>> fd75677 (removed enum)
 
 void main() {
   runApp(const App());
