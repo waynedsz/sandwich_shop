@@ -542,7 +542,7 @@ class _OrderScreenState extends State<OrderScreen> {
       );
 
       setState(() {
-        _cart.add(sandwich, quantity: _quantity);
+        _cart.addItem(sandwich, quantity: _quantity);
       });
 
       String sizeText;
