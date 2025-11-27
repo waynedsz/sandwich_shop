@@ -1062,6 +1062,9 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> de43565 (Revert back to original code)
       title: 'Sandwich Shop App',
       home: OrderScreen(maxQuantity: 5),
+      routes: {
+        '/about': (context) => AboutScreen(),
+      },
     );
   }
 }
