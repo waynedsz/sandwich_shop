@@ -23,7 +23,9 @@ class NavigationScaffold extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        drawer: const _MainDrawer(key: _drawerKey),
+        drawer: const _MainDrawer(
+          drawerKey: _drawerKey,
+        ),
         body: body,
       );
     }
@@ -97,7 +99,12 @@ class NavigationScaffold extends StatelessWidget {
 }
 
 class _MainDrawer extends StatelessWidget {
-  const _MainDrawer({super.key});
+  final Key drawerKey;
+
+  const _MainDrawer({
+    required this.drawerKey,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +132,7 @@ class _MainDrawer extends StatelessWidget {
     }
 
     return Drawer(
-      key: _drawerKey,
+      key: drawerKey,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
