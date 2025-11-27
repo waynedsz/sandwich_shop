@@ -80,10 +80,16 @@ void main() {
 
     setUp(() {
       cart = Cart();
-      sandwichA =
-          Sandwich(name: 'Ham', breadType: BreadType.white, isFootlong: false);
+      sandwichA = Sandwich(
+        type: SandwichType.veggieDelight,
+        breadType: BreadType.white,
+        isFootlong: false,
+      );
       sandwichB = Sandwich(
-          name: 'Turkey', breadType: BreadType.wheat, isFootlong: true);
+        type: SandwichType.chickenTeriyaki,
+        breadType: BreadType.wheat,
+        isFootlong: true,
+      );
     });
 
     test('should start empty', () {
@@ -187,11 +193,6 @@ void main() {
       expect(cart.getQuantity(sandwichA), 0);
       expect(cart.isEmpty, isTrue);
 >>>>>>> c5cc817 (Update the cart test)
-    });
-
-    test('add and getQuantity', () {
-      cart.add(sandwichA, quantity: 2);
-      expect(cart.getQuantity(sandwichA), 2);
     });
 
     test('incrementQuantity respects maxQuantity', () {

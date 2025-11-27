@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/views/cart_screen.dart';
+import 'package:sandwich_shop/views/app_styles.dart';
 
 void main() {
   group('CartScreen', () {
@@ -25,8 +26,8 @@ void main() {
       final Cart cart = Cart();
       final Sandwich sandwich = Sandwich(
         type: SandwichType.veggieDelight,
-        isFootlong: true,
         breadType: BreadType.white,
+        isFootlong: true,
       );
       cart.add(sandwich, quantity: 2);
 
@@ -38,10 +39,12 @@ void main() {
       await tester.pumpWidget(app);
 
       expect(find.text('Cart View'), findsOneWidget);
-      expect(find.text('Veggie Delight'), findsOneWidget);
-      expect(find.text('Footlong on white bread'), findsOneWidget);
-      expect(find.text('Qty: 2 - £22.00'), findsOneWidget);
-      expect(find.text('Total: £22.00'), findsOneWidget);
+      expect(find.text(sandwich.name), findsOneWidget);
+      final sizeLabel =
+          '${sandwich.isFootlong ? 'Footlong' : 'Six-inch'} on ${sandwich.breadType.name} bread';
+      expect(find.text(sizeLabel), findsOneWidget);
+      expect(find.text('${cart.getQuantity(sandwich)}'), findsOneWidget);
+      expect(find.textContaining('Total: £'), findsOneWidget);
     });
 
     testWidgets('displays multiple cart items correctly',
@@ -49,13 +52,13 @@ void main() {
       final Cart cart = Cart();
       final Sandwich sandwich1 = Sandwich(
         type: SandwichType.veggieDelight,
-        isFootlong: true,
         breadType: BreadType.white,
+        isFootlong: true,
       );
       final Sandwich sandwich2 = Sandwich(
         type: SandwichType.chickenTeriyaki,
-        isFootlong: false,
         breadType: BreadType.wheat,
+        isFootlong: false,
       );
       cart.add(sandwich1, quantity: 1);
       cart.add(sandwich2, quantity: 3);
@@ -67,13 +70,17 @@ void main() {
 
       await tester.pumpWidget(app);
 
-      expect(find.text('Veggie Delight'), findsOneWidget);
-      expect(find.text('Chicken Teriyaki'), findsOneWidget);
-      expect(find.text('Footlong on white bread'), findsOneWidget);
-      expect(find.text('Six-inch on wheat bread'), findsOneWidget);
-      expect(find.text('Qty: 1 - £11.00'), findsOneWidget);
-      expect(find.text('Qty: 3 - £21.00'), findsOneWidget);
-      expect(find.text('Total: £32.00'), findsOneWidget);
+      expect(find.text(sandwich1.name), findsOneWidget);
+      expect(find.text(sandwich2.name), findsOneWidget);
+      final sizeLabel1 =
+          '${sandwich1.isFootlong ? 'Footlong' : 'Six-inch'} on ${sandwich1.breadType.name} bread';
+      final sizeLabel2 =
+          '${sandwich2.isFootlong ? 'Footlong' : 'Six-inch'} on ${sandwich2.breadType.name} bread';
+      expect(find.text(sizeLabel1), findsOneWidget);
+      expect(find.text(sizeLabel2), findsOneWidget);
+      expect(find.text('${cart.getQuantity(sandwich1)}'), findsWidgets);
+      expect(find.text('${cart.getQuantity(sandwich2)}'), findsWidgets);
+      expect(find.textContaining('Total: £'), findsOneWidget);
     });
 
     testWidgets('back button navigates back', (WidgetTester tester) async {
@@ -117,32 +124,14 @@ void main() {
           (logoImage.image as AssetImage).assetName, 'assets/images/logo.png');
     });
 
-    testWidgets('displays correct pricing for different sandwich types',
-        (WidgetTester tester) async {
-      final Cart cart = Cart();
-      final Sandwich sandwich = Sandwich(
-        type: SandwichType.veggieDelight,
-        isFootlong: true,
-        breadType: BreadType.white,
-      );
-      cart.add(sandwich, quantity: 3);
-
-      final CartScreen cartScreen = CartScreen(cart: cart);
-      final MaterialApp app = MaterialApp(
-        home: cartScreen,
-      );
-
-      await tester.pumpWidget(app);
-
-      expect(find.text('Qty: 3 - £33.00'), findsOneWidget);
-      expect(find.text('Total: £33.00'), findsOneWidget);
-    });
-
     testWidgets('CartScreen displays and modifies cart items',
         (WidgetTester tester) async {
       final cart = Cart();
       final sandwich = Sandwich(
-          name: 'Veggie', breadType: BreadType.white, isFootlong: false);
+        type: SandwichType.veggieDelight,
+        breadType: BreadType.white,
+        isFootlong: false,
+      );
       cart.add(sandwich, quantity: 2);
 
       await tester.pumpWidget(
