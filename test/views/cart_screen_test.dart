@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sandwich_shop/views/cart_screen.dart';
-import 'package:sandwich_shop/views/order_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
+import 'package:sandwich_shop/views/cart_screen.dart';
 
 void main() {
   group('CartScreen', () {
@@ -137,6 +136,48 @@ void main() {
 
       expect(find.text('Qty: 3 - £33.00'), findsOneWidget);
       expect(find.text('Total: £33.00'), findsOneWidget);
+    });
+
+    testWidgets('CartScreen displays and modifies cart items',
+        (WidgetTester tester) async {
+      final cart = Cart();
+      final sandwich = Sandwich(
+          name: 'Veggie', breadType: BreadType.white, isFootlong: false);
+      cart.add(sandwich, quantity: 2);
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: CartScreen(cart: cart),
+        ),
+      );
+
+      // Check initial quantity
+      expect(find.text('2'), findsOneWidget);
+
+      // Tap + button
+      await tester.tap(find.widgetWithIcon(IconButton, Icons.add));
+      await tester.pump();
+      expect(cart.getQuantity(sandwich), 3);
+
+      // Tap - button
+      await tester.tap(find.widgetWithIcon(IconButton, Icons.remove));
+      await tester.pump();
+      expect(cart.getQuantity(sandwich), 2);
+
+      // Tap delete button
+      await tester.tap(find.widgetWithIcon(IconButton, Icons.delete));
+      await tester.pump();
+      expect(cart.getQuantity(sandwich), 0);
+
+      // Add again and clear cart
+      cart.add(sandwich, quantity: 1);
+      await tester.pump();
+      await tester.tap(find.widgetWithIcon(StyledButton, Icons.delete_sweep));
+      await tester.pump();
+      // Confirm dialog
+      await tester.tap(find.text('Clear'));
+      await tester.pump();
+      expect(cart.items.isEmpty, true);
     });
   });
 }

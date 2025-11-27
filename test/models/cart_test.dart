@@ -80,16 +80,10 @@ void main() {
 
     setUp(() {
       cart = Cart();
-      sandwichA = Sandwich(
-        type: SandwichType.veggieDelight,
-        isFootlong: false,
-        breadType: BreadType.wheat,
-      );
+      sandwichA =
+          Sandwich(name: 'Ham', breadType: BreadType.white, isFootlong: false);
       sandwichB = Sandwich(
-        type: SandwichType.chickenTeriyaki,
-        isFootlong: true,
-        breadType: BreadType.white,
-      );
+          name: 'Turkey', breadType: BreadType.wheat, isFootlong: true);
     });
 
     test('should start empty', () {
@@ -193,6 +187,45 @@ void main() {
       expect(cart.getQuantity(sandwichA), 0);
       expect(cart.isEmpty, isTrue);
 >>>>>>> c5cc817 (Update the cart test)
+    });
+
+    test('add and getQuantity', () {
+      cart.add(sandwichA, quantity: 2);
+      expect(cart.getQuantity(sandwichA), 2);
+    });
+
+    test('incrementQuantity respects maxQuantity', () {
+      for (int i = 0; i < 10; i++) {
+        cart.incrementQuantity(sandwichA);
+      }
+      expect(cart.getQuantity(sandwichA), Cart.maxQuantity);
+    });
+
+    test('decrementQuantity removes item at zero', () {
+      cart.add(sandwichA, quantity: 1);
+      cart.decrementQuantity(sandwichA);
+      expect(cart.getQuantity(sandwichA), 0);
+      expect(cart.items.containsKey(sandwichA), false);
+    });
+
+    test('setQuantity respects min and max', () {
+      cart.setQuantity(sandwichA, 0);
+      expect(cart.getQuantity(sandwichA), 0);
+      cart.setQuantity(sandwichA, 10);
+      expect(cart.getQuantity(sandwichA), Cart.maxQuantity);
+    });
+
+    test('removeItem removes item', () {
+      cart.add(sandwichA, quantity: 2);
+      cart.removeItem(sandwichA);
+      expect(cart.getQuantity(sandwichA), 0);
+    });
+
+    test('removeAll clears the cart', () {
+      cart.add(sandwichA, quantity: 1);
+      cart.add(sandwichB, quantity: 1);
+      cart.removeAll();
+      expect(cart.items.isEmpty, true);
     });
   });
 }

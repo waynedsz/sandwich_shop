@@ -57,4 +57,4 @@ To provide users with flexibility and control over their orders, improving the o
 - [x] Update the CartScreen UI to display quantity controls and remove buttons for each item.
 - [x] Implement the "Clear Cart" button and confirmation dialog.
 - [x] Ensure the total price is recalculated and displayed correctly after any modification.
-- [ ] Write unit and widget tests for all cart modification actions.
+- [x] Write unit and widget tests for all cart modification actions.
