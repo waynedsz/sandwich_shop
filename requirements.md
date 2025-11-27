@@ -32,29 +32,29 @@ To provide users with flexibility and control over their orders, improving the o
 ## 3. Acceptance Criteria
 
 ### 3.1. Change Quantity of a Sandwich
-- [ ] Each cart item displays its current quantity with plus (+) and minus (–) buttons.
-- [ ] Tapping the plus button increases the quantity by 1, up to a defined maximum (e.g., 5).
-- [ ] Tapping the minus button decreases the quantity by 1.
-- [ ] If the quantity reaches zero, the item is removed from the cart.
-- [ ] The total price updates immediately when the quantity changes.
+- [x] Each cart item displays its current quantity with plus (+) and minus (–) buttons.
+- [x] Tapping the plus button increases the quantity by 1, up to a defined maximum (e.g., 5).
+- [x] Tapping the minus button decreases the quantity by 1.
+- [x] If the quantity reaches zero, the item is removed from the cart.
+- [x] The total price updates immediately when the quantity changes.
 
 ### 3.2. Remove a Sandwich from Cart
-- [ ] Each cart item has a visible remove button (e.g., trash can icon).
-- [ ] Tapping the remove button deletes the item from the cart.
-- [ ] The total price updates immediately after removal.
+- [x] Each cart item has a visible remove button (e.g., trash can icon).
+- [x] Tapping the remove button deletes the item from the cart.
+- [x] The total price updates immediately after removal.
 
 ### 3.3. Clear the Entire Cart
-- [ ] There is a "Clear Cart" button on the cart screen.
-- [ ] Tapping "Clear Cart" prompts the user with a confirmation dialog.
-- [ ] Confirming the dialog removes all items from the cart and resets the total price to zero.
-- [ ] Cancelling the dialog leaves the cart unchanged.
+- [x] There is a "Clear Cart" button on the cart screen.
+- [x] Tapping "Clear Cart" prompts the user with a confirmation dialog.
+- [x] Confirming the dialog removes all items from the cart and resets the total price to zero.
+- [x] Cancelling the dialog leaves the cart unchanged.
 
 ---
 
 ## 4. Subtasks
 
-- [ ] Update the Cart model to support quantity changes and item removal.
-- [ ] Update the CartScreen UI to display quantity controls and remove buttons for each item.
-- [ ] Implement the "Clear Cart" button and confirmation dialog.
-- [ ] Ensure the total price is recalculated and displayed correctly after any modification.
+- [x] Update the Cart model to support quantity changes and item removal.
+- [x] Update the CartScreen UI to display quantity controls and remove buttons for each item.
+- [x] Implement the "Clear Cart" button and confirmation dialog.
+- [x] Ensure the total price is recalculated and displayed correctly after any modification.
 - [ ] Write unit and widget tests for all cart modification actions.
