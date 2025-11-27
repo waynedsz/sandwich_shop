@@ -54,6 +54,9 @@ class Cart {
 class Cart {
   final Map<Sandwich, int> _items = {};
 
+  static const int maxQuantity = 5;
+  static const int minQuantity = 1;
+
   // Returns a read-only copy of the items and their quantities
   Map<Sandwich, int> get items => Map.unmodifiable(_items);
 
@@ -122,5 +125,51 @@ class Cart {
     }
     return 0;
   }
+<<<<<<< HEAD
 >>>>>>> c6a9bfb (Update cart model)
+=======
+
+  /// Increases the quantity of a sandwich by 1, up to maxQuantity.
+  void incrementQuantity(Sandwich sandwich) {
+    if (_items.containsKey(sandwich)) {
+      int current = _items[sandwich]!;
+      if (current < maxQuantity) {
+        _items[sandwich] = current + 1;
+      }
+    }
+  }
+
+  /// Decreases the quantity of a sandwich by 1. Removes the item if quantity reaches 0.
+  void decrementQuantity(Sandwich sandwich) {
+    if (_items.containsKey(sandwich)) {
+      int current = _items[sandwich]!;
+      if (current > minQuantity) {
+        _items[sandwich] = current - 1;
+      } else {
+        _items.remove(sandwich);
+      }
+    }
+  }
+
+  /// Sets the quantity of a sandwich directly, respecting min/max constraints.
+  void setQuantity(Sandwich sandwich, int quantity) {
+    if (quantity < minQuantity) {
+      _items.remove(sandwich);
+    } else if (quantity > maxQuantity) {
+      _items[sandwich] = maxQuantity;
+    } else {
+      _items[sandwich] = quantity;
+    }
+  }
+
+  /// Removes a sandwich from the cart entirely.
+  void removeItem(Sandwich sandwich) {
+    _items.remove(sandwich);
+  }
+
+  /// Removes all items from the cart.
+  void removeAll() {
+    _items.clear();
+  }
+>>>>>>> 75a47da (Update cart.dart & cart_screen.dart to fit requirements.md)
 }
