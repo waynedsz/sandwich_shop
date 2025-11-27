@@ -236,6 +236,16 @@ class _OrderScreenState extends State<OrderScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TextButton(
+          key: const Key('go_to_profile_button'),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/profile');
+          },
+          child: const Text('View your profile'),
+        ),
+      ),
     );
   }
 }

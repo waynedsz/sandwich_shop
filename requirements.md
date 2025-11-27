@@ -58,3 +58,33 @@ To provide users with flexibility and control over their orders, improving the o
 - [x] Implement the "Clear Cart" button and confirmation dialog.
 - [x] Ensure the total price is recalculated and displayed correctly after any modification.
 - [x] Write unit and widget tests for all cart modification actions.
+
+---
+
+## Feature: Profile Screen and Navigation
+
+### Prompt used with AI assistant
+
+> Add a new profile screen to the Flutter Sandwich Shop app.  
+> The screen should:
+> - Be implemented as a separate widget in `lib/views/profile_screen.dart`.
+> - Show a simple, non-persistent profile form with fields for name, email, and phone.  
+> - Include a primary button to "Save profile" that only shows a SnackBar (no backend or real persistence yet).  
+> - Be reachable from the `OrderScreen` via a link or button at the bottom of the order screen that navigates using a named route.  
+> - Register a `/profile` route in `MaterialApp` in `main.dart`.  
+> - Include widget tests that verify the presence of the main UI elements on the profile screen and basic interaction (e.g. tapping the Save button shows feedback or at least does not throw).  
+> Use concise code and avoid unnecessary complexity.
+
+### Requirements for the Profile Feature
+
+- A new `ProfileScreen` widget SHALL be implemented in `lib/views/profile_screen.dart`.
+- `ProfileScreen` SHALL:
+  - Use a `Scaffold` with an `AppBar` titled "Your Profile".
+  - Contain at least three input fields: name, email, and phone.
+  - Expose semantic identifiers (e.g. `Key`s) for the fields and the save button so tests can locate them.
+  - Show a "Save profile" button that provides user feedback (e.g. SnackBar) but performs no real persistence.
+- `MaterialApp` in `lib/main.dart` SHALL register a named route `/profile` mapped to `ProfileScreen`.
+- `OrderScreen` SHALL show a link/button at the bottom that navigates to `/profile` using `Navigator.pushNamed`.
+- Widget tests SHALL be added for the new profile screen:
+  - Tests MUST verify that the title, input fields, and save button are rendered.
+  - Tests SHOULD verify that tapping the save button is handled without errors and triggers some form of feedback if feasible.

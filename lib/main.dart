@@ -403,7 +403,11 @@ import 'package:sandwich_shop/views/order_screen.dart';
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 =======
 import 'package:sandwich_shop/views/about_screen.dart';
+<<<<<<< HEAD
 >>>>>>> 46dcf48 (Update about screen & main to work together)
+=======
+import 'package:sandwich_shop/views/profile_screen.dart';
+>>>>>>> beea757 (Update requirements.md)
 
 void main() {
   runApp(const App());
@@ -1072,6 +1076,7 @@ class OrderItemDisplay extends StatelessWidget {
       home: const OrderScreen(maxQuantity: 5),
       routes: {
         '/about': (context) => const AboutScreen(),
+        '/profile': (context) => const ProfileScreen(),
       },
     );
   }
