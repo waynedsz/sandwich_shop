@@ -23,7 +23,7 @@ class NavigationScaffold extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        drawer: const _MainDrawer(
+        drawer: _MainDrawer(
           drawerKey: _drawerKey,
         ),
         body: body,

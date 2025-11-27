@@ -49,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Profile saved (not really, just a demo).'),
+                      content: Text('Profile saved'),
                     ),
                   );
                 },
