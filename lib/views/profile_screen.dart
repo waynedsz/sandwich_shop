@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Profile'),
-      ),
+    return NavigationScaffold(
+      title: 'Your Profile',
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -48,7 +47,6 @@ class ProfileScreen extends StatelessWidget {
               child: ElevatedButton(
                 key: const Key('profile_save_button'),
                 onPressed: () {
-                  // No real persistence yet; just show feedback.
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Profile saved (not really, just a demo).'),

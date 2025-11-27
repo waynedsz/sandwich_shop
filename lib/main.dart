@@ -1073,8 +1073,9 @@ class OrderItemDisplay extends StatelessWidget {
     return MaterialApp(
 >>>>>>> 46dcf48 (Update about screen & main to work together)
       title: 'Sandwich Shop App',
-      home: const OrderScreen(maxQuantity: 5),
+      initialRoute: '/',
       routes: {
+        '/': (context) => const OrderScreen(maxQuantity: 5),
         '/about': (context) => const AboutScreen(),
         '/profile': (context) => const ProfileScreen(),
       },

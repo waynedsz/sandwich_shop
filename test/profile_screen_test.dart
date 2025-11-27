@@ -25,7 +25,7 @@ void main() {
     await tester.pumpWidget(_buildTestApp());
 
     await tester.tap(find.byKey(const Key('profile_save_button')));
-    await tester.pump(); // pump to show SnackBar
+    await tester.pump();
 
     expect(
         find.text('Profile saved (not really, just a demo).'), findsOneWidget);

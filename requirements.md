@@ -88,3 +88,39 @@ To provide users with flexibility and control over their orders, improving the o
 - Widget tests SHALL be added for the new profile screen:
   - Tests MUST verify that the title, input fields, and save button are rendered.
   - Tests SHOULD verify that tapping the save button is handled without errors and triggers some form of feedback if feasible.
+
+## Feature: Shared Navigation Drawer and Responsive Navigation
+
+### Prompt used with AI assistant
+
+> Enhance the Flutter Sandwich Shop app by adding a shared navigation system.  
+> Specifically:
+> - Explain how Flutter `Drawer` widgets work and how they integrate with a `Scaffold` and its `AppBar` (e.g. the AppBar automatically shows the "hamburger" menu button when a Drawer is present).  
+> - Make a navigation drawer accessible from all main screens (Order, About, Profile) using a shared widget to avoid code duplication.  
+> - Use named routes (`/`, `/about`, `/profile`) for navigation from the drawer.  
+> - Make the navigation responsive so that on small screens it uses an `AppBar` + `Drawer`, and on larger screens it shows a persistent side navigation (e.g. a `NavigationRail`) instead of a slide-out drawer.  
+> - Update or add widget tests to cover the drawer/side navigation presence and navigation behavior.  
+
+### Requirements for Shared Navigation and Drawer
+
+- The app SHALL use a shared navigation widget (e.g. `NavigationScaffold`) to host:
+  - A common `AppBar` title.
+  - Either a `Drawer` (on narrow screens) or a side navigation (e.g. `NavigationRail`) on wide screens.
+- `NavigationScaffold` SHALL:
+  - Wrap screen bodies (Order, About, Profile) instead of each screen defining its own `Scaffold`.
+  - For narrow screens (< 600 px width), provide a `Drawer` with navigation items for:
+    - Home/Order (`/`)
+    - About (`/about`)
+    - Profile (`/profile`)
+  - For wider screens (≥ 600 px width), show a persistent side navigation (e.g. `NavigationRail`) instead of a `Drawer`, with the same destinations.
+  - Use Flutter’s standard integration where the `AppBar` automatically displays the menu icon that opens the `Drawer` when one is present.
+- All main screens (Order, About, Profile) SHALL be refactored to use `NavigationScaffold` instead of owning their own `Scaffold`.
+- Navigation items SHALL use named routes:
+  - `/` for the order screen.
+  - `/about` for the about screen.
+  - `/profile` for the profile screen.
+- Code duplication for navigation UI (AppBar + Drawer items) SHOULD be minimized by centralizing it inside the shared navigation widget.
+- Widget tests SHALL be updated or added to:
+  - Verify that the drawer is available on small screen sizes (e.g. by checking for navigation item keys).
+  - Verify that the side navigation (e.g. `NavigationRail`) is available on larger screen sizes.
+  - Verify that tapping each navigation destination (drawer item or side nav item) navigates to the corresponding route/screen.
