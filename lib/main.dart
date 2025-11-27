@@ -649,6 +649,14 @@ class _OrderScreenState extends State<OrderScreen> {
     return null;
   }
 
+  int _getCartItemCount() {
+    return _cart.totalItems;
+  }
+
+  double _getCartTotalPrice() {
+    return _cart.totalPrice;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -663,6 +671,31 @@ class _OrderScreenState extends State<OrderScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // --- Cart Summary Widget ---
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 16.0),
+                child: Card(
+                  color: Colors.yellow[100],
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Cart: ${_getCartItemCount()} item(s)',
+                          style: heading2,
+                        ),
+                        Text(
+                          'Total: \$${_getCartTotalPrice().toStringAsFixed(2)}',
+                          style: heading2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // --- End Cart Summary Widget ---
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxHeight: 250, // Set your preferred max height

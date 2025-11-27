@@ -439,4 +439,22 @@ void main() {
     });
 >>>>>>> 271729f (Refactor widget tests to use inline functions)
   });
+
+  testWidgets('Cart summary updates when items are added',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: OrderScreen()));
+
+    // Initial cart summary should show 0 items and $0.00
+    expect(find.textContaining('Cart: 0'), findsOneWidget);
+    expect(find.textContaining('Total: \$0.00'), findsOneWidget);
+
+    // Tap the "Add to Cart" button
+    final addToCartButton = find.widgetWithText(ElevatedButton, 'Add to Cart');
+    await tester.tap(addToCartButton);
+    await tester.pumpAndSettle();
+
+    // Cart summary should update
+    expect(find.textContaining('Cart: 1'), findsOneWidget);
+    expect(find.textContaining('Total: \$'), findsOneWidget);
+  });
 }
