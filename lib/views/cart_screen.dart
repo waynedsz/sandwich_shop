@@ -37,6 +37,32 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
+  void _showClearCartDialog() async {
+    final shouldClear = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Clear Cart'),
+        content: const Text(
+            'Are you sure you want to remove all items from your cart?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Clear'),
+          ),
+        ],
+      ),
+    );
+    if (shouldClear == true) {
+      setState(() {
+        widget.cart.removeAll();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,6 +151,13 @@ class _CartScreenState extends State<CartScreen> {
                 'Total: £${widget.cart.totalPrice.toStringAsFixed(2)}',
                 style: heading2,
                 textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              StyledButton(
+                onPressed: _showClearCartDialog,
+                icon: Icons.delete_sweep,
+                label: 'Clear Cart',
+                backgroundColor: Colors.red,
               ),
               const SizedBox(height: 20),
               StyledButton(
