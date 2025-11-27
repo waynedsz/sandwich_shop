@@ -545,12 +545,7 @@ class _OrderScreenState extends State<OrderScreen> {
         _cart.addItem(sandwich, quantity: _quantity);
       });
 
-      String sizeText;
-      if (_isFootlong) {
-        sizeText = 'footlong';
-      } else {
-        sizeText = 'six-inch';
-      }
+      String sizeText = _isFootlong ? 'footlong' : 'six-inch';
       String confirmationMessage =
           'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
 
@@ -630,12 +625,14 @@ class _OrderScreenState extends State<OrderScreen> {
 
   void _increaseQuantity() {
     setState(() {
-      _quantity++;
+      if (_quantity < widget.maxQuantity) {
+        _quantity++;
+      }
     });
   }
 
   void _decreaseQuantity() {
-    if (_quantity > 0) {
+    if (_quantity > 1) {
       setState(() {
         _quantity--;
       });
@@ -643,7 +640,7 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   VoidCallback? _getDecreaseCallback() {
-    if (_quantity > 0) {
+    if (_quantity > 1) {
       return _decreaseQuantity;
     }
     return null;
@@ -654,7 +651,14 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   double _getCartTotalPrice() {
-    return _cart.totalPrice;
+    // Calculate total price based on items in the cart
+    double total = 0.0;
+    for (final item in _cart.items) {
+      // Example pricing: $5 for six-inch, $8 for footlong
+      double price = item.sandwich.isFootlong ? 8.0 : 5.0;
+      total += price * item.quantity;
+    }
+    return total;
   }
 
   @override
@@ -698,7 +702,7 @@ class _OrderScreenState extends State<OrderScreen> {
               // --- End Cart Summary Widget ---
               ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxHeight: 250, // Set your preferred max height
+                  maxHeight: 250,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -26,12 +26,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 >>>>>>> b59c018 (Update widget_test based on code in stage 2)
 import 'package:sandwich_shop/main.dart';
+<<<<<<< HEAD
 =======
 import 'package:sandwich_shop/views/main.dart';
 >>>>>>> cdd80e0 (Move UIs to views)
 =======
 import 'package:sandwich_shop/main.dart';
 >>>>>>> 816369a (Move main.dart back to lib and update references)
+=======
+import 'package:sandwich_shop/models/sandwich.dart';
+>>>>>>> 1f0aba9 (update widget_tests and main.dart)
 
 void main() {
 <<<<<<< HEAD
@@ -444,16 +448,13 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(home: OrderScreen()));
 
-    // Initial cart summary should show 0 items and $0.00
     expect(find.textContaining('Cart: 0'), findsOneWidget);
     expect(find.textContaining('Total: \$0.00'), findsOneWidget);
 
-    // Tap the "Add to Cart" button
     final addToCartButton = find.widgetWithText(ElevatedButton, 'Add to Cart');
     await tester.tap(addToCartButton);
     await tester.pumpAndSettle();
 
-    // Cart summary should update
     expect(find.textContaining('Cart: 1'), findsOneWidget);
     expect(find.textContaining('Total: \$'), findsOneWidget);
   });
