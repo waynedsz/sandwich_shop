@@ -92,12 +92,14 @@ void main() {
 
       await tester.pumpWidget(app);
 
-      final Finder backButtonFinder =
-          find.widgetWithText(StyledButton, 'Back to Order');
+      // Find the back button by its text instead of StyledButton type
+      final Finder backButtonFinder = find.text('Back to Order');
       expect(backButtonFinder, findsOneWidget);
 
-      final StyledButton backButton =
-          tester.widget<StyledButton>(backButtonFinder);
+      final TextButton backButton = tester.widget<TextButton>(find.ancestor(
+        of: backButtonFinder,
+        matching: find.byType(TextButton),
+      ));
       expect(backButton.onPressed, isNotNull);
     });
 
@@ -161,11 +163,15 @@ void main() {
       // Add again and clear cart
       cart.add(sandwich, quantity: 1);
       await tester.pump();
-      await tester.tap(find.widgetWithIcon(StyledButton, Icons.delete_sweep));
+
+      // Tap the "Clear Cart" button by text, not by StyledButton type
+      await tester.tap(find.text('Clear Cart'));
       await tester.pump();
+
       // Confirm dialog
       await tester.tap(find.text('Clear'));
       await tester.pump();
+
       expect(cart.items.isEmpty, true);
     });
   });
