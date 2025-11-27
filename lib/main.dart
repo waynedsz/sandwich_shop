@@ -399,7 +399,11 @@ import 'app_styles.dart';
 enum BreadType { white, wheat, wholemeal }
 =======
 import 'package:sandwich_shop/views/order_screen.dart';
+<<<<<<< HEAD
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+import 'package:sandwich_shop/views/about_screen.dart';
+>>>>>>> 46dcf48 (Update about screen & main to work together)
 
 void main() {
   runApp(const App());
@@ -410,6 +414,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1060,10 +1065,13 @@ class OrderItemDisplay extends StatelessWidget {
 =======
     return const MaterialApp(
 >>>>>>> de43565 (Revert back to original code)
+=======
+    return MaterialApp(
+>>>>>>> 46dcf48 (Update about screen & main to work together)
       title: 'Sandwich Shop App',
-      home: OrderScreen(maxQuantity: 5),
+      home: const OrderScreen(maxQuantity: 5),
       routes: {
-        '/about': (context) => AboutScreen(),
+        '/about': (context) => const AboutScreen(),
       },
     );
   }

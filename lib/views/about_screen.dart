@@ -18,7 +18,7 @@ class AboutScreen extends StatelessWidget {
             Text('Welcome to Sandwich Shop!', style: heading2),
             SizedBox(height: 20),
             Text(
-              'We are a family-owned business dedicated to serving the best sandwiches in town. '
+              'We are a family-owned business dedicated to serving the best sandwiches in town. ',
               style: normalText,
             ),
           ],
