@@ -663,19 +663,24 @@ class _OrderScreenState extends State<OrderScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(
-                height: 300,
-                child: Image.asset(
-                  _getCurrentImagePath(),
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(
-                      child: Text(
-                        'Image not found',
-                        style: normalText,
-                      ),
-                    );
-                  },
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxHeight: 250, // Set your preferred max height
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Image.asset(
+                    _getCurrentImagePath(),
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Center(
+                        child: Text(
+                          'Image not found',
+                          style: normalText,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
