@@ -362,9 +362,6 @@ void main() {
       expect(find.text('1'), findsOneWidget);
     });
 
-    // REMOVED: dropdown test (Material 3 bug)
-    // REMOVED: notes textfield test (scroll/keyboard bug)
-
     testWidgets('size switch toggles', (tester) async {
       await tester.pumpWidget(const App());
 
