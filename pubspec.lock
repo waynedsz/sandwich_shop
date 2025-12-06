@@ -58,6 +58,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "5368f224a74523e8d2e7399ea1638b37aecfca824a3cc4dfdf77bf1fa905ac44"
       url: "https://pub.dev"
     source: hosted
@@ -90,6 +91,12 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "5368f224a74523e8d2e7399ea1638b37aecfca824a3cc4dfdf77bf1fa905ac44"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.3"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   flutter:
     dependency: "direct main"
     description: flutter
@@ -157,6 +164,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "33e2e26bdd85a0112ec15400c8cbffea70d0f9c3407491f672a2fad47915e2de"
       url: "https://pub.dev"
     source: hosted
@@ -189,10 +197,17 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "33e2e26bdd85a0112ec15400c8cbffea70d0f9c3407491f672a2fad47915e2de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.0.2"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   leak_tracker_flutter_testing:
     dependency: transitive
     description:
       name: leak_tracker_flutter_testing
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -230,10 +245,17 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "1dbc140bb5a23c75ea9c4811222756104fbcd1a27173f0c34ca01e16bea473c1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.10"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   leak_tracker_testing:
     dependency: transitive
     description:
       name: leak_tracker_testing
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -271,6 +293,12 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "8d5a2d49f4a66b49744b23b018848400d23e54caf9463f4eb20df3eb8acb2eb1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   lints:
     dependency: transitive
     description:
@@ -343,6 +371,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -351,6 +387,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: "4e82183fa20e5ca25703ead7e05de9e4cceed1fbd1eadc1ac3cb6f565a09f272"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.5+1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -405,6 +449,7 @@ packages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       sha256: "522f00f556e73044315fa4585ec3270f1808a4b186c936e612cab0b565ff1e00"
       url: "https://pub.dev"
     source: hosted
@@ -437,10 +482,17 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: "522f00f556e73044315fa4585ec3270f1808a4b186c936e612cab0b565ff1e00"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.6"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   vector_math:
     dependency: transitive
     description:
       name: vector_math
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -478,6 +530,12 @@ packages:
 >>>>>>> 69fa965 (📝 Update README.md)
 =======
 >>>>>>> 816cadc (first commit)
+=======
+      sha256: d530bd74fea330e6e364cda7a85019c434070188383e1cd8d9777ee586914c5b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   vm_service:
     dependency: transitive
     description:
@@ -487,6 +545,7 @@ packages:
     source: hosted
     version: "14.3.1"
 sdks:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -520,4 +579,7 @@ sdks:
 =======
   dart: ">=3.7.0-0 <4.0.0"
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+  dart: ">=3.8.0-0 <4.0.0"
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   flutter: ">=3.18.0-18.0.pre.54"

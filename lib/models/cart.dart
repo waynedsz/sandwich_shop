@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'sandwich.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 class CartItem {
   final Sandwich sandwich;
@@ -60,6 +62,11 @@ class Cart {
   static const int minQuantity = 1;
 
   // Returns a read-only copy of the items and their quantities
+=======
+class Cart extends ChangeNotifier {
+  final Map<Sandwich, int> _items = {};
+
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
   Map<Sandwich, int> get items => Map.unmodifiable(_items);
 
   void add(Sandwich sandwich, {int quantity = 1}) {
@@ -68,6 +75,7 @@ class Cart {
     } else {
       _items[sandwich] = quantity;
     }
+    notifyListeners();
   }
 
   void remove(Sandwich sandwich, {int quantity = 1}) {
@@ -78,6 +86,7 @@ class Cart {
       } else {
         _items.remove(sandwich);
       }
+      notifyListeners();
     }
   }
 
@@ -120,6 +129,7 @@ class Cart {
 >>>>>>> 98d78f8 (Add cart model)
   void clear() {
     _items.clear();
+    notifyListeners();
   }
 
 <<<<<<< HEAD
@@ -172,8 +182,8 @@ class Cart {
 
   int get countOfItems {
     int total = 0;
-    for (Sandwich sandwich in _items.keys) {
-      total += _items[sandwich]!;
+    for (int quantity in _items.values) {
+      total += quantity;
     }
     return total;
   }

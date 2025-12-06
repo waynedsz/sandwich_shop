@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/views/main.dart
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -661,6 +662,10 @@ import 'app_styles.dart';
 
 enum BreadType { white, wheat, wholemeal }
 =======
+=======
+import 'package:provider/provider.dart';
+import 'package:sandwich_shop/models/cart.dart';
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
 import 'package:sandwich_shop/views/order_screen.dart';
 <<<<<<< HEAD
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
@@ -689,6 +694,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2141,6 +2147,17 @@ class OrderItemDisplay extends StatelessWidget {
 >>>>>>> de43565 (Revert back to original code)
       title: 'Sandwich Shop App',
       home: OrderScreen(maxQuantity: 5),
+=======
+    return ChangeNotifierProvider(
+      create: (BuildContext context) {
+        return Cart();
+      },
+      child: const MaterialApp(
+        title: 'Sandwich Shop App',
+        debugShowCheckedModeBanner: false,
+        home: OrderScreen(maxQuantity: 5),
+      ),
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
     );
   }
 }

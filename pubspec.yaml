@@ -92,12 +92,16 @@ dependencies:
 >>>>>>> 816cadc (first commit)
 =======
   cupertino_icons: ^1.0.0
+<<<<<<< HEAD
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
 =======
 >>>>>>> 816cadc (first commit)
 =======
   cupertino_icons: ^1.0.0
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
+=======
+  provider: ^6.1.5+1
+>>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
 
 dev_dependencies:
   flutter_test:
