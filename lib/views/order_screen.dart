@@ -11,7 +11,11 @@ import 'package:sandwich_shop/views/profile_screen.dart';
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
 =======
 import 'package:provider/provider.dart';
+<<<<<<< HEAD
 >>>>>>> e1ed5d6 (Updated each screen for preparation)
+=======
+import 'package:sandwich_shop/views/settings_screen.dart';
+>>>>>>> 7888c14 (Update order_screen to add settings screen)
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -31,6 +35,15 @@ class _OrderScreenState extends State<OrderScreen> {
   bool _isFootlong = true;
   BreadType _selectedBreadType = BreadType.white;
   int _quantity = 1;
+
+  void _navigateToSettings() {
+    Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => const SettingsScreen(),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -171,7 +184,7 @@ class _OrderScreenState extends State<OrderScreen> {
             child: Image.asset('assets/images/logo.png'),
           ),
         ),
-        title: const Text(
+        title: Text(
           'Sandwich Counter',
           style: heading1,
         ),
@@ -205,7 +218,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   _getCurrentImagePath(),
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
-                    return const Center(
+                    return Center(
                       child: Text(
                         'Image not found',
                         style: normalText,
@@ -231,12 +244,12 @@ class _OrderScreenState extends State<OrderScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Six-inch', style: normalText),
+                  Text('Six-inch', style: normalText),
                   Switch(
                     value: _isFootlong,
                     onChanged: (value) => setState(() => _isFootlong = value),
                   ),
-                  const Text('Footlong', style: normalText),
+                  Text('Footlong', style: normalText),
                 ],
               ),
               const SizedBox(height: 20),
@@ -256,7 +269,7 @@ class _OrderScreenState extends State<OrderScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Quantity: ', style: normalText),
+                  Text('Quantity: ', style: normalText),
                   IconButton(
                     onPressed: _quantity > 0
                         ? () => setState(() => _quantity--)
@@ -292,6 +305,12 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.purple,
               ),
               const SizedBox(height: 20),
+              StyledButton(
+                onPressed: _navigateToSettings,
+                icon: Icons.settings,
+                label: 'Settings',
+                backgroundColor: Colors.grey,
+              ),
               Consumer<Cart>(
                 builder: (context, cart, child) {
                   return Text(
