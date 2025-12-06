@@ -668,6 +668,7 @@ import 'package:sandwich_shop/models/cart.dart';
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
 import 'package:sandwich_shop/views/order_screen.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fba1f70 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
 =======
 import 'package:sandwich_shop/views/about_screen.dart';
@@ -684,8 +685,13 @@ enum BreadType { white, wheat, wholemeal }
 =======
 import 'package:sandwich_shop/views/order_screen.dart';
 >>>>>>> 759b22d (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
+=======
+import 'package:sandwich_shop/views/app_styles.dart';
+>>>>>>> 2f19def (update main.dart to load the saved font size)
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppStyles.loadFontSize();
   runApp(const App());
 }
 
