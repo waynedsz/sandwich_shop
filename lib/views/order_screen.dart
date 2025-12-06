@@ -7,7 +7,11 @@ import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
 =======
 import 'package:sandwich_shop/views/profile_screen.dart';
+<<<<<<< HEAD
 >>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
+=======
+import 'package:provider/provider.dart';
+>>>>>>> e1ed5d6 (Updated each screen for preparation)
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -21,7 +25,6 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  final Cart _cart = Cart();
   final TextEditingController _notesController = TextEditingController();
 
   SandwichType _selectedSandwichType = SandwichType.veggieDelight;
@@ -81,9 +84,8 @@ class _OrderScreenState extends State<OrderScreen> {
         breadType: _selectedBreadType,
       );
 
-      setState(() {
-        _cart.add(sandwich, quantity: _quantity);
-      });
+      final Cart cart = Provider.of<Cart>(context, listen: false);
+      cart.add(sandwich, quantity: _quantity);
 
       String sizeText;
       if (_isFootlong) {
@@ -114,7 +116,7 @@ class _OrderScreenState extends State<OrderScreen> {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => CartScreen(cart: _cart),
+        builder: (BuildContext context) => const CartScreen(),
       ),
     );
   }
@@ -156,8 +158,42 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return NavigationScaffold(
       title: 'Order Sandwiches',
+=======
+    return Scaffold(
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 100,
+            child: Image.asset('assets/images/logo.png'),
+          ),
+        ),
+        title: const Text(
+          'Sandwich Counter',
+          style: heading1,
+        ),
+        actions: [
+          Consumer<Cart>(
+            builder: (context, cart, child) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.shopping_cart),
+                    const SizedBox(width: 4),
+                    Text('${cart.countOfItems}'),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+>>>>>>> e1ed5d6 (Updated each screen for preparation)
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -256,54 +292,19 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.purple,
               ),
               const SizedBox(height: 20),
-              Text(
-                'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
-                style: normalText,
-                textAlign: TextAlign.center,
+              Consumer<Cart>(
+                builder: (context, cart, child) {
+                  return Text(
+                    'Cart: ${cart.countOfItems} items - £${cart.totalPrice.toStringAsFixed(2)}',
+                    style: normalText,
+                    textAlign: TextAlign.center,
+                  );
+                },
               ),
               const SizedBox(height: 20),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class StyledButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-
-  final IconData icon;
-
-  final String label;
-
-  final Color backgroundColor;
-
-  const StyledButton({
-    super.key,
-    required this.onPressed,
-    required this.icon,
-    required this.label,
-    required this.backgroundColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    ButtonStyle myButtonStyle = ElevatedButton.styleFrom(
-      backgroundColor: backgroundColor,
-      foregroundColor: Colors.white,
-      textStyle: normalText,
-    );
-
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: myButtonStyle,
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(width: 8),
-          Text(label),
-        ],
       ),
     );
   }
