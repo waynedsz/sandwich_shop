@@ -135,6 +135,72 @@ void main() {
       expect(find.text('Cart: 0 items - £0.00'), findsOneWidget);
     });
 
-    // Feel free to add more tests (e.g., to check saved orders, etc.)
+    // Additional integration test stubs for thorough coverage:
+
+    testWidgets('browse sandwiches - empty list edge case',
+        (WidgetTester tester) async {
+      // TODO: Simulate no sandwiches available and verify UI shows empty state
+    });
+
+    testWidgets('add unavailable sandwich - error scenario',
+        (WidgetTester tester) async {
+      // TODO: Simulate trying to add a sandwich that is out of stock/unavailable
+      // Verify error message is shown
+    });
+
+    testWidgets('view empty cart', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+      final viewCartButton = find.widgetWithText(StyledButton, 'View Cart');
+      await tester.ensureVisible(viewCartButton);
+      await tester.tap(viewCartButton);
+      await tester.pumpAndSettle();
+      // Verify empty cart message
+      expect(find.textContaining('empty'), findsOneWidget);
+    });
+
+    testWidgets('checkout with missing info - error scenario',
+        (WidgetTester tester) async {
+      // TODO: Simulate checkout with missing required info (e.g., address)
+      // Verify error message is shown
+    });
+
+    testWidgets('payment failure during checkout', (WidgetTester tester) async {
+      // TODO: Simulate payment failure and verify error handling
+    });
+
+    testWidgets('view order history - no past orders',
+        (WidgetTester tester) async {
+      // TODO: Simulate user with no past orders and verify empty state
+    });
+
+    testWidgets('view order history - with past orders',
+        (WidgetTester tester) async {
+      // TODO: Simulate user with past orders and verify they are displayed
+    });
+
+    testWidgets('update profile/settings - happy path',
+        (WidgetTester tester) async {
+      // TODO: Simulate updating profile/settings successfully
+    });
+
+    testWidgets('update profile/settings - error scenario',
+        (WidgetTester tester) async {
+      // TODO: Simulate invalid input or save failure and verify error message
+    });
+
+    testWidgets('save and reorder - happy path', (WidgetTester tester) async {
+      // TODO: Simulate saving an order and reordering successfully
+    });
+
+    testWidgets('save and reorder - unavailable order',
+        (WidgetTester tester) async {
+      // TODO: Simulate trying to reorder a saved order that is now unavailable
+      // Verify error message is shown
+    });
+
+    testWidgets('navigation edge cases', (WidgetTester tester) async {
+      // TODO: Simulate rapid navigation, back button, and verify app stability
+    });
   });
 }
