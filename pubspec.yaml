@@ -101,7 +101,11 @@ dependencies:
 >>>>>>> fb04541 (📝 Update pubspec.yaml and pubspec.lock for dependency version changes)
 =======
   provider: ^6.1.5+1
+<<<<<<< HEAD
 >>>>>>> 2a7f09c (added provider package, updated cart.dart & main.dart)
+=======
+  shared_preferences: ^2.5.3
+>>>>>>> 359ef96 (added shared_preferences)
 
 dev_dependencies:
   flutter_test:
