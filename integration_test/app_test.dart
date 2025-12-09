@@ -185,8 +185,34 @@ void main() {
 
     testWidgets('checkout with missing info - error scenario',
         (WidgetTester tester) async {
-      // TODO: Simulate checkout with missing required info (e.g., address)
-      // Verify error message is shown
+      app.main();
+      await tester.pumpAndSettle();
+
+      // Add a sandwich to the cart
+      final addToCartButton = find.widgetWithText(StyledButton, 'Add to Cart');
+      await tester.ensureVisible(addToCartButton);
+      await tester.tap(addToCartButton);
+      await tester.pumpAndSettle();
+
+      // Go to cart
+      final viewCartButton = find.widgetWithText(StyledButton, 'View Cart');
+      await tester.ensureVisible(viewCartButton);
+      await tester.tap(viewCartButton);
+      await tester.pumpAndSettle();
+
+      // Tap checkout
+      final checkoutButton = find.widgetWithText(StyledButton, 'Checkout');
+      await tester.tap(checkoutButton);
+      await tester.pumpAndSettle();
+
+      // Simulate missing required info (e.g., do not fill address/payment fields)
+      // Try to confirm payment
+      final confirmPaymentButton = find.text('Confirm Payment');
+      await tester.tap(confirmPaymentButton);
+      await tester.pumpAndSettle();
+
+      // Check for error message (update the text as per your UI)
+      expect(find.textContaining('required'), findsOneWidget);
     });
 
     testWidgets('payment failure during checkout', (WidgetTester tester) async {
