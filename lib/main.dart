@@ -13,28 +13,31 @@ class App extends StatelessWidget {
       title: 'Sandwich Shop App',
       home: Scaffold(
         appBar: AppBar(title: const Text('Sandwich Counter')),
-        body: const Center(
-          child: Text('Welcome to the Sandwich Shop!'),
-          body: Column(
+        body: Column(
           children: [
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text('Welcome to the Sandwich Shop!'),
+            ),
             const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  OrderItemDisplay(3, 'BLT'),
-                  OrderItemDisplay(5, 'Club'),
-                  OrderItemDisplay(2, 'Veggie'),
-                ]),
-            Spacer(),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OrderItemDisplay(3, 'BLT'),
+                OrderItemDisplay(5, 'Club'),
+                OrderItemDisplay(2, 'Veggie'),
+              ],
+            ),
+            const Spacer(),
             Center(
               child: Container(
                 width: 400,
                 height: 200,
                 color: Colors.blue,
                 alignment: Alignment.center,
-                child: OrderItemDisplay(5, 'Footlong'),
+                child: const OrderItemDisplay(5, 'Footlong'),
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),
@@ -43,8 +46,8 @@ class App extends StatelessWidget {
 }
 
 class OrderItemDisplay extends StatelessWidget {
-  final String itemType;
   final int quantity;
+  final String itemType;
   const OrderItemDisplay(this.quantity, this.itemType, {super.key});
 
   @override
