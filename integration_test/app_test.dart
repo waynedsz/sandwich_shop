@@ -153,8 +153,23 @@ void main() {
 
     testWidgets('add unavailable sandwich - error scenario',
         (WidgetTester tester) async {
-      // TODO: Simulate trying to add a sandwich that is out of stock/unavailable
-      // Verify error message is shown
+      // Simulate app start
+      app.main();
+      await tester.pumpAndSettle();
+
+      // Find a sandwich marked as unavailable (update the text as per your UI)
+      final unavailableSandwich = find.textContaining('Out of stock');
+      if (await tester.pumpAndSettle() == 0 &&
+          unavailableSandwich.evaluate().isNotEmpty) {
+        // Try to tap the Add to Cart button next to the unavailable sandwich
+        final addToCartButton =
+            find.widgetWithText(StyledButton, 'Add to Cart').at(0);
+        await tester.tap(addToCartButton);
+        await tester.pumpAndSettle();
+      }
+
+      // Check for error message (update the text as per your UI)
+      expect(find.textContaining('unavailable'), findsOneWidget);
     });
 
     testWidgets('view empty cart', (WidgetTester tester) async {
