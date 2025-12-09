@@ -143,10 +143,6 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
-      // Ideally, you would inject a mock or override the provider here.
-      // For demonstration, we'll check for the empty state message if no sandwiches are present.
-      // If your app supports dependency injection, use it to provide an empty list.
-
       // Check for empty state message (update the text as per your UI)
       expect(find.textContaining('No sandwiches available'), findsOneWidget);
     });
@@ -213,44 +209,6 @@ void main() {
 
       // Check for error message (update the text as per your UI)
       expect(find.textContaining('required'), findsOneWidget);
-    });
-
-    testWidgets('payment failure during checkout', (WidgetTester tester) async {
-      // TODO: Simulate payment failure and verify error handling
-    });
-
-    testWidgets('view order history - no past orders',
-        (WidgetTester tester) async {
-      // TODO: Simulate user with no past orders and verify empty state
-    });
-
-    testWidgets('view order history - with past orders',
-        (WidgetTester tester) async {
-      // TODO: Simulate user with past orders and verify they are displayed
-    });
-
-    testWidgets('update profile/settings - happy path',
-        (WidgetTester tester) async {
-      // TODO: Simulate updating profile/settings successfully
-    });
-
-    testWidgets('update profile/settings - error scenario',
-        (WidgetTester tester) async {
-      // TODO: Simulate invalid input or save failure and verify error message
-    });
-
-    testWidgets('save and reorder - happy path', (WidgetTester tester) async {
-      // TODO: Simulate saving an order and reordering successfully
-    });
-
-    testWidgets('save and reorder - unavailable order',
-        (WidgetTester tester) async {
-      // TODO: Simulate trying to reorder a saved order that is now unavailable
-      // Verify error message is shown
-    });
-
-    testWidgets('navigation edge cases', (WidgetTester tester) async {
-      // TODO: Simulate rapid navigation, back button, and verify app stability
     });
   });
 }
