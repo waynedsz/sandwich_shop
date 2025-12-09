@@ -6,6 +6,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Sandwich Shop App
 
 A Flutter application for ordering sandwiches with customizable options.
@@ -82,12 +83,101 @@ This project is for educational purposes.
 =======
 # sandwich_shop
 =======
+=======
+
+>>>>>>> 05c2002 (Update README.md to enhance app description and folder structure details)
 # Sandwich Shop
 >>>>>>> e901868 (Add a README for stage 1)
 
-This is a simple Flutter app that allows users to order sandwiches.
-The app is built using Flutter and Dart, and it is designed primarily to be run in a web
-browser.
+This is a Flutter app for ordering sandwiches. It supports cart modification (adjust quantity, remove items) and runs on web, Android, and desktop.
+
+GitHub: https://github.com/waynedsz/sandwich_shop
+
+## Folder Structure
+
+```
+sandwich_shop/
+├── analysis_options.yaml
+├── android/
+│   ├── app/
+│   │   └── src/
+│   ├── build.gradle.kts
+│   ├── gradle/
+│   ├── gradle.properties
+│   ├── local.properties
+│   └── settings.gradle.kts
+├── assets/
+│   └── images/
+├── devtools_options.yaml
+├── integration_test/
+│   └── app_test.dart
+├── ios/
+├── lib/
+│   ├── main.dart
+│   ├── models/
+│   │   ├── cart.dart
+│   │   ├── sandwich.dart
+│   │   └── saved_order.dart
+│   ├── repositories/
+│   │   └── pricing_repository.dart
+│   ├── services/
+│   │   └── database_service.dart
+│   ├── views/
+│   │   ├── app_styles.dart
+│   │   ├── cart_screen.dart
+│   │   ├── checkout_screen.dart
+│   │   ├── order_history_screen.dart
+│   │   ├── order_screen.dart
+│   │   ├── profile_screen.dart
+│   │   └── settings_screen.dart
+│   └── widgets/
+│       └── common_widgets.dart
+├── linux/
+├── macos/
+├── prompt.md
+├── pubspec.lock
+├── pubspec.yaml
+├── README.md
+├── requirement.md
+├── test/
+│   ├── helpers/
+│   │   └── test_helpers.dart
+│   ├── models/
+│   │   ├── cart_test.dart
+│   │   ├── sandwich_test.dart
+│   │   └── saved_order_test.dart
+│   ├── repositories/
+│   │   └── pricing_repository_test.dart
+│   ├── services/
+│   │   └── database_service_test.dart
+│   ├── views/
+│   │   ├── cart_screen_test.dart
+│   │   ├── checkout_screen_test.dart
+│   │   ├── order_history_screen_test.dart
+│   │   ├── order_screen_test.dart
+│   │   ├── profile_screen_test.dart
+│   │   └── settings_screen_test.dart
+│   ├── widgets/
+│   │   └── common_widgets_test.dart
+│   └── widget_test.dart
+├── test_driver/
+├── web/
+│   ├── favicon.png
+│   ├── icons/
+│   ├── index.html
+│   └── manifest.json
+├── windows/
+└── ...
+```
+
+## Quick Start
+
+Clone the repo and run:
+
+```bash
+flutter pub get
+flutter run
+```
 
 ## Install the essential tools
 
