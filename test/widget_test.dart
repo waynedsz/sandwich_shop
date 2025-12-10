@@ -123,7 +123,7 @@ void main() {
 
   group('StyledButton', () {
     testWidgets('StyledButton renders correctly when enabled', (tester) async {
-      final button = StyledButton(
+      const button = StyledButton(
         onPressed: null,
         icon: Icons.shopping_cart,
         label: 'Test',
@@ -131,7 +131,7 @@ void main() {
       );
 
       await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: button)),
+        const MaterialApp(home: Scaffold(body: button)),
       );
 
       expect(find.byIcon(Icons.shopping_cart), findsOneWidget);
