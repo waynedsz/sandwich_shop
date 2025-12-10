@@ -26,8 +26,6 @@ class App extends StatelessWidget {
   }
 }
 
-enum BreadType { white, wheat, wholemeal }
-
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
   const OrderScreen({super.key, this.maxQuantity = 10});
@@ -178,8 +176,10 @@ class _OrderScreenState extends State<OrderScreen> {
                 initialSelection: _selectedSandwichType,
                 dropdownMenuEntries: _buildSandwichTypeEntries(),
                 onSelected: (value) {
-                  if (value != null)
-                    setState(() => _selectedSandwichType = value);
+                  if (value != null) {
+                    setState(
+                        () => _selectedSandwichType = value as SandwichType);
+                  }
                 },
               ),
 
@@ -207,7 +207,9 @@ class _OrderScreenState extends State<OrderScreen> {
                 initialSelection: _selectedBreadType,
                 dropdownMenuEntries: _buildBreadEntries(),
                 onSelected: (value) {
-                  if (value != null) setState(() => _selectedBreadType = value);
+                  if (value != null) {
+                    setState(() => _selectedBreadType = value as BreadType);
+                  }
                 },
               ),
 
