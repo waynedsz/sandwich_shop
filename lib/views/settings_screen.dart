@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import 'package:shared_preferences/shared_preferences.dart';
->>>>>>> 67b8abe (Add a settings screen)
-=======
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/widgets/common_widgets.dart';
 
@@ -27,44 +20,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _loadSettings() async {
-<<<<<<< HEAD
-<<<<<<< HEAD
     await AppStyles.loadFontSize();
     setState(() {
       _fontSize = AppStyles.baseFontSize;
-=======
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _fontSize = 16.0;
-      double? savedSize = prefs.getDouble('fontSize');
-      
-      if (savedSize != null) {
-        _fontSize = savedSize;
-      }
-
->>>>>>> 67b8abe (Add a settings screen)
-=======
-    await AppStyles.loadFontSize();
-    setState(() {
-      _fontSize = AppStyles.baseFontSize;
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
       _isLoading = false;
     });
   }
 
-  Future<void> _saveFontSize(double fontSize) async {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    await AppStyles.saveFontSize(fontSize);
-=======
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('fontSize', fontSize);
->>>>>>> 67b8abe (Add a settings screen)
-=======
-    await AppStyles.saveFontSize(fontSize);
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
+  Future<void> _saveFontSize(double newSize) async {
+    await AppStyles.saveFontSize(newSize);
     setState(() {
-      _fontSize = fontSize;
+      _fontSize = newSize;
     });
   }
 
@@ -72,172 +38,47 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 100,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-        ),
-        title: Text('Settings', style: AppStyles.heading1),
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        title: const Text('Settings', style: heading1),
->>>>>>> 67b8abe (Add a settings screen)
-=======
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.settings),
-                const SizedBox(width: 4),
-                Text('Settings', style: AppStyles.normalText),
-              ],
-            ),
-          ),
-        ],
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-=======
->>>>>>> 9ef8f8d (Simplify settings screen)
-      ),
-=======
       appBar: const CommonAppBar(title: 'Settings'),
->>>>>>> 9b2bb75 (Add the common app bar)
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
-<<<<<<< HEAD
-<<<<<<< HEAD
-          children: [
-            Text('Font Size', style: AppStyles.heading2),
-            const SizedBox(height: 20),
-            Text(
-              'Current size: ${_fontSize.toInt()}px',
-=======
           crossAxisAlignment: CrossAxisAlignment.start,
-=======
->>>>>>> 9ef8f8d (Simplify settings screen)
           children: [
-            Text('Font Size', style: AppStyles.heading2),
-            const SizedBox(height: 20),
+            Text('Font Size', style: heading2),
+            const SizedBox(height: 12),
             Text(
-<<<<<<< HEAD
-              'Current size: ${_fontSize.toInt()}',
->>>>>>> 67b8abe (Add a settings screen)
-=======
-              'Current size: ${_fontSize.toInt()}px',
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
+              'Current size: ${_fontSize.toInt()} px',
               style: TextStyle(fontSize: _fontSize),
             ),
-            const SizedBox(height: 20),
             Slider(
               value: _fontSize,
-              min: 12.0,
-              max: 24.0,
-              divisions: 6,
+              min: 12,
+              max: 24,
+              divisions: 12,
               label: _fontSize.toInt().toString(),
               onChanged: _saveFontSize,
             ),
-<<<<<<< HEAD
-<<<<<<< HEAD
             const SizedBox(height: 20),
             Text(
               'This is sample text to preview the font size.',
               style: TextStyle(fontSize: _fontSize),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Text(
-              'Font size changes are saved automatically. Restart the app to see changes in all screens.',
-              style: AppStyles.normalText,
+              'Font size changes are saved automatically.\n'
+              'You may need to restart the app to see changes everywhere.',
+              style: normalText,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Back to Order', style: AppStyles.normalText),
-=======
-            const SizedBox(height: 40),
-<<<<<<< HEAD
-            const Text(
-              'This is sample text to preview the font size.',
-              style: TextStyle(fontSize: 16),
->>>>>>> 67b8abe (Add a settings screen)
-=======
-=======
-            const SizedBox(height: 20),
->>>>>>> c59de71 (📝 Update settings_screen.dart to reduce spacing between elements for improved layout consistency)
-            Text(
-              'This is sample text to preview the font size.',
-              style: TextStyle(fontSize: _fontSize),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Font size changes are saved automatically. Restart the app to see changes in all screens.',
-              style: AppStyles.normalText,
-              textAlign: TextAlign.center,
-            ),
-<<<<<<< HEAD
-            const SizedBox(height: 40),
-<<<<<<< HEAD
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.blue.shade200),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.info, color: Colors.blue.shade700),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Note',
-                        style: TextStyle(
-                          fontSize: _fontSize,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue.shade700,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Font size changes are saved automatically. You may need to restart the app to see changes in all screens.',
-                    style: TextStyle(
-                      fontSize: _fontSize - 2,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                ],
-              ),
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-=======
-=======
-            const SizedBox(height: 20),
->>>>>>> c59de71 (📝 Update settings_screen.dart to reduce spacing between elements for improved layout consistency)
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Back to Order', style: AppStyles.normalText),
->>>>>>> 9ef8f8d (Simplify settings screen)
+              child: Text('Back to Order', style: normalText),
             ),
           ],
         ),
