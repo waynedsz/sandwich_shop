@@ -1,55 +1,42 @@
 import 'package:flutter_test/flutter_test.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'package:sandwich_shop/repositories/PricingRepository.dart';
 
 void main() {
-  test('Calculates price for six-inch sandwiches', () {
-    final repo = PricingRepository(quantity: 2, isFootlong: false);
-    expect(repo.getTotalPrice(), 14.0);
-  });
-
-  test('Calculates price for footlong sandwiches', () {
-    final repo = PricingRepository(quantity: 3, isFootlong: true);
-    expect(repo.getTotalPrice(), 33.0);
-=======
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
-import 'package:sandwich_shop/repositories/pricing_repository.dart';
-
-void main() {
   group('PricingRepository', () {
-    final repository = PricingRepository();
-
-    test('calculates price for single six-inch correctly', () {
-      final price = repository.calculatePrice(quantity: 1, isFootlong: false);
+    test('returns correct price for single six-inch', () {
+      final price =
+          PricingRepository(quantity: 1, isFootlong: false).getTotalPrice();
       expect(price, 7.00);
     });
 
-    test('calculates price for multiple footlongs correctly', () {
-      final price = repository.calculatePrice(quantity: 3, isFootlong: true);
+    test('returns correct price for multiple six-inch', () {
+      final price =
+          PricingRepository(quantity: 2, isFootlong: false).getTotalPrice();
+      expect(price, 14.00);
+    });
+
+    test('returns correct price for single footlong', () {
+      final price =
+          PricingRepository(quantity: 1, isFootlong: true).getTotalPrice();
+      expect(price, 11.00);
+    });
+
+    test('returns correct price for multiple footlongs', () {
+      final price =
+          PricingRepository(quantity: 3, isFootlong: true).getTotalPrice();
       expect(price, 33.00);
     });
 
-    test('calculates price for zero quantity as zero', () {
-      final price = repository.calculatePrice(quantity: 0, isFootlong: true);
+    test('returns zero when quantity is zero', () {
+      final price =
+          PricingRepository(quantity: 0, isFootlong: true).getTotalPrice();
       expect(price, 0.00);
     });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 92c6e97 (Add unit tests for pricing)
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
-=======
->>>>>>> 92c6e97 (Add unit tests for pricing)
+
+    test('returns zero for negative quantities (edge case)', () {
+      final price =
+          PricingRepository(quantity: -5, isFootlong: false).getTotalPrice();
+      expect(price, 0.00);
+    });
   });
 }
