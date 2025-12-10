@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sandwich.dart';
-import 'package:sandwich_shop/repositories/pricing_repository.dart';
+import 'package:sandwich_shop/repositories/PricingRepository.dart';
 
 class Cart extends ChangeNotifier {
   /// Update quantity for a sandwich
@@ -64,16 +64,12 @@ class Cart extends ChangeNotifier {
 
   /// Calculate total £ cost
   double get totalPrice {
-    final pricingRepo = PricingRepository();
     double total = 0.0;
-
     _items.forEach((sandwich, quantity) {
-      total += pricingRepo.calculatePrice(
-        quantity: quantity,
-        isFootlong: sandwich.isFootlong,
-      );
+      total +=
+          PricingRepository(quantity: quantity, isFootlong: sandwich.isFootlong)
+              .getTotalPrice();
     });
-
     return total;
   }
 
