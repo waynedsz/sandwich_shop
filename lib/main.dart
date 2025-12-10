@@ -1,5 +1,45 @@
 import 'package:flutter/material.dart';
 
+class StyledButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final String label;
+  final IconData icon;
+  final Color backgroundColor;
+  final Color foregroundColor;
+  final TextStyle? textStyle;
+
+  const StyledButton({
+    super.key,
+    required this.onPressed,
+    required this.label,
+    required this.icon,
+    this.backgroundColor = Colors.teal,
+    this.foregroundColor = Colors.white,
+    this.textStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: onPressed,
+      icon: Icon(icon, color: foregroundColor),
+      label: Text(
+        label,
+        style: textStyle ?? const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor,
+        foregroundColor: foregroundColor,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: textStyle ?? const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+
 void main() {
   runApp(const App());
 }
@@ -100,15 +140,25 @@ class _OrderScreenState extends State<OrderScreen> {
                     style: const TextStyle(fontStyle: FontStyle.italic)),
               ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: _quantity < widget.maxQuantity ? _increment : null,
-                  child: const Text('Add'),
+                Expanded(
+                  child: StyledButton(
+                    onPressed: _quantity < widget.maxQuantity ? _increment : null,
+                    label: 'Add',
+                    icon: Icons.add,
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: _quantity > 0 ? _decrement : null,
-                  child: const Text('Remove'),
+                const SizedBox(width: 24),
+                Expanded(
+                  child: StyledButton(
+                    onPressed: _quantity > 0 ? _decrement : null,
+                    label: 'Remove',
+                    icon: Icons.remove,
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                  ),
                 ),
               ],
             ),
