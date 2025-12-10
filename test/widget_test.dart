@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sandwich_shop/main.dart';
-import 'package:sandwich_shop/views/order_screen.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
-import 'package:sandwich_shop/views/app_styles.dart';
 
 void main() {
   group('App loads correctly', () {
@@ -125,7 +123,7 @@ void main() {
 
   group('StyledButton', () {
     testWidgets('StyledButton renders correctly when enabled', (tester) async {
-      const button = StyledButton(
+      final button = StyledButton(
         onPressed: null,
         icon: Icons.shopping_cart,
         label: 'Test',
@@ -133,7 +131,7 @@ void main() {
       );
 
       await tester.pumpWidget(
-        const MaterialApp(home: Scaffold(body: button)),
+        MaterialApp(home: Scaffold(body: button)),
       );
 
       expect(find.byIcon(Icons.shopping_cart), findsOneWidget);
