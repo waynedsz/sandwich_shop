@@ -1,79 +1,9 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return NavigationScaffold(
-      title: 'Your Profile',
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Profile details',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              key: Key('profile_name_field'),
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 12),
-            const TextField(
-              key: Key('profile_email_field'),
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 12),
-            const TextField(
-              key: Key('profile_phone_field'),
-              decoration: InputDecoration(
-                labelText: 'Phone',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                key: const Key('profile_save_button'),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Profile saved'),
-                    ),
-                  );
-                },
-                child: const Text('Save profile'),
-              ),
-=======
-import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:provider/provider.dart';
-import 'package:sandwich_shop/models/cart.dart';
-=======
-import 'package:sandwich_shop/views/app_styles.dart';
->>>>>>> 4aae054 (Add the link to the profile)
-=======
-import 'package:provider/provider.dart';
+
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
-<<<<<<< HEAD
->>>>>>> 2889716 (Show the cart icon)
-=======
 import 'package:sandwich_shop/widgets/common_widgets.dart';
->>>>>>> 9b2bb75 (Add the common app bar)
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -94,88 +24,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _saveProfile() {
-    final String name = _nameController.text.trim();
-    final String location = _locationController.text.trim();
+    final name = _nameController.text.trim();
+    final location = _locationController.text.trim();
 
-    final bool nameIsNotEmpty = name.isNotEmpty;
-    final bool locationIsNotEmpty = location.isNotEmpty;
-    final bool bothFieldsFilled = nameIsNotEmpty && locationIsNotEmpty;
-
-    if (bothFieldsFilled) {
-      _returnProfileData(name, location);
-    } else {
-      _showValidationError();
+    if (name.isEmpty || location.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return;
     }
-  }
 
-  void _returnProfileData(String name, String location) {
-    final Map<String, String> profileData = {
-      'name': name,
-      'location': location,
-    };
-    Navigator.pop(context, profileData);
-  }
-
-  void _showValidationError() {
-    const SnackBar validationSnackBar = SnackBar(
-      content: Text('Please fill in all fields'),
-      duration: Duration(seconds: 2),
+    Navigator.pop(
+      context,
+      {'name': name, 'location': location},
     );
-    ScaffoldMessenger.of(context).showSnackBar(validationSnackBar);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2889716 (Show the cart icon)
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 100,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-        ),
-<<<<<<< HEAD
-<<<<<<< HEAD
-        title: Text(
-=======
-        title: const Text(
->>>>>>> 2889716 (Show the cart icon)
-=======
-        title: Text(
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-          'Profile',
-          style: heading1,
-        ),
-=======
       appBar: CommonAppBar(
         title: 'Profile',
->>>>>>> 9b2bb75 (Add the common app bar)
         actions: [
           Consumer<Cart>(
-            builder: (context, cart, child) {
+            builder: (context, cart, _) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-<<<<<<< HEAD
-<<<<<<< HEAD
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
-=======
-                    Icon(Icons.shopping_cart),
-                    SizedBox(width: 4),
->>>>>>> 2889716 (Show the cart icon)
-=======
-                    const Icon(Icons.shopping_cart),
-                    const SizedBox(width: 4),
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
                     Text('${cart.countOfItems}'),
                   ],
                 ),
@@ -183,27 +64,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ],
-<<<<<<< HEAD
-=======
-        title: const Text('Profile', style: heading1),
->>>>>>> 4aae054 (Add the link to the profile)
-=======
->>>>>>> 2889716 (Show the cart icon)
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-<<<<<<< HEAD
-<<<<<<< HEAD
             Text('Enter your details:', style: heading2),
-=======
-            const Text('Enter your details:', style: heading2),
->>>>>>> 4aae054 (Add the link to the profile)
-=======
-            Text('Enter your details:', style: heading2),
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
             const SizedBox(height: 20),
             TextField(
               controller: _nameController,
@@ -224,10 +91,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ElevatedButton(
               onPressed: _saveProfile,
               child: const Text('Save Profile'),
-<<<<<<< HEAD
->>>>>>> 4aae054 (Add the link to the profile)
-=======
->>>>>>> 4aae054 (Add the link to the profile)
             ),
           ],
         ),
