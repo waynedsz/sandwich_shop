@@ -92,7 +92,7 @@ void main() {
 
   group('OrderItemDisplay', () {
     testWidgets('Displays quantity, bread and note', (tester) async {
-      final item = OrderItemDisplay(
+      const item = OrderItemDisplay(
         quantity: 2,
         itemType: 'footlong',
         breadType: BreadType.white,

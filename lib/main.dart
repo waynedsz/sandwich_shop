@@ -275,3 +275,32 @@ class StyledButton extends StatelessWidget {
     );
   }
 }
+
+class OrderItemDisplay extends StatelessWidget {
+  final int quantity;
+  final String itemType;
+  final BreadType breadType;
+  final String orderNote;
+
+  const OrderItemDisplay({
+    super.key,
+    required this.quantity,
+    required this.itemType,
+    required this.breadType,
+    required this.orderNote,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final display =
+        "$quantity ${breadType.name} $itemType sandwich(es): ${'🥪' * quantity}";
+
+    return Column(
+      children: [
+        Text(display, style: normalText),
+        const SizedBox(height: 8),
+        Text("Note: $orderNote", style: normalText),
+      ],
+    );
+  }
+}
