@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
-import 'package:sandwich_shop/repositories/pricing_repository.dart';
+import 'package:sandwich_shop/repositories/PricingRepository.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key, required Cart cart});
@@ -16,10 +16,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   bool _isProcessing = false;
 
   double _calculateItemPrice(Sandwich sandwich, int quantity) {
-    return PricingRepository().calculatePrice(
-      quantity: quantity,
-      isFootlong: sandwich.isFootlong,
-    );
+    return PricingRepository(
+            quantity: quantity, isFootlong: sandwich.isFootlong)
+        .getTotalPrice();
   }
 
   Future<void> _processPayment() async {
