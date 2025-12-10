@@ -131,28 +131,34 @@ class _OrderScreenState extends State<OrderScreen> {
                       children: [
                         Text('Cart: ${_getCartItemCount()} item(s)',
                             style: heading2),
+                        Text(
+                            'Total: \$${_getCartTotalPrice().toStringAsFixed(2)}',
+                            style: heading2),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              DropdownMenu<SandwichType>(
+                initialSelection: _selectedSandwichType,
                 onSelected: (val) =>
                     setState(() => _selectedSandwichType = val!),
                 dropdownMenuEntries: SandwichType.values
-                    .map(
-                      (t) => DropdownMenuEntry(
-                        value: t,
-                        label: Sandwich(
-                                type: t,
-                                isFootlong: true,
-                                breadType: BreadType.white)
-                            .name,
-                      ),
-                    )
+                    .map((t) => DropdownMenuEntry(
+                          value: t,
+                          label: Sandwich(
+                                  type: t,
+                                  isFootlong: true,
+                                  breadType: BreadType.white)
+                              .name,
+                        ))
                     .toList(),
                 label: const Text('Sandwich Type'),
                 textStyle: normalText,
                 width: 280,
               ),
-
               const SizedBox(height: 20),
-
-              // --- Size Switch ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -164,10 +170,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   const Text('Footlong', style: normalText),
                 ],
               ),
-
               const SizedBox(height: 20),
-
-              // --- Bread Dropdown ---
               DropdownMenu<BreadType>(
                 initialSelection: _selectedBreadType,
                 onSelected: (val) => setState(() => _selectedBreadType = val!),
@@ -178,10 +181,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 label: const Text('Bread Type'),
                 width: 280,
               ),
-
               const SizedBox(height: 20),
-
-              // --- Quantity Selector ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -196,17 +196,13 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ],
               ),
-
               const SizedBox(height: 20),
-
-              // --- Add to Cart ---
               StyledButton(
                 onPressed: _getAddToCartCallback(),
                 icon: Icons.add_shopping_cart,
                 label: 'Add to Cart',
                 backgroundColor: Colors.green,
               ),
-
               const SizedBox(height: 20),
             ],
           ),
