@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class PricingRepository {
   final int quantity;
   final bool isFootlong;
