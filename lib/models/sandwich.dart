@@ -1,13 +1,5 @@
 enum BreadType { white, wheat, wholemeal }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2e33822 (Update sandwich.dart)
-=======
->>>>>>> 2e33822 (Update sandwich.dart)
 enum SandwichType {
   veggieDelight,
   chickenTeriyaki,
@@ -15,8 +7,6 @@ enum SandwichType {
   meatballMarinara,
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 class Sandwich {
   final SandwichType type;
   final bool isFootlong;
@@ -28,6 +18,7 @@ class Sandwich {
     required this.breadType,
   });
 
+  /// Human-readable sandwich name
   String get name {
     switch (type) {
       case SandwichType.veggieDelight:
@@ -41,122 +32,22 @@ class Sandwich {
     }
   }
 
+  /// Image path based on type + size
   String get image {
-    String typeString = type.name;
-    String sizeString = '';
-    if (isFootlong) {
-      sizeString = 'footlong';
-    } else {
-      sizeString = 'six_inch';
-    }
+    final typeString = type.name;
+    final sizeString = isFootlong ? 'footlong' : 'six_inch';
     return 'assets/images/${typeString}_$sizeString.png';
   }
-=======
-=======
->>>>>>> 2e33822 (Update sandwich.dart)
-class Sandwich {
-  final SandwichType type;
-  final bool isFootlong;
-  final BreadType breadType;
 
-  Sandwich({
-    required this.type,
-    required this.isFootlong,
-    required this.breadType,
-<<<<<<< HEAD
-    required this.image,
-<<<<<<< HEAD
-  });
->>>>>>> e4ebb3a (Add Sandwich model)
-=======
-  }) {
-    if (name.isEmpty) {
-      throw ArgumentError('Name cannot be empty');
-    }
-    if (image.isEmpty || !image.startsWith('assets/images/')) {
-      throw ArgumentError('Image must be a valid asset path');
-    }
-  }
->>>>>>> 102d5a8 (📝 Add validation for Sandwich model parameters)
-=======
-  });
-
-  String get name {
-    switch (type) {
-      case SandwichType.veggieDelight:
-        return 'Veggie Delight';
-      case SandwichType.chickenTeriyaki:
-        return 'Chicken Teriyaki';
-      case SandwichType.tunaMelt:
-        return 'Tuna Melt';
-      case SandwichType.meatballMarinara:
-        return 'Meatball Marinara';
-    }
+  /// Required so Sandwich can be used as a Map key
+  @override
+  bool operator ==(Object other) {
+    return other is Sandwich &&
+        type == other.type &&
+        isFootlong == other.isFootlong &&
+        breadType == other.breadType;
   }
 
-  String get image {
-    String typeString = type.name;
-    String sizeString = '';
-    if (isFootlong) {
-      sizeString = 'footlong';
-    } else {
-      sizeString = 'six_inch';
-    }
-    return 'assets/images/${typeString}_$sizeString.png';
-  }
->>>>>>> 2e33822 (Update sandwich.dart)
-=======
-=======
->>>>>>> 2e33822 (Update sandwich.dart)
-class Sandwich {
-  final SandwichType type;
-  final bool isFootlong;
-  final BreadType breadType;
-
-  Sandwich({
-    required this.type,
-    required this.isFootlong,
-    required this.breadType,
-<<<<<<< HEAD
-    required this.image,
-<<<<<<< HEAD
-  });
->>>>>>> e4ebb3a (Add Sandwich model)
-=======
-  }) {
-    if (name.isEmpty) {
-      throw ArgumentError('Name cannot be empty');
-    }
-    if (image.isEmpty || !image.startsWith('assets/images/')) {
-      throw ArgumentError('Image must be a valid asset path');
-    }
-  }
->>>>>>> 102d5a8 (📝 Add validation for Sandwich model parameters)
-=======
-  });
-
-  String get name {
-    switch (type) {
-      case SandwichType.veggieDelight:
-        return 'Veggie Delight';
-      case SandwichType.chickenTeriyaki:
-        return 'Chicken Teriyaki';
-      case SandwichType.tunaMelt:
-        return 'Tuna Melt';
-      case SandwichType.meatballMarinara:
-        return 'Meatball Marinara';
-    }
-  }
-
-  String get image {
-    String typeString = type.name;
-    String sizeString = '';
-    if (isFootlong) {
-      sizeString = 'footlong';
-    } else {
-      sizeString = 'six_inch';
-    }
-    return 'assets/images/${typeString}_$sizeString.png';
-  }
->>>>>>> 2e33822 (Update sandwich.dart)
+  @override
+  int get hashCode => Object.hash(type, isFootlong, breadType);
 }
