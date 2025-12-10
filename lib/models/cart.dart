@@ -3,6 +3,21 @@ import 'sandwich.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 class Cart extends ChangeNotifier {
+  /// Update quantity for a sandwich
+  void updateQuantity(Sandwich sandwich, int quantity) {
+    if (quantity <= 0) {
+      _items.remove(sandwich);
+    } else {
+      _items[sandwich] = quantity;
+    }
+    notifyListeners();
+  }
+
+  /// Check if cart contains a sandwich
+  bool contains(Sandwich sandwich) {
+    return _items.containsKey(sandwich);
+  }
+
   final Map<Sandwich, int> _items = {};
 
   static const int maxQuantity = 5;
