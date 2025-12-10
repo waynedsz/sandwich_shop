@@ -1,45 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:sandwich_shop/views/app_styles.dart';
-import 'package:sandwich_shop/views/cart_screen.dart';
+import 'package:sandwich_shop/widgets/common_widgets.dart';
+
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD:lib/views/order_screen.dart
-import 'package:sandwich_shop/widgets/navigation_scaffold.dart';
-=======
+
+import 'package:sandwich_shop/views/cart_screen.dart';
 import 'package:sandwich_shop/views/profile_screen.dart';
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD
->>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
-=======
-import 'package:provider/provider.dart';
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD
->>>>>>> e1ed5d6 (Updated each screen for preparation)
-=======
 import 'package:sandwich_shop/views/settings_screen.dart';
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD
->>>>>>> 7888c14 (Update order_screen to add settings screen)
-=======
-import 'package:sandwich_shop/views/common_widgets.dart';
->>>>>>> f912bed (Removed duplicates and imported common_widgets)
-=======
-import 'package:sandwich_shop/views/profile_screen.dart';
->>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
-=======
-import 'package:provider/provider.dart';
->>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
-=======
-import 'package:sandwich_shop/views/settings_screen.dart';
->>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
-=======
 import 'package:sandwich_shop/views/order_history_screen.dart';
-<<<<<<< HEAD:lib/views/order_screen.dart
->>>>>>> 549fba5 (Link up the order history screen):lib/views/order_screen_view.dart
-=======
-import 'package:sandwich_shop/widgets/common_widgets.dart';
->>>>>>> 9b2bb75 (Add the common app bar):lib/views/order_screen_view.dart
 
 class OrderScreen extends StatefulWidget {
   final int maxQuantity;
@@ -47,171 +18,82 @@ class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key, this.maxQuantity = 10});
 
   @override
-  State<OrderScreen> createState() {
-    return _OrderScreenState();
-  }
+  State<OrderScreen> createState() => _OrderScreenState();
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  final TextEditingController _notesController = TextEditingController();
-
   SandwichType _selectedSandwichType = SandwichType.veggieDelight;
-  bool _isFootlong = true;
   BreadType _selectedBreadType = BreadType.white;
+  bool _isFootlong = true;
   int _quantity = 1;
 
+  // Navigate to SETTINGS
   void _navigateToSettings() {
     Navigator.push(
       context,
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => const SettingsScreen(),
-      ),
+      MaterialPageRoute(builder: (_) => const SettingsScreen()),
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _notesController.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    _notesController.dispose();
-    super.dispose();
-  }
-
-  void _navigateToSettings() {
-    Navigator.push(
-      context,
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => const SettingsScreen(),
-      ),
-    );
-  }
-
+  // Navigate to PROFILE
   Future<void> _navigateToProfile() async {
-    final Map<String, String>? result =
-        await Navigator.push<Map<String, String>>(
+    final result = await Navigator.push<Map<String, String>>(
       context,
-      MaterialPageRoute<Map<String, String>>(
-        builder: (BuildContext context) => const ProfileScreen(),
-      ),
+      MaterialPageRoute(builder: (_) => const ProfileScreen()),
     );
 
-    final bool hasResult = result != null;
-    final bool widgetStillMounted = mounted;
-
-    if (hasResult && widgetStillMounted) {
-      _showWelcomeMessage(result);
-    }
-  }
-
-  void _showWelcomeMessage(Map<String, String> profileData) {
-    final String name = profileData['name']!;
-    final String location = profileData['location']!;
-    final String welcomeMessage = 'Welcome, $name! Ordering from $location';
-
-    final SnackBar welcomeSnackBar = SnackBar(
-      content: Text(welcomeMessage),
-      duration: const Duration(seconds: 3),
-    );
-
-    ScaffoldMessenger.of(context).showSnackBar(welcomeSnackBar);
-  }
-
-  void _addToCart() {
-    if (_quantity > 0) {
-      final Sandwich sandwich = Sandwich(
-        type: _selectedSandwichType,
-        isFootlong: _isFootlong,
-        breadType: _selectedBreadType,
+    if (mounted && result != null) {
+      final msg =
+          'Welcome, ${result["name"]}! Ordering from ${result["location"]}';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(msg), duration: const Duration(seconds: 3)),
       );
-
-      final Cart cart = Provider.of<Cart>(context, listen: false);
-      cart.add(sandwich, quantity: _quantity);
-
-      String sizeText;
-      if (_isFootlong) {
-        sizeText = 'footlong';
-      } else {
-        sizeText = 'six-inch';
-      }
-      String confirmationMessage =
-          'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
-
-      ScaffoldMessengerState scaffoldMessenger = ScaffoldMessenger.of(context);
-      SnackBar snackBar = SnackBar(
-        content: Text(confirmationMessage),
-        duration: const Duration(seconds: 2),
-      );
-      scaffoldMessenger.showSnackBar(snackBar);
     }
   }
 
-  VoidCallback? _getAddToCartCallback() {
-    if (_quantity > 0) {
-      return _addToCart;
-    }
-    return null;
-  }
-
-  void _navigateToCartView() {
+  // Navigate to CART
+  void _navigateToCart() {
     Navigator.push(
       context,
-      MaterialPageRoute<void>(
-<<<<<<< HEAD
-<<<<<<< HEAD:lib/views/order_screen.dart
-        builder: (BuildContext context) => const CartScreen(),
-=======
-        builder: (BuildContext context) => const CartViewScreen(),
->>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
-=======
-        builder: (BuildContext context) => const CartScreen(),
->>>>>>> 6c8bed7 (Standardize screen file naming: cart_view_screen -> cart_screen, order_screen_view -> order_screen)
-      ),
+      MaterialPageRoute(builder: (_) => const CartScreen()),
     );
   }
 
+  // Navigate to ORDER HISTORY
   void _navigateToOrderHistory() {
     Navigator.push(
       context,
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) => const OrderHistoryScreen(),
-      ),
+      MaterialPageRoute(builder: (_) => const OrderHistoryScreen()),
     );
   }
 
+  // Build dropdown entries
   List<DropdownMenuEntry<SandwichType>> _buildSandwichTypeEntries() {
-    List<DropdownMenuEntry<SandwichType>> entries = [];
-    for (SandwichType type in SandwichType.values) {
-      Sandwich sandwich =
-          Sandwich(type: type, isFootlong: true, breadType: BreadType.white);
-      DropdownMenuEntry<SandwichType> entry = DropdownMenuEntry<SandwichType>(
-        value: type,
-        label: sandwich.name,
-      );
-      entries.add(entry);
-    }
-    return entries;
+    return SandwichType.values
+        .map(
+          (type) => DropdownMenuEntry(
+            value: type,
+            label: Sandwich(
+                    type: type, isFootlong: true, breadType: BreadType.white)
+                .name,
+          ),
+        )
+        .toList();
   }
 
   List<DropdownMenuEntry<BreadType>> _buildBreadTypeEntries() {
-    List<DropdownMenuEntry<BreadType>> entries = [];
-    for (BreadType bread in BreadType.values) {
-      DropdownMenuEntry<BreadType> entry = DropdownMenuEntry<BreadType>(
-        value: bread,
-        label: bread.name,
-      );
-      entries.add(entry);
-    }
-    return entries;
+    return BreadType.values
+        .map(
+          (bread) => DropdownMenuEntry(
+            value: bread,
+            label: bread.name,
+          ),
+        )
+        .toList();
   }
 
   String _getCurrentImagePath() {
-    final Sandwich sandwich = Sandwich(
+    final sandwich = Sandwich(
       type: _selectedSandwichType,
       isFootlong: _isFootlong,
       breadType: _selectedBreadType,
@@ -219,12 +101,32 @@ class _OrderScreenState extends State<OrderScreen> {
     return sandwich.image;
   }
 
+  // ADD TO CART
+  void _addToCart() {
+    final cart = Provider.of<Cart>(context, listen: false);
+
+    final sandwich = Sandwich(
+      type: _selectedSandwichType,
+      isFootlong: _isFootlong,
+      breadType: _selectedBreadType,
+    );
+
+    cart.addItem(sandwich, quantity: _quantity);
+
+    final sizeText = _isFootlong ? "footlong" : "six-inch";
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Added $_quantity $sizeText ${sandwich.name} on ${_selectedBreadType.name} bread",
+        ),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return NavigationScaffold(
-      title: 'Order Sandwiches',
-=======
     return Scaffold(
       appBar: CommonAppBar(
         title: 'Sandwich Counter',
@@ -232,65 +134,49 @@ class _OrderScreenState extends State<OrderScreen> {
           Consumer<Cart>(
             builder: (context, cart, child) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD:lib/views/order_screen.dart
                     const Icon(Icons.shopping_cart),
                     const SizedBox(width: 4),
-=======
-                    Icon(Icons.shopping_cart),
-                    SizedBox(width: 4),
->>>>>>> 2889716 (Show the cart icon):lib/views/order_screen_view.dart
-=======
-                    const Icon(Icons.shopping_cart),
-                    const SizedBox(width: 4),
->>>>>>> 0f69d42 (📝 Update OrderScreen to use const constructors for Icon and SizedBox widgets):lib/views/order_screen_view.dart
-                    Text('${cart.countOfItems}'),
+                    Text("${cart.countOfItems}"),
                   ],
                 ),
               );
             },
-          ),
+          )
         ],
       ),
->>>>>>> e1ed5d6 (Updated each screen for preparation)
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // IMAGE
               SizedBox(
                 height: 300,
                 child: Image.asset(
                   _getCurrentImagePath(),
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Center(
-                      child: Text(
-                        'Image not found',
-                        style: normalText,
-                      ),
-                    );
-                  },
+                  errorBuilder: (_, __, ___) =>
+                      Center(child: Text('Image not found', style: normalText)),
                 ),
               ),
               const SizedBox(height: 20),
+
+              // SANDWICH TYPE
               DropdownMenu<SandwichType>(
                 width: double.infinity,
                 label: const Text('Sandwich Type'),
-                textStyle: normalText,
                 initialSelection: _selectedSandwichType,
-                onSelected: (SandwichType? value) {
-                  if (value != null) {
-                    setState(() => _selectedSandwichType = value);
-                  }
-                },
+                textStyle: normalText,
+                onSelected: (value) =>
+                    setState(() => _selectedSandwichType = value!),
                 dropdownMenuEntries: _buildSandwichTypeEntries(),
               ),
               const SizedBox(height: 20),
+
+              // SIZE
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -303,51 +189,62 @@ class _OrderScreenState extends State<OrderScreen> {
                 ],
               ),
               const SizedBox(height: 20),
+
+              // BREAD TYPE
               DropdownMenu<BreadType>(
                 width: double.infinity,
                 label: const Text('Bread Type'),
-                textStyle: normalText,
                 initialSelection: _selectedBreadType,
-                onSelected: (BreadType? value) {
-                  if (value != null) {
-                    setState(() => _selectedBreadType = value);
-                  }
-                },
+                textStyle: normalText,
+                onSelected: (value) =>
+                    setState(() => _selectedBreadType = value!),
                 dropdownMenuEntries: _buildBreadTypeEntries(),
               ),
               const SizedBox(height: 20),
+
+              // QUANTITY
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Quantity: ', style: normalText),
                   IconButton(
-                    onPressed: _quantity > 0
+                    icon: const Icon(Icons.remove),
+                    onPressed: _quantity > 1
                         ? () => setState(() => _quantity--)
                         : null,
-                    icon: const Icon(Icons.remove),
                   ),
-                  Text('$_quantity', style: heading2),
+                  Text("$_quantity", style: heading2),
                   IconButton(
-                    onPressed: () => setState(() => _quantity++),
                     icon: const Icon(Icons.add),
+                    onPressed: () {
+                      if (_quantity < widget.maxQuantity) {
+                        setState(() => _quantity++);
+                      }
+                    },
                   ),
                 ],
               ),
               const SizedBox(height: 20),
+
+              // ADD TO CART
               StyledButton(
-                onPressed: _getAddToCartCallback(),
+                onPressed: _addToCart,
                 icon: Icons.add_shopping_cart,
                 label: 'Add to Cart',
                 backgroundColor: Colors.green,
               ),
               const SizedBox(height: 20),
+
+              // VIEW CART
               StyledButton(
-                onPressed: _navigateToCartView,
+                onPressed: _navigateToCart,
                 icon: Icons.shopping_cart,
                 label: 'View Cart',
                 backgroundColor: Colors.blue,
               ),
               const SizedBox(height: 20),
+
+              // PROFILE
               StyledButton(
                 onPressed: _navigateToProfile,
                 icon: Icons.person,
@@ -355,25 +252,17 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.purple,
               ),
               const SizedBox(height: 20),
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD:lib/views/order_screen.dart
-<<<<<<< HEAD:lib/views/order_screen.dart
-=======
->>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
+
+              // SETTINGS
               StyledButton(
                 onPressed: _navigateToSettings,
                 icon: Icons.settings,
                 label: 'Settings',
                 backgroundColor: Colors.grey,
               ),
-<<<<<<< HEAD:lib/views/order_screen.dart
-=======
->>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
-=======
               const SizedBox(height: 20),
-<<<<<<< HEAD:lib/views/order_screen.dart
->>>>>>> 77e644e (Add settings to order screen):lib/views/order_screen_view.dart
-=======
+
+              // ORDER HISTORY
               StyledButton(
                 onPressed: _navigateToOrderHistory,
                 icon: Icons.history,
@@ -381,24 +270,16 @@ class _OrderScreenState extends State<OrderScreen> {
                 backgroundColor: Colors.indigo,
               ),
               const SizedBox(height: 20),
->>>>>>> 549fba5 (Link up the order history screen):lib/views/order_screen_view.dart
+
+              // CART SUMMARY
               Consumer<Cart>(
                 builder: (context, cart, child) {
                   return Text(
-                    'Cart: ${cart.countOfItems} items - £${cart.totalPrice.toStringAsFixed(2)}',
-                    style: normalText,
+                    "Cart: ${cart.countOfItems} items - £${cart.totalPrice.toStringAsFixed(2)}",
                     textAlign: TextAlign.center,
+                    style: normalText,
                   );
                 },
-<<<<<<< HEAD:lib/views/order_screen.dart
-=======
-              Text(
-                'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
-                style: normalText,
-                textAlign: TextAlign.center,
->>>>>>> 4aae054 (Add the link to the profile):lib/views/order_screen_view.dart
-=======
->>>>>>> 15cc170 (📝 Refactor OrderScreen to use Provider for Cart management):lib/views/order_screen_view.dart
               ),
               const SizedBox(height: 20),
             ],
