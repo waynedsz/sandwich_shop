@@ -80,6 +80,7 @@ class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
   String _note = '';
   final TextEditingController _noteController = TextEditingController();
+  String _sandwichType = 'Footlong';
 
   @override
   void dispose() {
@@ -113,9 +114,25 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'Footlong', label: Text('Footlong')),
+                  ButtonSegment(value: 'Six-inch', label: Text('Six-inch')),
+                ],
+                selected: <String>{_sandwichType},
+                onSelectionChanged: (Set<String> newSelection) {
+                  setState(() {
+                    _sandwichType = newSelection.first;
+                  });
+                },
+                showSelectedIcon: false,
+              ),
+            ),
             OrderItemDisplay(
               _quantity,
-              'Footlong',
+              _sandwichType,
             ),
             Padding(
               padding:
