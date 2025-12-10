@@ -25,20 +25,20 @@ class StyledButton extends StatelessWidget {
       icon: Icon(icon, color: foregroundColor),
       label: Text(
         label,
-        style: textStyle ?? const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        style: textStyle ??
+            const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        textStyle: textStyle ?? const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        textStyle: textStyle ??
+            const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }
 }
-
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(const App());
@@ -143,7 +143,8 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Expanded(
                   child: StyledButton(
-                    onPressed: _quantity < widget.maxQuantity ? _increment : null,
+                    onPressed:
+                        _quantity < widget.maxQuantity ? _increment : null,
                     label: 'Add',
                     icon: Icons.add,
                     backgroundColor: Colors.green,
