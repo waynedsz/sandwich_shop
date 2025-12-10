@@ -1,48 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+
 import 'package:sandwich_shop/views/checkout_screen.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import 'package:provider/provider.dart';
-=======
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
->>>>>>> 1cf0400 (Update tests for screens cart and checkout)
-=======
+
 import '../helpers/test_helpers.dart';
->>>>>>> 6dcd949 (refactor widget tests at 8)
 
 void main() {
   group('CheckoutScreen', () {
     setUpAll(() {
       initializeTestDatabase();
     });
-    testWidgets('displays order summary with empty cart',
-        (WidgetTester tester) async {
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>(
-          create: (_) => Cart(),
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final Cart emptyCart = Cart();
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = createTestApp(checkoutScreen, cart: emptyCart);
 
+    testWidgets('displays default checkout layout when cart is empty',
+        (WidgetTester tester) async {
+      final cart = Cart();
+
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
       expect(find.text('Checkout'), findsOneWidget);
       expect(find.text('Order Summary'), findsOneWidget);
-      expect(find.text('Total:'), findsOneWidget);
       expect(find.text('Payment Method: Card ending in 1234'), findsOneWidget);
       expect(find.text('Confirm Payment'), findsOneWidget);
+      expect(find.text('Total:'), findsOneWidget);
     });
 
-    testWidgets('displays order summary with single item',
+    testWidgets('displays order summary with a single item',
         (WidgetTester tester) async {
       final cart = Cart();
       final sandwich = Sandwich(
@@ -50,105 +35,49 @@ void main() {
         isFootlong: true,
         breadType: BreadType.white,
       );
-      cart.add(sandwich, quantity: 2);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
+      cart.addItem(sandwich, quantity: 2);
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
-      expect(find.text('Order Summary'), findsOneWidget);
       expect(find.text('2x Veggie Delight'), findsOneWidget);
-      expect(find.text('Total:'), findsOneWidget);
       expect(find.byType(Divider), findsOneWidget);
+      expect(find.text('Total:'), findsOneWidget);
     });
 
     testWidgets('displays order summary with multiple items',
         (WidgetTester tester) async {
       final cart = Cart();
-      final sandwich1 = Sandwich(
+
+      final s1 = Sandwich(
         type: SandwichType.veggieDelight,
         isFootlong: true,
         breadType: BreadType.white,
       );
-      final sandwich2 = Sandwich(
+      final s2 = Sandwich(
         type: SandwichType.chickenTeriyaki,
         isFootlong: false,
         breadType: BreadType.wheat,
       );
-      cart.add(sandwich1, quantity: 1);
-      cart.add(sandwich2, quantity: 3);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
+      cart.addItem(s1, quantity: 1);
+      cart.addItem(s2, quantity: 3);
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
       expect(find.text('1x Veggie Delight'), findsOneWidget);
       expect(find.text('3x Chicken Teriyaki'), findsOneWidget);
       expect(find.text('Total:'), findsOneWidget);
     });
 
-    testWidgets('shows confirm payment button initially',
+    testWidgets('confirm payment button appears initially',
         (WidgetTester tester) async {
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>(
-          create: (_) => Cart(),
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final Cart cart = Cart();
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
+      final cart = Cart();
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
       expect(find.text('Confirm Payment'), findsOneWidget);
       expect(find.byType(ElevatedButton), findsOneWidget);
@@ -156,385 +85,122 @@ void main() {
       expect(find.text('Processing payment...'), findsNothing);
     });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    testWidgets('shows processing state when payment is initiated',
+    testWidgets('shows processing state after confirming payment',
         (WidgetTester tester) async {
       final cart = Cart();
-      final sandwich = Sandwich(
-=======
-    testWidgets('shows processing state when payment is initiated',
-        (WidgetTester tester) async {
-      final Cart cart = Cart();
-      final Sandwich sandwich = Sandwich(
->>>>>>> 4d93793 (Remove comments from tests)
-        type: SandwichType.veggieDelight,
-        isFootlong: true,
-        breadType: BreadType.white,
-      );
-      cart.add(sandwich, quantity: 1);
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
+      cart.addItem(
+        Sandwich(
+          type: SandwichType.veggieDelight,
+          isFootlong: true,
+          breadType: BreadType.white,
         ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
+        quantity: 1,
       );
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
-=======
-    // testWidgets('shows processing state when payment is initiated',
-    //     (WidgetTester tester) async {
-    //   final Cart cart = Cart();
-    //   final Sandwich sandwich = Sandwich(
-    //     type: SandwichType.veggieDelight,
-    //     isFootlong: true,
-    //     breadType: BreadType.white,
-    //   );
-    //   cart.add(sandwich, quantity: 1);
-=======
->>>>>>> 4d93793 (Remove comments from tests)
 
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
-
-<<<<<<< HEAD
-    //   await tester.pumpWidget(app);
->>>>>>> b493708 (Comment out non-functioning tests)
-=======
-      await tester.pumpWidget(app);
->>>>>>> 4d93793 (Remove comments from tests)
-
-      final Finder confirmButtonFinder = find.text('Confirm Payment');
-      await tester.tap(confirmButtonFinder);
+      // Tap confirm payment
+      await tester.tap(find.text('Confirm Payment'));
       await tester.pump();
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       expect(find.text('Processing payment...'), findsOneWidget);
       expect(find.text('Confirm Payment'), findsNothing);
 
-      // Wait for the payment processing to complete (2 seconds + some buffer)
-      await tester.pump(const Duration(seconds: 3));
+      await tester.pump(const Duration(seconds: 3)); // allow process to finish
     });
 
-    testWidgets('calculates item prices correctly for footlong sandwiches',
+    testWidgets('correct price shown for footlong sandwiches',
         (WidgetTester tester) async {
       final cart = Cart();
-      final footlongSandwich = Sandwich(
+
+      final footlong = Sandwich(
         type: SandwichType.veggieDelight,
         isFootlong: true,
         breadType: BreadType.white,
       );
-      cart.add(footlongSandwich, quantity: 1);
+      cart.addItem(footlong, quantity: 1);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
-
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
-      expect(find.text('1x Veggie Delight'), findsOneWidget);
       expect(find.textContaining('£11.00'), findsWidgets);
+      expect(find.text('1x Veggie Delight'), findsOneWidget);
     });
 
-    testWidgets('calculates item prices correctly for six-inch sandwiches',
+    testWidgets('correct price shown for six-inch sandwiches',
         (WidgetTester tester) async {
       final cart = Cart();
-      final sixInchSandwich = Sandwich(
+
+      final sixInch = Sandwich(
         type: SandwichType.veggieDelight,
         isFootlong: false,
         breadType: BreadType.white,
       );
-      cart.add(sixInchSandwich, quantity: 1);
+      cart.addItem(sixInch, quantity: 1);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
-
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
-      expect(find.text('1x Veggie Delight'), findsOneWidget);
       expect(find.textContaining('£7.00'), findsWidgets);
+      expect(find.text('1x Veggie Delight'), findsOneWidget);
     });
 
-    testWidgets('displays correct total for mixed sandwich sizes',
+    testWidgets('correct total price for mixed items',
         (WidgetTester tester) async {
       final cart = Cart();
-      final footlongSandwich = Sandwich(
+
+      final footlong = Sandwich(
         type: SandwichType.veggieDelight,
         isFootlong: true,
         breadType: BreadType.white,
       );
-      final sixInchSandwich = Sandwich(
+      final sixInch = Sandwich(
         type: SandwichType.chickenTeriyaki,
         isFootlong: false,
         breadType: BreadType.wheat,
       );
-      cart.add(footlongSandwich, quantity: 1);
-      cart.add(sixInchSandwich, quantity: 2);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
+      cart.addItem(footlong, quantity: 1); // £11
+      cart.addItem(sixInch, quantity: 2); // £14
+      // total = £25
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
       expect(find.text('1x Veggie Delight'), findsOneWidget);
       expect(find.text('2x Chicken Teriyaki'), findsOneWidget);
       expect(find.textContaining('£25.00'), findsWidgets);
     });
 
-<<<<<<< HEAD
-    testWidgets('has proper layout structure', (WidgetTester tester) async {
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>(
-          create: (_) => Cart(),
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final Cart cart = Cart();
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
+    testWidgets('payment method text is centered', (WidgetTester tester) async {
+      final cart = Cart();
 
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
-      expect(find.byType(Scaffold), findsOneWidget);
-      expect(find.byType(AppBar), findsOneWidget);
-      expect(find.byType(Column), findsOneWidget);
-      expect(find.byType(SizedBox), findsWidgets);
-    });
-
-=======
->>>>>>> 6dcd949 (refactor widget tests at 8)
-    testWidgets('payment method text is displayed correctly',
-        (WidgetTester tester) async {
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>(
-          create: (_) => Cart(),
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final Cart cart = Cart();
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
-
-      await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
-
-      final Finder paymentMethodFinder =
+      final Finder paymentTextFinder =
           find.text('Payment Method: Card ending in 1234');
-      expect(paymentMethodFinder, findsOneWidget);
 
-      final Text paymentMethodText = tester.widget<Text>(paymentMethodFinder);
-      expect(paymentMethodText.textAlign, equals(TextAlign.center));
+      expect(paymentTextFinder, findsOneWidget);
+
+      final Text text = tester.widget(paymentTextFinder);
+      expect(text.textAlign, TextAlign.center);
     });
 
-<<<<<<< HEAD
-    testWidgets('order summary items are properly aligned',
-        (WidgetTester tester) async {
+    testWidgets('correct name + quantity format', (WidgetTester tester) async {
       final cart = Cart();
-      final sandwich = Sandwich(
-        type: SandwichType.veggieDelight,
-        isFootlong: true,
-        breadType: BreadType.white,
-      );
-      cart.add(sandwich, quantity: 1);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-
-      await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
-
-      final Finder rowFinders = find.byType(Row);
-      expect(rowFinders, findsWidgets);
-
-      final List<Row> rows = tester.widgetList<Row>(rowFinders).toList();
-      final Row itemRow = rows.firstWhere(
-        (row) => row.mainAxisAlignment == MainAxisAlignment.spaceBetween,
-      );
-      expect(itemRow.mainAxisAlignment, equals(MainAxisAlignment.spaceBetween));
-    });
-
-    testWidgets('displays divider between items and total',
-        (WidgetTester tester) async {
-      final cart = Cart();
-      final sandwich = Sandwich(
-        type: SandwichType.veggieDelight,
-        isFootlong: true,
-        breadType: BreadType.white,
-      );
-      cart.add(sandwich, quantity: 1);
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-
-      await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
-
-      expect(find.byType(Divider), findsOneWidget);
-    });
-
-=======
->>>>>>> 6dcd949 (refactor widget tests at 8)
-    testWidgets('shows correct quantity and name format',
-        (WidgetTester tester) async {
-      final cart = Cart();
-      final sandwich = Sandwich(
+      final s = Sandwich(
         type: SandwichType.chickenTeriyaki,
         isFootlong: false,
         breadType: BreadType.wheat,
       );
-      cart.add(sandwich, quantity: 3);
+      cart.addItem(s, quantity: 3);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      await tester.pumpWidget(
-        ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: const MaterialApp(home: CheckoutScreen()),
-        ),
-      );
-=======
-      final CheckoutScreen checkoutScreen = const CheckoutScreen();
-=======
-      const CheckoutScreen checkoutScreen = CheckoutScreen();
-<<<<<<< HEAD
->>>>>>> d52fe62 (Pull font sizes from shared_preference and remove consts from app_style usages)
-      final MaterialApp app = MaterialApp(
-        home: ChangeNotifierProvider<Cart>.value(
-          value: cart,
-          child: checkoutScreen,
-        ),
-      );
-=======
-      final MaterialApp app = createTestApp(checkoutScreen, cart: cart);
->>>>>>> 6dcd949 (refactor widget tests at 8)
-
+      final app = createTestApp(const CheckoutScreen(), cart: cart);
       await tester.pumpWidget(app);
->>>>>>> fa11dab (Update checkout screen tests)
 
       expect(find.text('3x Chicken Teriyaki'), findsOneWidget);
     });
