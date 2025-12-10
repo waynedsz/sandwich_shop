@@ -131,30 +131,6 @@ class _OrderScreenState extends State<OrderScreen> {
                       children: [
                         Text('Cart: ${_getCartItemCount()} item(s)',
                             style: heading2),
-                        Text(
-                            'Total: \$${_getCartTotalPrice().toStringAsFixed(2)}',
-                            style: heading2),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              // --- Sandwich Image ---
-              SizedBox(
-                height: 250,
-                child: Image.asset(
-                  _currentSandwichImage(),
-                  errorBuilder: (_, __, ___) =>
-                      const Text('Image not found', style: normalText),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              // --- Sandwich Type Dropdown ---
-              DropdownMenu<SandwichType>(
-                initialSelection: _selectedSandwichType,
                 onSelected: (val) =>
                     setState(() => _selectedSandwichType = val!),
                 dropdownMenuEntries: SandwichType.values
