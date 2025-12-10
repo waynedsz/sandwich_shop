@@ -8,7 +8,7 @@ void main() {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
 
-    await tester.pumpWidget(const App());
+    await tester.pumpWidget(const MyApp());
     await tester.pumpAndSettle();
 
     final menuButton = find.byTooltip('Open navigation menu');
@@ -26,7 +26,7 @@ void main() {
     tester.view.physicalSize = const Size(1000, 800);
     tester.view.devicePixelRatio = 1.0;
 
-    await tester.pumpWidget(const App());
+    await tester.pumpWidget(const MyApp());
     await tester.pumpAndSettle();
 
     expect(find.byType(NavigationRail), findsOneWidget);
@@ -37,7 +37,7 @@ void main() {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
 
-    await tester.pumpWidget(const App());
+    await tester.pumpWidget(const MyApp());
     await tester.pumpAndSettle();
 
     await tester.tap(find.byTooltip('Open navigation menu'));
