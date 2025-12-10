@@ -3,6 +3,31 @@ import 'sandwich.dart';
 import 'package:sandwich_shop/repositories/PricingRepository.dart';
 
 class Cart extends ChangeNotifier {
+  void incrementQuantity(Sandwich sandwich) {
+    if (_items.containsKey(sandwich)) {
+      _items[sandwich] = _items[sandwich]! + 1;
+      notifyListeners();
+    }
+  }
+
+  void decrementQuantity(Sandwich sandwich) {
+    if (_items.containsKey(sandwich)) {
+      if (_items[sandwich]! > 1) {
+        _items[sandwich] = _items[sandwich]! - 1;
+      } else {
+        _items.remove(sandwich);
+      }
+      notifyListeners();
+    }
+  }
+
+  void removeAllOf(Sandwich sandwich) {
+    if (_items.containsKey(sandwich)) {
+      _items.remove(sandwich);
+      notifyListeners();
+    }
+  }
+
   /// Get price for a specific sandwich and quantity
   double getItemPrice(Sandwich sandwich, int quantity) {
     return PricingRepository(

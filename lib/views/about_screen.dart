@@ -17,7 +17,7 @@ class AboutScreen extends StatelessWidget {
             children: [
               Text('Welcome to Sandwich Shop!', style: heading2),
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 'We are a family-owned business dedicated to serving the best sandwiches in town. ',
                 style: normalText,
               ),
