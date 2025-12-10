@@ -262,7 +262,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                   Text('$_quantity', style: heading2),
                   IconButton(
-                    onPressed: _increaseQuantity,
+                    onPressed: _quantity < widget.maxQuantity
+                        ? _increaseQuantity
+                        : null,
                     icon: const Icon(Icons.add),
                   ),
                 ],
