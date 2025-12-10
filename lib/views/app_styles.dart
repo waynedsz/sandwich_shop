@@ -1,42 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-<<<<<<< HEAD
-const TextStyle normalText = TextStyle(
-  fontSize: 16,
-<<<<<<< HEAD
-<<<<<<< HEAD
-);
-=======
+/// A centralized place for managing font sizes and text styles.
 class AppStyles {
   static double _baseFontSize = 16.0;
->>>>>>> 1bd25d9 (update app_styles.dart to load font sizes)
 
+  /// Load the saved font size from SharedPreferences.
   static Future<void> loadFontSize() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _baseFontSize = prefs.getDouble('fontSize') ?? 16.0;
   }
 
-<<<<<<< HEAD
-const heading2 = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.bold,
-);
-=======
-=======
->>>>>>> cdd80e0 (Move UIs to views)
-  fontWeight: FontWeight.bold,
-);
-
-const Heading1 = TextStyle(
-  fontSize: 24,
-  fontWeight: FontWeight.bold,
-);
-<<<<<<< HEAD
->>>>>>> cdd80e0 (Move UIs to views)
-=======
->>>>>>> cdd80e0 (Move UIs to views)
-=======
+  /// Save updated font size.
   static Future<void> saveFontSize(double fontSize) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('fontSize', fontSize);
@@ -45,7 +20,9 @@ const Heading1 = TextStyle(
 
   static double get baseFontSize => _baseFontSize;
 
-  static TextStyle get normalText => TextStyle(fontSize: _baseFontSize);
+  static TextStyle get normalText => TextStyle(
+        fontSize: _baseFontSize,
+      );
 
   static TextStyle get heading1 => TextStyle(
         fontSize: _baseFontSize + 8,
@@ -58,7 +35,7 @@ const Heading1 = TextStyle(
       );
 }
 
+/// Simple top-level getters so old code still works.
 TextStyle get normalText => AppStyles.normalText;
 TextStyle get heading1 => AppStyles.heading1;
 TextStyle get heading2 => AppStyles.heading2;
->>>>>>> 1bd25d9 (update app_styles.dart to load font sizes)
