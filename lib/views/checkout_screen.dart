@@ -31,7 +31,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final Map orderConfirmation = {
       'orderId': orderId,
       'totalAmount': widget.cart.totalPrice,
-      'itemCount': widget.cart.countOfItems,
+      'itemCount': widget.cart.itemCount,
       'estimatedTime': '15-20 minutes',
     };
 

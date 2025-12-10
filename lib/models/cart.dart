@@ -45,6 +45,9 @@ class Cart {
     return total;
   }
 
+  /// Total number of sandwiches (sum of quantities) - alias for compatibility
+  int get itemCount => totalItems;
+
   /// Total distinct products
   int get length => _items.length;
 
