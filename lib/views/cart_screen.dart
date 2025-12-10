@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
-import 'package:sandwich_shop/repositories/pricing_repository.dart';
+import 'package:sandwich_shop/repositories/PricingRepository.dart';
 import 'package:sandwich_shop/views/checkout_screen.dart';
 import 'package:sandwich_shop/views/common_widgets.dart';
 
@@ -19,11 +19,9 @@ class _CartScreenState extends State<CartScreen> {
   String _getSizeText(bool isFootlong) => isFootlong ? 'Footlong' : 'Six-inch';
 
   double _getItemPrice(Sandwich sandwich, int quantity) {
-    final pricingRepo = PricingRepository();
-    return pricingRepo.calculatePrice(
-      quantity: quantity,
-      isFootlong: sandwich.isFootlong,
-    );
+    final pricingRepo =
+        PricingRepository(quantity: quantity, isFootlong: sandwich.isFootlong);
+    return pricingRepo.getTotalPrice();
   }
 
   void _navigateToCheckout() {
