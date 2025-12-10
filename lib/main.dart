@@ -41,7 +41,9 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   void initState() {
     super.initState();
-    _notesController.addListener(() => setState(() {}));
+    _notesController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -51,53 +53,121 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   void _addToCart() {
-    final sandwich = Sandwich(
+    if (_quantity > 0) {
+      final Sandwich sandwich = Sandwich(
+        type: _selectedSandwichType,
+        isFootlong: _isFootlong,
+        breadType: _selectedBreadType,
+      );
+
+      setState(() {
+        _cart.addItem(sandwich, quantity: _quantity);
+      });
+
+      String sizeText;
+      if (_isFootlong) {
+        sizeText = 'footlong';
+      } else {
+        sizeText = 'six-inch';
+      }
+      String confirmationMessage =
+          'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
+
+      debugPrint(confirmationMessage);
+    }
+  }
+
+  VoidCallback? _getAddToCartCallback() {
+    if (_quantity > 0) {
+      return _addToCart;
+    }
+    return null;
+  }
+
+  List<DropdownMenuEntry<SandwichType>> _buildSandwichTypeEntries() {
+    List<DropdownMenuEntry<SandwichType>> entries = [];
+    for (SandwichType type in SandwichType.values) {
+      Sandwich sandwich =
+          Sandwich(type: type, isFootlong: true, breadType: BreadType.white);
+      DropdownMenuEntry<SandwichType> entry = DropdownMenuEntry<SandwichType>(
+        value: type,
+        label: sandwich.name,
+      );
+      entries.add(entry);
+    }
+    return entries;
+  }
+
+  List<DropdownMenuEntry<BreadType>> _buildBreadTypeEntries() {
+    List<DropdownMenuEntry<BreadType>> entries = [];
+    for (BreadType bread in BreadType.values) {
+      DropdownMenuEntry<BreadType> entry = DropdownMenuEntry<BreadType>(
+        value: bread,
+        label: bread.name,
+      );
+      entries.add(entry);
+    }
+    return entries;
+  }
+
+  String _getCurrentImagePath() {
+    final Sandwich sandwich = Sandwich(
       type: _selectedSandwichType,
       isFootlong: _isFootlong,
       breadType: _selectedBreadType,
     );
-
-    _cart.addItem(sandwich, quantity: _quantity);
-
-    final sizeText = _isFootlong ? 'footlong' : 'six-inch';
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Added $_quantity $sizeText ${sandwich.name} sandwich(es)'
-          ' on ${_selectedBreadType.name} bread to cart',
-        ),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    return sandwich.image;
   }
 
-  VoidCallback? _getAddToCartCallback() {
-    return _quantity > 0 ? _addToCart : null;
+  void _onSandwichTypeChanged(SandwichType? value) {
+    if (value != null) {
+      setState(() {
+        _selectedSandwichType = value;
+      });
+    }
+  }
+
+  void _onSizeChanged(bool value) {
+    setState(() {
+      _isFootlong = value;
+    });
+  }
+
+  void _onBreadTypeChanged(BreadType? value) {
+    if (value != null) {
+      setState(() {
+        _selectedBreadType = value;
+      });
+    }
   }
 
   void _increaseQuantity() {
-    if (_quantity < widget.maxQuantity) {
-      setState(() => _quantity++);
-    }
+    setState(() {
+      _quantity++;
+    });
   }
 
   void _decreaseQuantity() {
-    if (_quantity > 1) {
-      setState(() => _quantity--);
+    if (_quantity > 0) {
+      setState(() {
+        _quantity--;
+      });
     }
   }
 
-  int _getCartItemCount() => _cart.totalItems;
+  VoidCallback? _getDecreaseCallback() {
+    if (_quantity > 0) {
+      return _decreaseQuantity;
+    }
+    return null;
+  }
 
   double _getCartTotalPrice() {
     double total = 0.0;
-
     for (final item in _cart.items) {
       final price = item.sandwich.isFootlong ? 8.0 : 5.0;
       total += price * item.quantity;
     }
-
     return total;
   }
 
@@ -105,23 +175,28 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sandwich Counter', style: heading1),
+        title: const Text(
+          'Sandwich Counter',
+          style: heading1,
+        ),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // --- Cart Summary ---
+              // Cart summary at the top
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 16.0),
                 child: Card(
                   color: Colors.yellow[100],
                   child: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Cart: ${_getCartItemCount()} item(s)',
+                        Text('Cart: ${_cart.totalItems} item(s)',
                             style: heading2),
                         Text(
                             'Total: \$${_getCartTotalPrice().toStringAsFixed(2)}',
@@ -131,24 +206,29 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 300,
+                child: Image.asset(
+                  _getCurrentImagePath(),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Text(
+                        'Image not found',
+                        style: normalText,
+                      ),
+                    );
+                  },
+                ),
+              ),
               const SizedBox(height: 20),
               DropdownMenu<SandwichType>(
-                initialSelection: _selectedSandwichType,
-                onSelected: (val) =>
-                    setState(() => _selectedSandwichType = val!),
-                dropdownMenuEntries: SandwichType.values
-                    .map((t) => DropdownMenuEntry(
-                          value: t,
-                          label: Sandwich(
-                                  type: t,
-                                  isFootlong: true,
-                                  breadType: BreadType.white)
-                              .name,
-                        ))
-                    .toList(),
+                width: double.infinity,
                 label: const Text('Sandwich Type'),
                 textStyle: normalText,
-                width: 280,
+                initialSelection: _selectedSandwichType,
+                onSelected: _onSandwichTypeChanged,
+                dropdownMenuEntries: _buildSandwichTypeEntries(),
               ),
               const SizedBox(height: 20),
               Row(
@@ -157,28 +237,27 @@ class _OrderScreenState extends State<OrderScreen> {
                   const Text('Six-inch', style: normalText),
                   Switch(
                     value: _isFootlong,
-                    onChanged: (v) => setState(() => _isFootlong = v),
+                    onChanged: _onSizeChanged,
                   ),
                   const Text('Footlong', style: normalText),
                 ],
               ),
               const SizedBox(height: 20),
               DropdownMenu<BreadType>(
-                initialSelection: _selectedBreadType,
-                onSelected: (val) => setState(() => _selectedBreadType = val!),
-                dropdownMenuEntries: BreadType.values
-                    .map((b) => DropdownMenuEntry(value: b, label: b.name))
-                    .toList(),
-                textStyle: normalText,
+                width: double.infinity,
                 label: const Text('Bread Type'),
-                width: 280,
+                textStyle: normalText,
+                initialSelection: _selectedBreadType,
+                onSelected: _onBreadTypeChanged,
+                dropdownMenuEntries: _buildBreadTypeEntries(),
               ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const Text('Quantity: ', style: normalText),
                   IconButton(
-                    onPressed: _quantity > 1 ? _decreaseQuantity : null,
+                    onPressed: _getDecreaseCallback(),
                     icon: const Icon(Icons.remove),
                   ),
                   Text('$_quantity', style: heading2),
