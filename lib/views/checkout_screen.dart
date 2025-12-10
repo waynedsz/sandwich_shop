@@ -27,6 +27,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     await Future.delayed(const Duration(seconds: 2));
 
+    // ignore: use_build_context_synchronously
     final cart = Provider.of<Cart>(context, listen: false);
 
     final String orderId = "ORD${DateTime.now().millisecondsSinceEpoch}";
@@ -34,7 +35,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final Map<String, dynamic> confirmation = {
       "orderId": orderId,
       "totalAmount": cart.totalPrice,
-      "itemCount": cart.countOfItems,
+      "itemCount": cart.itemCount,
       "estimatedTime": "15–20 minutes",
     };
 
@@ -59,7 +60,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               children: [
                 const Icon(Icons.shopping_cart),
                 const SizedBox(width: 4),
-                Text('${cart.countOfItems}'),
+                Text('${cart.itemCount}'),
               ],
             ),
           )
@@ -104,7 +105,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
 
             const SizedBox(height: 40),
-            const Text(
+            Text(
               "Payment Method: Card ending in 1234",
               style: normalText,
               textAlign: TextAlign.center,
@@ -114,9 +115,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             // Payment button OR processing spinner
             if (_isProcessing)
               Column(
-                children: const [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 20),
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 20),
                   Text(
                     "Processing payment...",
                     style: normalText,
@@ -130,7 +131,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text("Confirm Payment", style: normalText),
+                child: Text("Confirm Payment", style: normalText),
               ),
           ],
         ),
