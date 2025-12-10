@@ -48,7 +48,7 @@ class _OrderScreenState extends State<OrderScreen> {
       );
 
       setState(() {
-        _cart.add(sandwich, quantity: _quantity);
+        _cart.addItem(sandwich, quantity: _quantity);
       });
 
       String sizeText;
@@ -195,7 +195,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                   Text('$_quantity', style: heading2),
                   IconButton(
-                    onPressed: () => setState(() => _quantity++),
+                    onPressed: _quantity < widget.maxQuantity
+                        ? () => setState(() => _quantity++)
+                        : null,
                     icon: const Icon(Icons.add),
                   ),
                 ],
@@ -216,7 +218,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Cart: ${_cart.countOfItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
+                'Cart: ${_cart.totalItems} items - £${_cart.totalPrice.toStringAsFixed(2)}',
                 style: normalText,
                 textAlign: TextAlign.center,
               ),
