@@ -103,7 +103,6 @@ class _MainDrawer extends StatelessWidget {
 
   const _MainDrawer({
     required this.drawerKey,
-    super.key,
   });
 
   @override

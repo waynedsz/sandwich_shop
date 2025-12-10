@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'sandwich.dart';
 import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
-class Cart {
+class Cart extends ChangeNotifier {
   final Map<Sandwich, int> _items = {};
 
   static const int maxQuantity = 5;
