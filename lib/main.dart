@@ -101,14 +101,6 @@ class _OrderScreenState extends State<OrderScreen> {
     return total;
   }
 
-  String _currentSandwichImage() {
-    return Sandwich(
-      type: _selectedSandwichType,
-      isFootlong: _isFootlong,
-      breadType: _selectedBreadType,
-    ).image;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
