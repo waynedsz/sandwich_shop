@@ -42,32 +42,78 @@ sandwich_shop/
 
 ### Installation
 
-1. Clone this repository:
-   ```
-   git clone https://github.com/waynedsz/sandwich_shop.git
-   cd sandwich_shop
-   ```
-
-2. Get dependencies:
-   ```
-   flutter pub get
-   ```
-
-3. Run the app:
-   ```
-   flutter run
-   ```
-
-### Project Customization
-
-- You can change the maximum sandwich quantity by editing `OrderScreen(maxQuantity: ...)` in `main.dart`.
-- Add more bread types or customize the UI by editing the relevant widgets in `main.dart`.
-
-## Resources
-
-- [Flutter Documentation](https://docs.flutter.dev/)
-- [Material Design Widgets](https://docs.flutter.dev/development/ui/widgets/material)
-
 ## License
 
-This project is for educational purposes.
+# Sandwich Shop App
+
+A comprehensive Flutter application for ordering custom sandwiches. This app demonstrates modern Flutter development practices, including state management, user input handling, and test-driven development.
+
+## Features
+- Select sandwich type: Footlong or Six-inch
+- Choose quantity (with min/max limits)
+- Add special order notes
+- Toggle sandwich toasting
+- Real-time price calculation
+- Styled, accessible buttons with icons
+- Responsive UI for desktop and mobile
+- Comprehensive widget and unit tests
+
+## Project Structure
+```
+lib/
+   main.dart                # Main app UI and logic
+   models/                  # Data models (cart, sandwich, order)
+   repositories/            # Pricing and order logic
+   services/                # Database and backend services
+   views/                   # Screens and styles
+   widgets/                 # Reusable UI components
+assets/
+   images/                  # App images
+   ...
+test/
+   widget_test.dart         # Widget tests for UI and interaction
+   repositories/            # Unit tests for repositories
+integration_test/
+   app_test.dart            # Integration tests
+```
+
+## Getting Started
+1. Install [Flutter](https://flutter.dev/docs/get-started/install) and required SDKs.
+2. Run `flutter pub get` to fetch dependencies.
+3. Launch the app:
+    ```
+    flutter run
+    ```
+4. Run tests:
+    ```
+    flutter test
+    ```
+
+## Dependencies
+- `cupertino_icons` - iOS style icons
+- `provider` - State management
+- `shared_preferences` - Local storage
+- `sqflite` - SQLite database
+- `path` - File path utilities
+
+## Main Files
+- `lib/main.dart`: Entry point, UI, and state management
+- `lib/repositories/PricingRepository.dart`: Pricing logic
+- `test/repositories/pricing_repository_test.dart`: Unit tests for pricing
+- `test/widget_test.dart`: Widget tests for UI and interaction
+
+## How It Works
+- Users select sandwich type, quantity, and add notes.
+- Toasting option and bread type can be toggled.
+- Price is calculated in real time using `PricingRepository`.
+- Buttons are styled and disabled at quantity limits.
+- All features are covered by widget and unit tests.
+
+## Screenshots
+_Add screenshots of your app here_
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+MIT
