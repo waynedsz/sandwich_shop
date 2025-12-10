@@ -38,6 +38,14 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   int _quantity = 0;
+  String _note = '';
+  final TextEditingController _noteController = TextEditingController();
+
+  @override
+  void dispose() {
+    _noteController.dispose();
+    super.dispose();
+  }
 
   void _increment() {
     setState(() {
@@ -69,6 +77,28 @@ class _OrderScreenState extends State<OrderScreen> {
               _quantity,
               'Footlong',
             ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
+              child: TextField(
+                controller: _noteController,
+                decoration: const InputDecoration(
+                  labelText: 'Add a note (e.g., no onions, extra pickles)',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _note = value;
+                  });
+                },
+              ),
+            ),
+            if (_note.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text('Note: $_note',
+                    style: const TextStyle(fontStyle: FontStyle.italic)),
+              ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
