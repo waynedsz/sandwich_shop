@@ -7,9 +7,3 @@ class PricingRepository {
     required this.isFootlong,
   });
 
-  /// Returns the total price for the current order.
-  double getTotalPrice() {
-    final pricePerSandwich = isFootlong ? 11.0 : 7.0;
-    return pricePerSandwich * quantity;
-  }
-}
