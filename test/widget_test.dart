@@ -127,6 +127,8 @@ void main() {
 
       expect(find.textContaining('Cart: 1'), findsOneWidget);
       expect(find.textContaining('Total: \$'), findsOneWidget);
+      // Verify SnackBar is shown
+      expect(find.byType(SnackBar), findsOneWidget);
     });
   });
 }
