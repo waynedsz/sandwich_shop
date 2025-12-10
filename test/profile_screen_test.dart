@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sandwich_shop/views/profile_screen.dart';
 
 void main() {
-  Widget _buildTestApp() {
+  Widget buildTestApp() {
     return const MaterialApp(
       home: ProfileScreen(),
     );
@@ -11,7 +11,7 @@ void main() {
 
   testWidgets('ProfileScreen shows title and input fields',
       (WidgetTester tester) async {
-    await tester.pumpWidget(_buildTestApp());
+    await tester.pumpWidget(buildTestApp());
 
     expect(find.text('Your Profile'), findsOneWidget);
     expect(find.byKey(const Key('profile_name_field')), findsOneWidget);
@@ -22,7 +22,7 @@ void main() {
 
   testWidgets('Tapping Save profile shows snack bar',
       (WidgetTester tester) async {
-    await tester.pumpWidget(_buildTestApp());
+    await tester.pumpWidget(buildTestApp());
 
     await tester.tap(find.byKey(const Key('profile_save_button')));
     await tester.pump();
