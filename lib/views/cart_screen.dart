@@ -59,7 +59,7 @@ class _CartScreenState extends State<CartScreen> {
     );
     if (shouldClear == true) {
       setState(() {
-        widget.cart.removeAll();
+        widget.cart.clear();
       });
     }
   }
