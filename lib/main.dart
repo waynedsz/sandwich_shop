@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
 import 'views/order_screen.dart';
 import 'views/app_styles.dart';
+import 'models/cart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppStyles.loadFontSize();
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<Cart>(
+      create: (_) => Cart(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
