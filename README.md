@@ -135,3 +135,40 @@ sandwich_shop/
 ## License
 
 This project is for educational purposes.
+
+## Building a Release APK
+
+To generate a signed, optimized release APK for Android:
+
+1. Ensure you have a release keystore at `android/app/release.keystore` (see below for setup).
+2. Build the release APK:
+   ```bash
+   flutter build apk --release
+   ```
+   The APK will be output to:
+   ```
+   build/app/outputs/apk/release/app-release.apk
+   ```
+
+- **Release APK size:** ~78.5 MB
+- **Debug APK size:** ~95.6 MB
+- Release builds are smaller and faster due to code optimizations and removal of debug checks.
+
+### Running the Release APK on a Device
+
+1. Transfer `app-release.apk` to your Android device.
+2. Install it (you may need to enable installs from unknown sources):
+   ```bash
+   adb install build/app/outputs/apk/release/app-release.apk
+   ```
+3. Open the Sandwich Shop app on your device and verify performance and features.
+
+### Keystore Setup (for signing)
+
+If you need to generate a release keystore:
+
+```bash
+keytool -genkeypair -v -keystore android/app/release.keystore -alias sandwich_release -keyalg RSA -keysize 2048 -validity 10000 -storepass sandwich123 -keypass sandwich123 -dname "CN=Sandwich Shop, OU=Dev, O=Wayne, L=City, S=State, C=US"
+```
+
+The signing config is set in `android/app/build.gradle.kts`.
